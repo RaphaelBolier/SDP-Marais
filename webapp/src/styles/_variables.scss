@@ -1,0 +1,45 @@
+$blue: #00385B;
+$cyan: #13bad8;
+$beige: #EBE6D9;
+$beige-light: #F5F2EB;
+$grey-dark: #666;
+$grey: #707070;
+$red: #CD042E;
+$white: #fff;
+
+$font-farray: 'Farray';
+
+
+// bootstrap theme
+$primary:       $blue !default;
+$secondary:     $cyan !default;
+$info:          $beige !default;
+$danger:        $red !default;
+$light:         $beige-light !default;
+$dark:          $grey !default;
+
+$body-color: $blue;
+
+// grid
+$spacer: 1rem;
+$grid-gutter-width: 80px;
+
+$input-btn-padding-y: .75rem;
+$input-btn-padding-x: 2rem;
+$input-btn-border-width: 2px;
+
+// nav
+$navbar-nav-link-padding-x:         1rem !default;
+
+// carousel
+$carousel-control-color: $primary;
+
+
+
+// breakpoint
+$screen-xs: 575.98px;
+$screen-sm: 767.98px;
+$screen-md: 991.98px;
+$screen-lg: 1199.98px;
+
+$navbar-height: 75px;
