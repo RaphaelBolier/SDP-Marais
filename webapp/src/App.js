@@ -18,9 +18,8 @@ et que mon url est : /rules/rule1
 le component retourner sur Rules et non Rules1 
 Il faut donc faire : 
 
-<Route path="/rules" component={Rules} />
 <Route path="/rules/rule1" component={Rule1} />
-
+<Route path="/rules" component={Rules} />
 */
 const App = () => (
   <HashRouter>
