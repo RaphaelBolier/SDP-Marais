@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  HashRouter,
+  Route,
+  Switch,
+} from 'react-router-dom';
+import PageHome from './pages/Home/Home';
+import Rules from './pages/Rules/Rules';
+import GameMenu from './pages/Game/GameMenu';
+import HomeButton from './pages/Home/HomeButton'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+/*Il faut bien faire attention qu'une route ne prenne pas la priorité sur une autre par exemple si je fais une route 
+
+<Route path="/rules" component={Rules} />
+<Route path="/rules/rule1" component={Rule1} />
+
+et que mon url est : /rules/rule1
+le component retourner sur Rules et non Rules1 
+Il faut donc faire : 
+
+<Route path="/rules" component={Rules} />
+<Route path="/rules/rule1" component={Rule1} />
+
+*/
+const App = () => (
+  <HashRouter>
+    <Route component={HomeButton} />
+      <Switch>
+        <Route path="/rules" component={Rules} />
+        <Route path="/game/menu" component={GameMenu} />
+        <Route path="/" component={PageHome} />
+      </Switch>
+  </HashRouter>
+);
 
 export default App;
