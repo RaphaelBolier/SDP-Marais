@@ -7,7 +7,7 @@ import {
 import PageHome from './pages/Home/Home';
 import Rules from './pages/Rules/Rules';
 import GameMenu from './pages/Game/GameMenu';
-import HomeButton from './pages/Home/HomeButton'
+import HomeButton from './components/Button/HomeButton'
 
 /*Il faut bien faire attention qu'une route ne prenne pas la priorité sur une autre par exemple si je fais une route 
 
