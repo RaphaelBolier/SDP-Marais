@@ -1,12 +1,11 @@
 const express = require('express');
-
 const app = express();
+const game = require('./routes/game');
+
 const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Hello world!')
-})
+app.use('/game', game);
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-})
+    console.log(`Server running at http://localhost:${port}`)
+});
