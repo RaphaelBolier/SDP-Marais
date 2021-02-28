@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { getGames, createGame } = require('../services/game');
+const { joinRoom } = require('../wsapi');
 
 const router = Router();
 
@@ -16,8 +17,9 @@ router.post('/', (req, res) => {
             gameId: id,
         });
     } else {
-        createGame(gameName, id);
-    
+        joinRoom(id, id);
+        createGame(gameName, id);        
+
         res.send({ gameId: id });
     }
 });
