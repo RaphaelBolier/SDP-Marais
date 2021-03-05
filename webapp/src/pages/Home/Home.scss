@@ -1,8 +1,46 @@
+@font-face {
+	src: url(../../assets/fonts/Blood.ttf);
+	font-family: blood;
+
+}
+
+@font-face {
+	src: url(../../assets/fonts/Stranger.ttf);
+	font-family: horror;
+}
+
+
+body {
+	background-image: url(../../assets/background/Home.jpg);
+	background-position-y: -90px;
+}
+
 .Home {
-	.Home-container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 50vh;
+	position: absolute;
+	top: 5%;
+
+	.btn-play,
+	.btn-rules {
+		font-size: 500%;
+		text-transform: uppercase;
+		border: none;
+		background-color: transparent;
+		color: #F8F8FF;
+		font-family: horror;
+		text-shadow: 5px 5px black;
+		border-color: transparent;
+
+	}
+
+	.btn-play:active, .btn-rules:active{
+		background-color: transparent !important;
+		border-color: transparent !important;
+	}
+
+	.game-title {
+		font-family: blood;
+		color: #5C110E;
+		font-size: 700%;
+		text-shadow: 5px 5px black;
 	}
 }
