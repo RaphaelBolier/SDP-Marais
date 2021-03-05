@@ -1,8 +1,96 @@
-.Home {
-	.Home-container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 50vh;
+@font-face {
+	src: url(../../assets/fonts/Blood.ttf);
+	font-family: blood;
+
+}
+
+@font-face {
+	src: url(../../assets/fonts/Stranger.ttf);
+	font-family: horror;
+}
+
+
+.Home{
+	//Permet d'avoir la div en fullscreen
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+	background-image: url(../../assets/background/Home.jpg);
+	background-position-y: -90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left top;
+
+}
+
+.HomeContainer {
+	position: absolute;
+	top: 5%;
+
+	.btn-play,
+	.btn-rules {
+		font-size: 500%;
+		text-transform: uppercase;
+		border: none;
+		background-color: transparent;
+		color: #b6b6b6;
+		font-family: horror;
+		text-shadow: 5px 5px black;
+		border-color: transparent;
+
+	}
+	.btn {
+
+		color: #b6b6b6;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+			transition: 0.5s;
+	}
+
+	.btn:hover{
+		color: rgb(255, 255, 255);
+	}
+
+
+	.btn:before{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 100%;
+		background: url(../../assets/background/blood.png);
+		background-repeat: no-repeat;
+		transform-origin: left;
+		transition: 0.3s;
+	  }
+
+	.btn-play:active, .btn-rules:active{
+		background-color: transparent !important;
+		border-color: transparent !important;
+	}
+
+	.btn-secondary:not(:disabled):not(.disabled):active:focus {
+		box-shadow: none;
+	}
+
+	.btn:hover::before{
+		width: 100%
+	  }
+
+	  .btn span{
+		position: relative;
+		z-index: 1;
+	  }
+
+	.game-title {
+		font-family: blood;
+		color: #5C110E;
+		font-size: 700%;
+		text-shadow: 5px 5px black;
 	}
 }

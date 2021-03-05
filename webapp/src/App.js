@@ -24,7 +24,8 @@ Il faut donc faire :
 */
 const App = () => (
   <HashRouter>
-    <Route component={HomeButton} />
+    <Route path="/rules" component={HomeButton} />
+    <Route path="/game/menu"  component={HomeButton} />
       <Switch>
         <Route path="/rules" component={Rules} />
         <Route path="/game/menu/create" component={GameMenuCreate} />

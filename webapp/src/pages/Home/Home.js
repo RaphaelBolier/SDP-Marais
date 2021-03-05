@@ -8,20 +8,23 @@ import './Home.scss';
 const Index = () => {
 
 	return (
-		<Container className="Home">
-			<h1 className="text-center">Accueil</h1>
-			<Container className='text-center h-50 Home-container align-middle'>
-				<Row className='align-middle' xs="2">
-					<Col className='my-auto'>
-						<Button tag={Link} to="/game/menu" className='mx-auto' color="secondary">Jouer</Button>
-					</Col>
+		<div className="Home">
+		<Container className="HomeContainer">
+			<h1 className="game-title"> Who did it ?</h1>
+			<Container>
+				<Row>
 					<Col>
-						<Button tag={Link} to="/rules" className='mx-auto' color="secondary">Règles</Button>{' '}
+						<Button tag={Link} to="/game/menu" className="btn btn-play" color="secondary"><span>Jouer</span></Button>
 					</Col>
 				</Row>
-
-			</Container>
+				<Row>
+					<Col>
+						<Button tag={Link} to="/rules" className="btn btn-rules" color="secondary"><span>Regles</span></Button>{' '}
+					</Col>
+				</Row>
+			</Container>	
 		</Container>
+		</div>
 	);
 };
 
