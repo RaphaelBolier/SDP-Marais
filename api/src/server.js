@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const socketIOHttpServer = require('http').createServer(app);
 const { initSocketProvider } = require('./wsapi');
@@ -18,6 +19,7 @@ const game = require('./routes/game');
 const port = 3000;
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use(cors());
 
 app.use('/game', game);
 

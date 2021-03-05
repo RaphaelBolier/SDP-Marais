@@ -7,6 +7,7 @@ import {
 import PageHome from './pages/Home/Home';
 import Rules from './pages/Rules/Rules';
 import GameMenu from './pages/Game/GameMenu';
+import GameMenuCreate from './pages/Game/GameCreate';
 import HomeButton from './components/Button/HomeButton'
 
 /*Il faut bien faire attention qu'une route ne prenne pas la priorité sur une autre par exemple si je fais une route 
@@ -26,7 +27,8 @@ const App = () => (
     <Route component={HomeButton} />
       <Switch>
         <Route path="/rules" component={Rules} />
-        <Route path="/game/menu" component={GameMenu} />
+        <Route path="/game/menu/create" component={GameMenuCreate} />
+        <Route path="/game/menu" component={GameMenu} />        
         <Route path="/" component={PageHome} />
       </Switch>
   </HashRouter>
