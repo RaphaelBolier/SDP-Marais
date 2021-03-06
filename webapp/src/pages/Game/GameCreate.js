@@ -51,6 +51,7 @@ const GameMenu = () => {
             body: JSON.stringify({
                 id,
                 gameName: game.name,
+                isPublic: game.isPublic,
             }),
         }).then((resp) => resp.json())
         .then((resp) => {            
@@ -79,13 +80,13 @@ const GameMenu = () => {
                             <legend>Paramètres - Mode de la partie</legend>
                             <FormGroup check>
                             <Label check>
-                                <Input disabled onChange={handleGameModeChanged} checked={game.isPublic} value="public" type="radio" />{' '}
+                                <Input onChange={handleGameModeChanged} checked={game.isPublic} value="public" type="radio" />{' '}
                                 Publique
                             </Label>
                             </FormGroup>
                             <FormGroup check>
                             <Label check>
-                                <Input disabled onChange={handleGameModeChanged} checked={!game.isPublic} value="private" type="radio" />{' '}
+                                <Input onChange={handleGameModeChanged} checked={!game.isPublic} value="private" type="radio" />{' '}
                                 Privé
                             </Label>
                             </FormGroup>                            

@@ -28,7 +28,7 @@ router.post('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { gameName, id } = req.body;
+    const { gameName, id, isPublic } = req.body;
     
     const game = getGames().find((game) => game.id === id);
     if (game) {
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
         });
     } else {
         joinRoom(id, id);
-        createGame(gameName, id);        
+        createGame(gameName, id, isPublic);        
 
         res.send({ gameId: id });
     }
