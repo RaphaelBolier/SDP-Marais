@@ -6,10 +6,11 @@ import './Rules.scss';
 const GameMenu = () => {
 
 	return (
+		<div className="Rules">
 		<Container className='text-center h-50 Home-container align-middle'>
-			<Card>
+			<Card className="pipou">
 				<CardHeader>
-					<h1>Regles de Who did it?!</h1>
+					<h1 className="rules-title">Regles</h1>
 				</CardHeader>
 				<CardBody className='text-left'>
 					<h2>But du jeu </h2>
@@ -41,7 +42,7 @@ const GameMenu = () => {
 					<span>Si toutes les missions ont été effectuées ou s'il ne reste plus d'imposteurs les innocents gagnent la partie.</span>
 					<h5>Condition de victoire Imposteur : </h5>
 					<span>Si le nombre d'imposteurs est supérieur au nombre d'innocent le ou les imposteurs remportent la partie.</span>
-					<h2>Rôles :</h2>
+					<h2>Roles :</h2>
 					<ul>
 						<li>Imposteur :</li>
 						<ul>
@@ -86,9 +87,8 @@ const GameMenu = () => {
 					<p>Selon l'urgence, la tâche doit être résolue dans une limite de temps sinon cela pourrait entrainer la mort des joueurs innocents</p>
 				</CardBody>
 			</Card>
-
-
 		</Container >
+		</div>
 	);
 };
 

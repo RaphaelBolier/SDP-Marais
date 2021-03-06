@@ -1,0 +1,46 @@
+@font-face {
+	src: url(../../assets/fonts/Blood.ttf);
+	font-family: blood;
+
+}
+
+
+@font-face {
+	src: url(../../assets/fonts/test.ttf);
+	font-family: test;
+}
+
+
+.Rules{
+	//Permet d'avoir la div en fullscreen
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+	background-image: url(../../assets/background/Home.jpg);
+	background-position-y: -90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left top;
+
+}
+
+.rules-title{
+    font-family: blood;
+    text-transform: uppercase;
+    color: #5C110E;
+    font-size: 4em;
+
+}
+
+h2{
+	font-family: test;
+    font-size: 2em;
+    color:black;
+    letter-spacing: 3px;
+}
+
+.pipou{
+    opacity: 0.33;
+}
