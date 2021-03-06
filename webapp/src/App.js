@@ -1,4 +1,3 @@
-import './App.css';
 import {
   HashRouter,
   Route,
@@ -9,6 +8,9 @@ import Rules from './pages/Rules/Rules';
 import GameMenu from './pages/Game/GameMenu';
 import GameMenuCreate from './pages/Game/GameCreate';
 import HomeButton from './components/Button/HomeButton'
+import { WSocketsProvider } from './components/wsapi/WSockets';
+
+import './App.css';
 
 /*Il faut bien faire attention qu'une route ne prenne pas la priorité sur une autre par exemple si je fais une route 
 
@@ -24,14 +26,16 @@ Il faut donc faire :
 */
 const App = () => (
   <HashRouter>
-    <Route path="/rules" component={HomeButton} />
-    <Route path="/game/menu"  component={HomeButton} />
-      <Switch>
-        <Route path="/rules" component={Rules} />
-        <Route path="/game/menu/create" component={GameMenuCreate} />
-        <Route path="/game/menu" component={GameMenu} />        
-        <Route path="/" component={PageHome} />
-      </Switch>
+    <WSocketsProvider>
+      <Route path="/rules" component={HomeButton} />
+      <Route path="/game/menu"  component={HomeButton} />
+        <Switch>
+          <Route path="/rules" component={Rules} />
+          <Route path="/game/menu/create" component={GameMenuCreate} />
+          <Route path="/game/menu" component={GameMenu} />        
+          <Route path="/" component={PageHome} />
+        </Switch>
+    </WSocketsProvider>
   </HashRouter>
 );
 

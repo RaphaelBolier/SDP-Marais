@@ -17,7 +17,6 @@ exports.socketIO = () => io;
 exports.joinRoom = (clientId, roomId) => {
     const socket = clients.find((client) => client.socket.id === clientId)?.socket;
     if(socket) {        
-        console.log(socket);
         socket.rooms.forEach((room) => {
             if (room != roomId) {
                 socket.leave(room);
@@ -25,7 +24,7 @@ exports.joinRoom = (clientId, roomId) => {
         });
         console.log(`Client ${clientId} joined room ${roomId}`);
         socket.join(roomId);
-        setInterval(() => {
+        setInterval(() => {            
             io.sockets.in(roomId).emit('message', `room n°${roomId}`);
         }, 1000);
     } else {

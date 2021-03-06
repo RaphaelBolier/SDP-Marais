@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
 	Container,
@@ -15,8 +15,11 @@ import {
 } from 'reactstrap';
 import './GameMenu.scss';
 
-const GameMenu = () => {
-	const history = useHistory();    
+import { useSockets } from '../../components/wsapi/WSockets'; 
+
+const GameMenu = () => { 
+    const { id, socket } = useSockets();  
+
 	const [game, setGame] = useState({
         name: '',
         isPublic: true,
@@ -38,19 +41,25 @@ const GameMenu = () => {
         }));
 	}
 
-    const handleSubmit = async () => {
+    const handleSubmit = () => {
         //TODO: fix console error
-        const response = await fetch('http://localhost:3000/game/',{
+        fetch('http://localhost:3000/game/',{
             method: 'POST',
             crossDomain:true,
             headers: {'Content-Type':'application/json'},
             mode: 'cors',
             body: JSON.stringify({
-                id: 'my id',
+                id,
                 gameName: game.name,
             }),
-        });
-        setError(!response.ok);
+        }).then((resp) => resp.json())
+        .then((resp) => {            
+            if(resp.error) {
+                setError(resp.msg);
+            } else {
+                alert('Partie créée: ' + resp.gameId)
+            }
+        })
     };
 
 	return (
@@ -86,7 +95,7 @@ const GameMenu = () => {
                         </Form>
                         {error && (
                             <Alert color="danger">
-                                Une erreur s'est produite. veuillez réessayer.
+                                {error}
                             </Alert>
                         )}
                 </CardBody>
