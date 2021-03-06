@@ -1,46 +1,59 @@
 @font-face {
-	src: url(../../assets/fonts/Blood.ttf);
-	font-family: blood;
-
+    src: url(../../assets/fonts/Blood.ttf);
+    font-family: blood;
 }
-
 
 @font-face {
-	src: url(../../assets/fonts/test.ttf);
-	font-family: test;
+    src: url(../../assets/fonts/test.ttf);
+    font-family: test;
 }
 
+body ~ .Rules {
+    background-color: black;
+}
 
-.Rules{
-	//Permet d'avoir la div en fullscreen
+.Rules {
+    //Permet d'avoir la div en fullscreen
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
 
-	background-image: url(../../assets/background/Home.jpg);
-	background-position-y: -90px;
+    background-image: url(../../assets/background/Home.jpg);
+    background-position-y: -90px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left top;
 
+    p,
+    span,
+    b,
+    h5,
+    li {
+        color: #ffffff;
+    }
+
+    b {
+        color: #c90e05;
+    }
 }
 
-.rules-title{
-    font-family: blood;
-    text-transform: uppercase;
-    color: #5C110E;
-    font-size: 4em;
-
+.rules-title {
+        font-family: blood;
+        text-transform: uppercase;
+        background: -webkit-linear-gradient(rgb(221, 11, 11), rgb(70, 0, 0));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;   
+        font-size: 4em;
 }
 
-h2{
-	font-family: test;
+h2 {
+    font-family: test;
     font-size: 2em;
-    color:black;
+    color: rgb(235, 235, 235);
     letter-spacing: 3px;
 }
 
-.pipou{
-    opacity: 0.33;
+.pipou {
+    background: rgba(82, 82, 82, 0.418);
 }
