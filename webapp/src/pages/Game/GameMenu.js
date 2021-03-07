@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
 	Container,
@@ -7,13 +7,15 @@ import {
 	CardBody,
 	CardFooter,
 	Button,
+	Table,
 } from 'reactstrap';
+
 import './GameMenu.scss';
 
 const GameMenu = () => {
 	const history = useHistory();
 	const [playerName, setPlayerName] = useState('');
-	console.log(playerName);
+	const [games, setGames] = useState([]);	
 
 	const handlePlayerName = (event) => {
 		setPlayerName(event.target.value);
@@ -28,6 +30,20 @@ const GameMenu = () => {
 	const handleClickCreateGame = () => {
 		history.push('/game/menu/create');
 	}
+
+	useEffect(() => {
+		fetch('http://localhost:3000/game/',{
+            method: 'GET',
+            crossDomain:true,
+            headers: {'Content-Type':'application/json'},
+            mode: 'cors',
+        }).then((resp) => resp.json())
+        .then((resp) => {            
+            if(!resp.error) {
+                setGames((prevState) => [...prevState, ...resp]);
+            }
+        });
+	}, []);
 
 	return (
 		<Container className="GameMenu">
@@ -44,7 +60,34 @@ const GameMenu = () => {
 						</form>
 					</CardHeader>
 					<CardBody>
-
+						<Table dark>
+							<thead>
+								<tr>
+								<th>#</th>
+								<th>Nom de la partie</th>
+								<th>Nombre de joueurs</th>	
+								<th></th>							
+								</tr>
+							</thead>
+							<tbody>								
+								{games && (
+									games.map((game, index) => {
+										return (
+											<tr key={index}>
+												<th scope="row">{index}</th>
+												<td>{game.name}</td>
+												<td>{game.players.length}</td>	
+												<td>
+													<Button color="info" onClick={() => { console.log("join: ", game)}}>
+														Rejoindre
+													</Button>
+												</td>																							
+											</tr>
+										)
+									})
+								)}
+							</tbody>
+						</Table>
 					</CardBody>
 				</Card>
 				<CardFooter>
