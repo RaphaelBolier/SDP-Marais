@@ -8,17 +8,23 @@ import {
 	CardFooter,
 	Button,
 	Table,
+	Alert,
+	Input,
 } from 'reactstrap';
+import { useSockets } from '../../components/wsapi/WSockets'; 
 
 import './GameMenu.scss';
 
 const GameMenu = () => {
+	const { id } = useSockets();
 	const history = useHistory();
 	const [playerName, setPlayerName] = useState('');
-	const [games, setGames] = useState([]);	
+	const [showAlert, setShowAlert] = useState(false);
+	const [games, setGames] = useState([]);
 
 	const handlePlayerName = (event) => {
 		setPlayerName(event.target.value);
+		setShowAlert(false);
 		console.log(playerName);
 	}
 
@@ -30,6 +36,30 @@ const GameMenu = () => {
 	const handleClickCreateGame = () => {
 		history.push('/game/menu/create');
 	}
+
+	const handleJoinGame = (game) => {
+		if (!playerName) {
+			setShowAlert(true);
+			return;
+		}
+        //TODO: fix console error		
+        fetch(`http://localhost:3000/game/${game.id}`,{
+            method: 'POST',
+            crossDomain:true,
+            headers: {'Content-Type':'application/json'},
+            mode: 'cors',
+            body: JSON.stringify({
+                clientId: id,
+            }),
+        }).then((resp) => resp.json())
+        .then((resp) => {            
+            if(resp.error) {
+                console.log('error: ', resp);
+            } else {
+                alert('Partie: ' + resp.gameId);
+            }
+        })
+    };
 
 	useEffect(() => {
 		fetch('http://localhost:3000/game/',{
@@ -51,13 +81,8 @@ const GameMenu = () => {
 			<Container className='text-center h-50 Home-container align-middle'>
 				<Card>
 					<CardHeader>
-						<form onSubmit={handleSubmit}>
-							<label>
-								Pseudo : <input type="text" value={playerName} onChange={handlePlayerName} />
-							</label>
-							<br/>
-							<input type="submit" value="Valider" />
-						</form>
+						<p className="d-inline mr-2">Pseudo: </p>
+						<Input className="p-1 d-inline h-100 w-25 ml-auto mr-auto" type="text"  onChange={handlePlayerName} />						
 					</CardHeader>
 					<CardBody>
 						<Table dark>
@@ -78,7 +103,7 @@ const GameMenu = () => {
 												<td>{game.name}</td>
 												<td>{game.players.length}</td>	
 												<td>
-													<Button color="info" onClick={() => { console.log("join: ", game)}}>
+													<Button color="info" onClick={() => handleJoinGame(game)}>
 														Rejoindre
 													</Button>
 												</td>																							
@@ -88,6 +113,11 @@ const GameMenu = () => {
 								)}
 							</tbody>
 						</Table>
+						{!playerName && showAlert && (
+							<Alert color="danger">
+								"Veuillez rentrez votre pseudo !"
+							</Alert>
+						)}
 					</CardBody>
 				</Card>
 				<CardFooter>

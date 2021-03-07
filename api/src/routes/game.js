@@ -11,6 +11,16 @@ router.post('/:id', (req, res) => {
     const { clientId } = req.body;
 
     const game = getGames().find((game) => game.id === id);
+    const isAlreadyInGame =  getGames().find((game) => game.players.find((player) => player === clientId));
+    if (isAlreadyInGame) {
+        res.send({
+            error: true,
+            msg: 'You are already in a game.',
+            gameId: id,
+            clientId,
+        });
+        return;
+    }
 
     if (game) {
         joinRoom(clientId, id);
