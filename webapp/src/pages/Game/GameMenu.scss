@@ -1,0 +1,71 @@
+.GameMenu {
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+	background-image: url(../../assets/background/GameMenu.jpg);
+	background-position-y: -90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left top;
+
+
+
+
+.GameMenuContainer{
+
+	margin-top: 15vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	.btn {
+		font-size: 500%;
+		text-transform: uppercase;
+		border: none;
+		background-color: transparent;
+		color: #b6b6b6;
+		font-family: horror;
+		text-shadow: 5px 5px black;
+		border-color: transparent;
+
+	}
+	.btn {
+
+		color: #b6b6b6;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+			transition: 0.5s;
+	}
+
+	.btn:hover{
+		color: #640e0b;
+	}
+
+	.btn-play:active, .btn-rules:active{
+		background-color: transparent !important;
+		border-color: transparent !important;
+	}
+
+	.btn:not(:disabled):not(.disabled):active:focus {
+		box-shadow: none;
+	}
+
+	.btn:hover::before{
+		width: 100%
+	  }
+
+	  .btn span{
+		position: relative;
+		z-index: 1;
+	  }
+	  .btn-secondary:hover {
+		  background-color: transparent;
+	  }
+	}
+	
+}

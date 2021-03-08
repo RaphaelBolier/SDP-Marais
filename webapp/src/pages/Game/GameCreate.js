@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 import {
-	Container,
-	Card,
-	CardHeader,
-	CardBody,	
-	Button,
+    Container,
+    Card,
+    CardHeader,
+    CardBody,
+    Button,
     Form,
     FormGroup,
     Label,
@@ -13,40 +12,41 @@ import {
     CardFooter,
     Alert,
 } from 'reactstrap';
+
 import './GameMenu.scss';
 
-import { useSockets } from '../../components/wsapi/WSockets'; 
+import { useSockets } from '../../components/wsapi/WSockets';
 
-const GameMenu = () => { 
-    const { id, socket } = useSockets();  
+const GameMenu = () => {
+    const { id } = useSockets();
 
-	const [game, setGame] = useState({
+    const [game, setGame] = useState({
         name: '',
         isPublic: true,
         map: 'default',
     });
     const [error, setError] = useState(false);
 
-	const handleGameNameChanged = (event) => {
-		setGame((prevState) => ({
+    const handleGameNameChanged = (event) => {
+        setGame((prevState) => ({
             ...prevState,
             name: event.target.value,
         }));
-	}
+    }
 
-	const handleGameModeChanged = (e) => {
-		setGame((prevState) => ({
+    const handleGameModeChanged = (e) => {
+        setGame((prevState) => ({
             ...prevState,
             isPublic: e.target.value === 'public',
         }));
-	}
+    }
 
     const handleSubmit = () => {
         //TODO: fix console error
-        fetch('http://localhost:3000/game/',{
+        fetch('http://localhost:3001/game/', {
             method: 'POST',
-            crossDomain:true,
-            headers: {'Content-Type':'application/json'},
+            crossDomain: true,
+            headers: { 'Content-Type': 'application/json' },
             mode: 'cors',
             body: JSON.stringify({
                 id,
@@ -54,18 +54,18 @@ const GameMenu = () => {
                 isPublic: game.isPublic,
             }),
         }).then((resp) => resp.json())
-        .then((resp) => {            
-            if(resp.error) {
-                setError(resp.msg);
-            } else {
-                alert('Partie créée: ' + resp.gameId)
-            }
-        })
+            .then((resp) => {
+                if (resp.error) {
+                    setError(resp.msg);
+                } else {
+                    alert('Partie créée: ' + resp.gameId);
+                }
+            })
     };
 
-	return (
-		<Container className="GameMenu">
-			<h1 className="text-center">Game</h1>			
+    return (
+        <Container className="GameCreate">
+			{/* <PlayerName/> */}
             <Card>
                 <CardHeader>
                     <h3>Créer une partie</h3>
@@ -79,33 +79,33 @@ const GameMenu = () => {
                         <FormGroup tag="fieldset">
                             <legend>Paramètres - Mode de la partie</legend>
                             <FormGroup check>
-                            <Label check>
-                                <Input onChange={handleGameModeChanged} checked={game.isPublic} value="public" type="radio" />{' '}
+                                <Label check>
+                                    <Input onChange={handleGameModeChanged} checked={game.isPublic} value="public" type="radio" />{' '}
                                 Publique
                             </Label>
                             </FormGroup>
                             <FormGroup check>
-                            <Label check>
-                                <Input onChange={handleGameModeChanged} checked={!game.isPublic} value="private" type="radio" />{' '}
+                                <Label check>
+                                    <Input onChange={handleGameModeChanged} checked={!game.isPublic} value="private" type="radio" />{' '}
                                 Privé
                             </Label>
-                            </FormGroup>                            
+                            </FormGroup>
                         </FormGroup>
                         <h3>Choix de la map</h3>
-                        <p className="ml-3">Comming soon...</p>                                        
-                        </Form>
-                        {error && (
-                            <Alert color="danger">
-                                {error}
-                            </Alert>
-                        )}
+                        <p className="ml-3">Comming soon...</p>
+                    </Form>
+                    {error && (
+                        <Alert color="danger">
+                            {error}
+                        </Alert>
+                    )}
                 </CardBody>
                 <CardFooter>
                     <Button className="d-flex ml-auto mr-0" onClick={handleSubmit}>Valider</Button>
                 </CardFooter>
-            </Card>		
-		</Container>
-	);
+            </Card>
+        </Container>
+    );
 };
 
 export default GameMenu;

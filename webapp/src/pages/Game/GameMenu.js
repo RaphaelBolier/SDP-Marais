@@ -1,138 +1,68 @@
-import { useEffect, useState } from 'react';
+import { useState, useContext } from 'react';
+
 import { useHistory } from 'react-router-dom';
 import {
-	Container,
-	Card,
-	CardHeader,
-	CardBody,
-	CardFooter,
-	Button,
-	Table,
 	Alert,
-	Input,
+	Container,
+	Button,
+	Row,
+	Col,
 } from 'reactstrap';
-import { useSockets } from '../../components/wsapi/WSockets'; 
+import PlayerContext from '../../components/Player/PlayerContext';
+
+import { PlayerName } from '../../components/Player/PlayerName'
 
 import './GameMenu.scss';
 
 const GameMenu = () => {
-	const { id } = useSockets();
 	const history = useHistory();
-	const [playerName, setPlayerName] = useState('');
-	const [showAlert, setShowAlert] = useState(false);
-	const [games, setGames] = useState([]);
-	const [error, setError] = useState(undefined);
+	const { player } = useContext(PlayerContext)
 
-	const handlePlayerName = (event) => {
-		setPlayerName(event.target.value);
-		setShowAlert(false);
-		console.log(playerName);
-	}
 
-	const handleSubmit = (event) => {
-		alert('Le nom a été soumis : ' + playerName);
-		event.preventDefault();
-	}
-	
 	const handleClickCreateGame = () => {
-		history.push('/game/menu/create');
-	}
-
-	const handleJoinGame = (game) => {
-		if (!playerName) {
+		if (player.name) {
+			setShowAlert(false);
+			history.push('/game/menu/create');
+		} else {
 			setShowAlert(true);
-			return;
 		}
-        //TODO: fix console error		
-        fetch(`http://localhost:3000/game/${game.id}`,{
-            method: 'POST',
-            crossDomain:true,
-            headers: {'Content-Type':'application/json'},
-            mode: 'cors',
-            body: JSON.stringify({
-                clientId: id,
-            }),
-        }).then((resp) => resp.json())
-        .then((resp) => {            
-            if(resp.error) {
-                setError(resp.msg);
-            } else {
-                alert('Partie: ' + resp.gameId);
-            }
-        })
-    };
+	};
 
-	useEffect(() => {
-		fetch('http://localhost:3000/game/',{
-            method: 'GET',
-            crossDomain:true,
-            headers: {'Content-Type':'application/json'},
-            mode: 'cors',
-        }).then((resp) => resp.json())
-        .then((resp) => {            
-            if(!resp.error) {
-                setGames((prevState) => [...prevState, ...resp]);
-            }
-        });
-	}, []);
+	const handleClickJoinGame = () => {
+		if (player.name) {
+			setShowAlert(false);
+			history.push('/game/menu/join');
+		} else {
+			setShowAlert(true);
+		}
+	};
+
+	const [showAlert, setShowAlert] = useState(false);
 
 	return (
-		<Container className="GameMenu">
-			<h1 className="text-center">Game</h1>
-			<Container className='text-center h-50 Home-container align-middle'>
-				<Card>
-					<CardHeader>
-						<p className="d-inline mr-2">Pseudo: </p>
-						<Input className="p-1 d-inline h-100 w-25 ml-auto mr-auto" type="text"  onChange={handlePlayerName} />						
-					</CardHeader>
-					<CardBody>
-						<Table dark>
-							<thead>
-								<tr>
-								<th>#</th>
-								<th>Nom de la partie</th>
-								<th>Nombre de joueurs</th>	
-								<th></th>							
-								</tr>
-							</thead>
-							<tbody>								
-								{games && (
-									games.map((game, index) => {
-										return (
-											<tr key={index}>
-												<th scope="row">{index}</th>
-												<td>{game.name}</td>
-												<td>{game.players.length}</td>	
-												<td>
-													<Button color="info" onClick={() => handleJoinGame(game)}>
-														Rejoindre
-													</Button>
-												</td>																							
-											</tr>
-										)
-									})
-								)}
-							</tbody>
-						</Table>
-						{!playerName && showAlert && (
-							<Alert color="danger">
-								Veuillez rentrez votre pseudo !
-							</Alert>
-						)}
-						{error && (
-							<Alert color="danger">
-								{error}
-							</Alert>
-						)}
-					</CardBody>
-				</Card>
-				<CardFooter>
-					<Button color="info" onClick={handleClickCreateGame}>
-						Créer une partie
-					</Button>
-				</CardFooter>
+		<div className="GameMenu">
+			<Container className="GameMenuContainer">
+
+				<PlayerName />
+				<Container className='text-center h-50 Home-container align-middle'>
+					<Container>
+						<Row>
+							<Col>
+								<Button onClick={handleClickCreateGame} className="btn btn-play"><span>Créer une partie</span></Button>
+							</Col>
+						</Row>
+						<Row>
+							<Col>
+								<Button onClick={handleClickJoinGame} className="btn btn-rules"><span>Trouver une partie</span></Button>{' '}
+							</Col>
+						</Row>
+					</Container>
+					{showAlert && (
+						<Alert color="danger">Veuillez rentrer un pseudo</Alert>
+					)}
+				</Container>
 			</Container>
-		</Container>
+		</div>
 	);
 };
 

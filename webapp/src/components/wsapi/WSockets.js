@@ -23,6 +23,7 @@ export const WSocketsProvider = ({ children }) => {
 			});
 			return sock.off('connect', onConnect);
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const value = useMemo(() => ({
