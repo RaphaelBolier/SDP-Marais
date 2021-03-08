@@ -16,7 +16,7 @@ socketIOHttpServer.listen(25565);
 const game = require('./routes/game');
 
 
-const port = 3000;
+const port = 3001;
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cors());

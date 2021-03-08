@@ -41,6 +41,17 @@ router.post('/', (req, res) => {
     const { gameName, id, isPublic } = req.body;
     
     const game = getGames().find((game) => game.id === id);
+    const isAlreadyInGame =  getGames().find((game) => game.players.find((player) => player === id));
+    if (isAlreadyInGame) {
+        res.send({
+            error: true,
+            msg: 'You are already in a game.',
+            gameId: id,
+            clientId,
+        });
+        return;
+    }
+
     if (game) {
         res.send({
             error: true,

@@ -21,6 +21,7 @@ const GameMenu = () => {
 	const [playerName, setPlayerName] = useState('');
 	const [showAlert, setShowAlert] = useState(false);
 	const [games, setGames] = useState([]);
+	const [error, setError] = useState(undefined);
 
 	const handlePlayerName = (event) => {
 		setPlayerName(event.target.value);
@@ -54,7 +55,7 @@ const GameMenu = () => {
         }).then((resp) => resp.json())
         .then((resp) => {            
             if(resp.error) {
-                console.log('error: ', resp);
+                setError(resp.msg);
             } else {
                 alert('Partie: ' + resp.gameId);
             }
@@ -115,7 +116,12 @@ const GameMenu = () => {
 						</Table>
 						{!playerName && showAlert && (
 							<Alert color="danger">
-								"Veuillez rentrez votre pseudo !"
+								Veuillez rentrez votre pseudo !
+							</Alert>
+						)}
+						{error && (
+							<Alert color="danger">
+								{error}
 							</Alert>
 						)}
 					</CardBody>
