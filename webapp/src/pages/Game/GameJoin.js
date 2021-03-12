@@ -6,13 +6,13 @@ import {
 	CardHeader,
 	CardBody,
 	CardFooter,
-	Button,
 	Table,
 	Alert,
 } from 'reactstrap';
 
 import PlayerContext from '../../components/Player/PlayerContext';
 
+import { CustomButton }  from '../../components/Button/Button';
 
 import { useSockets } from '../../components/wsapi/WSockets'; 
 
@@ -91,9 +91,9 @@ const GameJoin = () => {
 												<td>{game.name}</td>
 												<td>{game.players.length}</td>	
 												<td>
-													<Button color="secondary" onClick={() => handleJoinGame(game)}>
+													<CustomButton color="secondary" onClick={() => handleJoinGame(game)}>
 														Rejoindre
-													</Button>
+													</CustomButton>
 												</td>																							
 											</tr>
 										)

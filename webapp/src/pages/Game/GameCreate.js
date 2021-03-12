@@ -4,7 +4,6 @@ import {
     Card,
     CardHeader,
     CardBody,
-    Button,
     Form,
     FormGroup,
     Label,
@@ -15,6 +14,8 @@ import {
 
 import './GameMenu.scss';
 
+import { CustomButton } from '../../components/Button/Button';
+ 
 import { useSockets } from '../../components/wsapi/WSockets';
 
 const GameMenu = () => {
@@ -101,7 +102,7 @@ const GameMenu = () => {
                     )}
                 </CardBody>
                 <CardFooter>
-                    <Button className="d-flex ml-auto mr-0" onClick={handleSubmit}>Valider</Button>
+                    <CustomButton className="d-flex ml-auto mr-0" onClick={handleSubmit}>Valider</CustomButton>
                 </CardFooter>
             </Card>
         </Container>

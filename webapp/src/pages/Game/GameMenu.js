@@ -4,13 +4,14 @@ import { useHistory } from 'react-router-dom';
 import {
 	Alert,
 	Container,
-	Button,
 	Row,
 	Col,
 } from 'reactstrap';
 import PlayerContext from '../../components/Player/PlayerContext';
 
 import { PlayerName } from '../../components/Player/PlayerName'
+
+import { CustomButton } from '../../components/Button/Button'
 
 import './GameMenu.scss';
 
@@ -48,12 +49,12 @@ const GameMenu = () => {
 					<Container>
 						<Row>
 							<Col>
-								<Button onClick={handleClickCreateGame} className="btn btn-play"><span>Creer une partie</span></Button>
+								<CustomButton  onClick={handleClickCreateGame} className="btn btn-play"><span>Creer une partie</span></CustomButton>
 							</Col>
 						</Row>
 						<Row>
 							<Col>
-								<Button onClick={handleClickJoinGame} className="btn btn-rules"><span>Trouver une partie</span></Button>{' '}
+								<CustomButton onClick={handleClickJoinGame} className="btn btn-rules"><span>Trouver une partie</span></CustomButton>{' '}
 							</Col>
 						</Row>
 					</Container>
