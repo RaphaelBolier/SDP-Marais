@@ -21,6 +21,11 @@ const Index = () => (
 					<Button tag={Link} to="/rules" className="btn btn-rules" color="secondary"><span>Regles</span></Button>{' '}
 				</Col>
 			</Row>
+			<Row>
+				<Col>
+					<Button tag={Link} to="/controls" className="btn btn-controls" color="secondary"><span>Controles</span></Button>{' '}
+				</Col>
+			</Row>
 		</Container>	
 	</Container>
 	</div>

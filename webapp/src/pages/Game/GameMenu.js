@@ -48,7 +48,7 @@ const GameMenu = () => {
 					<Container>
 						<Row>
 							<Col>
-								<Button onClick={handleClickCreateGame} className="btn btn-play"><span>Créer une partie</span></Button>
+								<Button onClick={handleClickCreateGame} className="btn btn-play"><span>Creer une partie</span></Button>
 							</Col>
 						</Row>
 						<Row>

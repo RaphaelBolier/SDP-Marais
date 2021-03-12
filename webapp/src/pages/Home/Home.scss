@@ -4,7 +4,7 @@
 }
 
 @font-face {
-	src: url(../../assets/fonts/Stranger.ttf);
+	src: url(../../assets/fonts/Textmenu.ttf);
 	font-family: horror;
 }
 
@@ -28,8 +28,9 @@
 	top: 5%;
 
 	.btn-play,
-	.btn-rules {
-		font-size: 500%;
+	.btn-rules,
+	.btn-controls {
+		font-size: 300%;
 		text-transform: uppercase;
 		border: none;
 		background-color: transparent;
@@ -54,18 +55,19 @@
 	.btn:before {
 		content: "";
 		position: absolute;
-		top: 0;
+		top: -25%;
 		left: 0;
 		width: 0;
 		height: 100%;
 		background: url(../../assets/background/blood.png);
 		background-repeat: no-repeat;
 		transform-origin: left;
-		transition: 0.3s;
+		transition: 0.1s;
 	}
 
 	.btn-play:active,
-	.btn-rules:active {
+	.btn-rules:active,
+	.btn-controls:active {
 		background-color: transparent !important;
 		border-color: transparent !important;
 	}
@@ -75,7 +77,7 @@
 	}
 
 	.btn:hover::before {
-		width: 100%;
+		width: 1300%;
 	}
 
 	.btn span {
