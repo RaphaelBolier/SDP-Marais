@@ -1,0 +1,34 @@
+
+@font-face {
+	src: url(../../assets/fonts/Crimes.otf);
+	font-family: crimes;
+}
+
+
+.listParties{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    
+    background-image: url(../../assets/background/GameJoin.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+
+.list-title {
+    font-family: crimes;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(rgb(221, 11, 11), rgb(70, 0, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;   
+    font-size: 4em;
+}
+
+
+.listParties-card{
+    background: rgba(82, 82, 82, 0.418);
+}

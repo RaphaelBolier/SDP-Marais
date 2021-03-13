@@ -1,12 +1,14 @@
+
 @font-face {
-    src: url(../../assets/fonts/Blood.ttf);
-    font-family: blood;
+	src: url(../../assets/fonts/Crimes.otf);
+	font-family: crimes;
 }
 
 @font-face {
-    src: url(../../assets/fonts/test.ttf);
-    font-family: test;
+	src: url(../../assets/fonts/test.ttf);
+	font-family: test;
 }
+
 
 body ~ .Rules {
     background-color: black;
@@ -39,7 +41,7 @@ body ~ .Rules {
 }
 
 .rules-title {
-        font-family: blood;
+        font-family: crimes;
         text-transform: uppercase;
         background: -webkit-linear-gradient(rgb(221, 11, 11), rgb(70, 0, 0));
         -webkit-background-clip: text;

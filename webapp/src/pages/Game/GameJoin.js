@@ -16,6 +16,8 @@ import { CustomButton }  from '../../components/Button/Button';
 
 import { useSockets } from '../../components/wsapi/WSockets'; 
 
+import './GameJoin.scss';
+
 
 const GameJoin = () => {
 	const { id } = useSockets();
@@ -65,20 +67,22 @@ const GameJoin = () => {
 
 
 	return (
+		<div className="listParties">
 		<Container className="GameJoin">
 			<Container className='text-center h-50 Home-container align-middle'>
-				<Card>
+				<Card className="listParties-card">
 					<CardHeader>
-				
+					<h1 className="list-title">Liste des parties</h1>
 					</CardHeader>
 					<CardBody>
 					<br/>
-						<Table dark>
+						<Table hover dark>
 							<thead>
 								<tr>
 								<th>#</th>
-								<th>Nom de la partie</th>
-								<th>Nombre de joueurs</th>	
+								<th>Parties</th>
+								<th>Joueurs</th>	
+								<th>Map</th>
 								<th></th>							
 								</tr>
 							</thead>
@@ -89,7 +93,8 @@ const GameJoin = () => {
 											<tr key={index}>
 												<th scope="row">{index}</th>
 												<td>{game.name}</td>
-												<td>{game.players.length}</td>	
+												<td>{game.players.length}</td>
+												<td></td>
 												<td>
 													<CustomButton color="secondary" onClick={() => handleJoinGame(game)}>
 														Rejoindre
@@ -118,6 +123,7 @@ const GameJoin = () => {
 				</CardFooter>
 			</Container>
 		</Container>
+		</div>
 	);
 };
 
