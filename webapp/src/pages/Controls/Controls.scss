@@ -1,0 +1,43 @@
+body ~ .Controls {
+    background-color: black;
+}
+
+.controls-title {
+    font-family: blood;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(rgb(221, 11, 11), rgb(70, 0, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;   
+    font-size: 4em;
+}
+
+body {
+    background-image: url(../../assets/background/Rules.jpg);
+    background-position-y: -90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left top;  
+}
+.Controls {
+    //Permet d'avoir la div en fullscreen
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    p,
+    table,
+    ul,
+    li,
+    label
+     {
+        color: #ffffff;
+    }
+
+    b {
+        color: #c90e05;
+    }
+}
+.slider {
+    background: #c90e05;
+}

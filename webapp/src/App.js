@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import PageHome from './pages/Home/Home';
 import Rules from './pages/Rules/Rules';
+import Controls from './pages/Controls/Controls';
 import GameMenu from './pages/Game/GameMenu';
 import GameMenuCreate from './pages/Game/GameCreate';
 import GameMenuJoin from './pages/Game/GameJoin';
@@ -31,12 +32,14 @@ const App = () => {
     <WSocketsProvider>
       <PlayerProvider>
         <Route path="/rules" component={HomeButton} />
+        <Route path="/controls" component={HomeButton} />
         <Route path="/game/menu" component={HomeButton} />
         <Switch>
           <Route path="/rules" component={Rules} />
           <Route path="/game/menu/create" component={GameMenuCreate} />
           <Route path="/game/menu/join" component={GameMenuJoin} />
           <Route path="/game/menu" component={GameMenu} />
+          <Route path="/controls" component={Controls} />
           <Route path="/" component={PageHome} />
         </Switch>
       </PlayerProvider>
