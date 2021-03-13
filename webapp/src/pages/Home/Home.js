@@ -16,19 +16,19 @@ const Index = () => (
 		<Container>
 			<Row>
 				<Col>
-					<CustomButton tag={Link} to="/game/menu" className="btn btn-play" color="secondary"><span>Jouer</span></CustomButton>
+					<CustomButton soundEffect="door" tag={Link} to="/game/menu" className="btn btn-play" color="secondary"><span>Jouer</span></CustomButton>
 
 				</Col>
 			</Row>
 			<Row>
 				<Col>
-					<CustomButton tag={Link} to="/rules" className="btn btn-rules" color="secondary"><span>Regles</span></CustomButton>
+					<CustomButton soundEffect="walkOnStone" tag={Link} to="/rules" className="btn btn-rules" color="secondary"><span>Regles</span></CustomButton>
 
 				</Col>
 			</Row>
 			<Row>
 				<Col>
-					<CustomButton tag={Link} to="/controls" className="btn btn-controls" color="secondary"><span>Controles</span></CustomButton>
+					<CustomButton soundEffect="thunder" tag={Link} to="/controls" className="btn btn-controls" color="secondary"><span>Controles</span></CustomButton>
 				</Col>
 			</Row>
 		</Container>	
