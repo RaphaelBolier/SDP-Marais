@@ -33,20 +33,20 @@ const App = () => {
   <HashRouter>
     <WSocketsProvider>
       <PlayerProvider>
-        <Route path="/rules" component={HomeButton} />
-        <Route path="/controls" component={HomeButton} />
-        <Route path="/game/menu" component={HomeButton} />
-        <Switch>
-          <Route path="/rules" component={Rules} />
-          <Route path="/game/menu/create" component={GameMenuCreate} />
-          <Route path="/game/menu/join" component={GameMenuJoin} />
-          <Route path="/game/menu" component={GameMenu} />
-          <GraphicsProvider>
+        <GraphicsProvider>
+          <Route path="/rules" component={HomeButton} />
+          <Route path="/controls" component={HomeButton} />
+          <Route path="/game/menu" component={HomeButton} />
+          <Switch>
+            <Route path="/rules" component={Rules} />
+            <Route path="/game/menu/create" component={GameMenuCreate} />
+            <Route path="/game/menu/join" component={GameMenuJoin} />
+            <Route path="/game/menu" component={GameMenu} />
             <Route path="/game/:id" component={Game} />
-          </GraphicsProvider>
-          <Route path="/controls" component={Controls} />
-          <Route path="/" component={PageHome} />
-        </Switch>
+            <Route path="/controls" component={Controls} />
+            <Route path="/" component={PageHome} />
+          </Switch>
+        </GraphicsProvider>
       </PlayerProvider>
     </WSocketsProvider>
   </HashRouter>
