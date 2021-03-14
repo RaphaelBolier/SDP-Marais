@@ -2,11 +2,13 @@ import { useState } from 'react';
 import {
 	Container, Card, CardHeader, CardBody, Input, Form, FormGroup, Label
 } from 'reactstrap';
+import { usePlayer } from '../../components/Player/PlayerContext';
 import './Controls.scss';
 
 const Controls = () => {
+	const playerConfig = usePlayer();
 
-	const [globalVolume, setGlobalVolume] = useState(20);
+	const [globalVolume, setGlobalVolume] = useState(playerConfig.player.sound);
 	const control = {
 		up: {
 			name: 'Avancer',
@@ -39,7 +41,7 @@ const Controls = () => {
 	}
 
 	const handleGlobalVolume = (input) => {
-		setGlobalVolume(input.target.value);
+		setGlobalVolume(playerConfig.setPlayer((prevState) => ({...prevState, sound: input.target.value })));
 	}
 
 	return (
@@ -77,7 +79,7 @@ const Controls = () => {
 					<h2>Audio </h2>
 					<FormGroup>
       		  <Label>Volume global</Label>
-      		  <Input type="range" class="slider" value={globalVolume} onChange={handleGlobalVolume} />
+      		  <Input type="range"  min="0" step="0.01" max="1" className="slider" value={globalVolume} onChange={handleGlobalVolume} />
       		</FormGroup>
 					</Form>
 				</CardBody>

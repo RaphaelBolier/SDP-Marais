@@ -1,35 +1,37 @@
-import React, { Component } from 'react'
+import { createContext, useEffect, useState, useContext  } from 'react';
+import useSound from 'use-sound';
 
-const PlayerContext = React.createContext()
+//sound
+import menuSound from '../../assets/sound/menu_sound-maxCompress.mp3';
 
-class PlayerProvider extends Component {
+const PlayerContext = createContext({});
+
+
+export const usePlayer = () => useContext(PlayerContext);
+
+const PlayerProvider = ({ children }) => {
   // Context state
-  state = {
-    player: {},
-  }
+  const [player, setPlayer] = useState({ name: '', sound: '0.05'});
+  console.log(PlayerContext);
+	const [playMenu, { stop }] = useSound(
+		menuSound,
+		{ volume: player.sound }
+	);
+	useEffect(() => {
+		playMenu();
+	}, [playMenu]);
 
-  // Method to update state
-  setPlayer = (player) => {
-    this.setState((prevState) => ({ player }))
-  }
-
-  render() {
-    const { children } = this.props
-    const { player } = this.state
-    const { setPlayer } = this
-
-    return (
-      <PlayerContext.Provider
-        value={{
-          player,
-          setPlayer,
-        }}
-      >
-        {children}
-      </PlayerContext.Provider>
-    )
-  }
-}
+  return (
+    <PlayerContext.Provider
+      value={{
+        player,
+        setPlayer,
+      }}
+    >
+      {children}
+    </PlayerContext.Provider>
+  )
+};
 
 export default PlayerContext
 

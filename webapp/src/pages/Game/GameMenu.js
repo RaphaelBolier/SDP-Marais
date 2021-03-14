@@ -49,12 +49,12 @@ const GameMenu = () => {
 					<Container>
 						<Row>
 							<Col>
-								<CustomButton soundEffect="waterDrop" onClick={handleClickCreateGame} className="btn btn-play"><span>Creer une partie</span></CustomButton>
+								<CustomButton onClick={handleClickCreateGame} className="btn btn-play"><span>Creer une partie</span></CustomButton>
 							</Col>
 						</Row>
 						<Row>
 							<Col>
-								<CustomButton soundEffect="ghostBreath" onClick={handleClickJoinGame} className="btn btn-rules"><span>Trouver une partie</span></CustomButton>{' '}
+								<CustomButton onClick={handleClickJoinGame} className="btn btn-rules"><span>Trouver une partie</span></CustomButton>{' '}
 							</Col>
 						</Row>
 					</Container>

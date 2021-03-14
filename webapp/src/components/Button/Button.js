@@ -14,8 +14,6 @@ export const CustomButton = ( props ) => {
 		{ volume: 0.2 }
 	);
 
-	const effect = props.soundEffect;
-
 	const [play]  = useSound(onPageChange, {
 		volume:0.2,
 		sprite: {
@@ -27,14 +25,9 @@ export const CustomButton = ( props ) => {
 		},
 	  });
 
-	  const handleClick = () => {
-		  if(effect){
-			play({ id: effect })  
-		  }
-	  }
 
 
 	return (
-		<Button onMouseDown={handleClick} onMouseEnter={playHover} onMouseLeave={stop} {...props} />
+		<Button onMouseEnter={playHover} onMouseLeave={stop} {...props} />
 	);
 };

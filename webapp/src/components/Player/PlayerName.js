@@ -11,7 +11,7 @@ export class PlayerName extends Component {
 
 	const handlePlayerName = (event) => {
 		const newUser = { name: event.target.value}
-		setPlayer(newUser);
+		setPlayer({...player, ...newUser });
 	}
 
     return (
