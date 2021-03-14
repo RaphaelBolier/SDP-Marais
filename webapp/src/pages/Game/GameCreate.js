@@ -12,11 +12,11 @@ import {
     Alert,
 } from 'reactstrap';
 
-import './GameMenu.scss';
-
 import { CustomButton } from '../../components/Button/Button';
  
 import { useSockets } from '../../components/wsapi/WSockets';
+
+import './GameCreate.scss';
 
 const GameMenu = () => {
     const { id } = useSockets();
@@ -65,34 +65,34 @@ const GameMenu = () => {
     };
 
     return (
-        <Container className="GameCreate">
-			{/* <PlayerName/> */}
-            <Card>
+        <div className="createParty">
+        <Container className='text-center h-50 Home-container align-middle'>
+            <Card className="gameCreate-card">
                 <CardHeader>
-                    <h3>Créer une partie</h3>
+                    <h1 className="gameCreate-title">Creer une partie</h1>
                 </CardHeader>
-                <CardBody>
+                <CardBody className='text-left'>
                     <Form>
                         <FormGroup onChange={handleGameNameChanged}>
-                            <Label for="gameName">Nom de la partie :</Label>
+                            <h2 for="gameName">Nom de la partie :</h2>
                             <Input style={{ maxWidth: '250px' }} type="text" name="gameName" id="exampleEmail" placeholder="Partie de Michel" />
                         </FormGroup>
                         <FormGroup tag="fieldset">
-                            <legend>Paramètres - Mode de la partie</legend>
+                            <h2>Mode</h2>
                             <FormGroup check>
                                 <Label check>
                                     <Input onChange={handleGameModeChanged} checked={game.isPublic} value="public" type="radio" />{' '}
                                 Publique
-                            </Label>
+                                </Label>
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
                                     <Input onChange={handleGameModeChanged} checked={!game.isPublic} value="private" type="radio" />{' '}
                                 Privé
-                            </Label>
+                                </Label>
                             </FormGroup>
                         </FormGroup>
-                        <h3>Choix de la map</h3>
+                        <h2>Map</h2>
                         <p className="ml-3">Comming soon...</p>
                     </Form>
                     {error && (
@@ -102,10 +102,11 @@ const GameMenu = () => {
                     )}
                 </CardBody>
                 <CardFooter>
-                    <CustomButton className="d-flex ml-auto mr-0" onClick={handleSubmit}>Valider</CustomButton>
+                    <CustomButton className="valid-btn d-flex ml-auto mr-0" onClick={handleSubmit}>Valider</CustomButton>
                 </CardFooter>
             </Card>
         </Container>
+        </div>
     );
 };
 
