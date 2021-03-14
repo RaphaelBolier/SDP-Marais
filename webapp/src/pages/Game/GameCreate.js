@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
     Container,
     Card,
@@ -20,6 +21,7 @@ import './GameCreate.scss';
 
 const GameMenu = () => {
     const { id } = useSockets();
+    const history = useHistory();
 
     const [game, setGame] = useState({
         name: '',
@@ -59,7 +61,7 @@ const GameMenu = () => {
                 if (resp.error) {
                     setError(resp.msg);
                 } else {
-                    alert('Partie créée: ' + resp.gameId);
+                    history.push(`/game/${resp.gameId}`);
                 }
             })
     };
@@ -74,7 +76,7 @@ const GameMenu = () => {
                 <CardBody className='text-left'>
                     <Form>
                         <FormGroup onChange={handleGameNameChanged}>
-                            <h2 for="gameName">Nom de la partie :</h2>
+                            <h2>Nom de la partie :</h2>
                             <Input style={{ maxWidth: '250px' }} type="text" name="gameName" id="exampleEmail" placeholder="Partie de Michel" />
                         </FormGroup>
                         <FormGroup tag="fieldset">

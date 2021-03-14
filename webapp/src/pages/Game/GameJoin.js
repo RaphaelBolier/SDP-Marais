@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-
+import { useHistory } from 'react-router-dom';
 import {
 	Container,
 	Card,
@@ -25,6 +25,7 @@ const GameJoin = () => {
 	const [showAlert, setShowAlert] = useState(false);
 	const [error, setError] = useState(undefined);
 	const { player } = useContext(PlayerContext);
+	const history = useHistory();
 
 	const handleJoinGame = (game) => {
 		if (!player.name) {
@@ -45,7 +46,7 @@ const GameJoin = () => {
             if(resp.error) {
                 setError(resp.msg);
             } else {
-                alert('Partie: ' + resp.gameId);
+				history.push(`/game/${resp.gameId}`);
             }
         })
     };

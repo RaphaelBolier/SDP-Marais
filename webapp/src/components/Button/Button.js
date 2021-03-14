@@ -15,7 +15,7 @@ export const CustomButton = ( props ) => {
 	);
 
 	const effect = props.soundEffect;
-	console.log(effect);
+
 	const [play]  = useSound(onPageChange, {
 		volume:0.2,
 		sprite: {

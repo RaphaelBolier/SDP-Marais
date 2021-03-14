@@ -9,9 +9,11 @@ import Controls from './pages/Controls/Controls';
 import GameMenu from './pages/Game/GameMenu';
 import GameMenuCreate from './pages/Game/GameCreate';
 import GameMenuJoin from './pages/Game/GameJoin';
+import Game from './pages/Game/Game';
 import HomeButton from './components/Button/HomeButton'
 import { WSocketsProvider } from './components/wsapi/WSockets';
 import { PlayerProvider }  from './components/Player/PlayerContext';
+import { GraphicsProvider } from './components/Graphics/GraphicsProvider';
 import './App.css';
 
 /*Il faut bien faire attention qu'une route ne prenne pas la priorité sur une autre par exemple si je fais une route 
@@ -39,6 +41,9 @@ const App = () => {
           <Route path="/game/menu/create" component={GameMenuCreate} />
           <Route path="/game/menu/join" component={GameMenuJoin} />
           <Route path="/game/menu" component={GameMenu} />
+          <GraphicsProvider>
+            <Route path="/game/:id" component={Game} />
+          </GraphicsProvider>
           <Route path="/controls" component={Controls} />
           <Route path="/" component={PageHome} />
         </Switch>
