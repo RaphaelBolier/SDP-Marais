@@ -10,7 +10,7 @@ import GameMenu from './pages/Game/GameMenu';
 import GameMenuCreate from './pages/Game/GameCreate';
 import GameMenuJoin from './pages/Game/GameJoin';
 import Game from './pages/Game/Game';
-import HomeButton from './components/Button/HomeButton'
+import NavBarContainer from './components/Nav/NavBarContainer'
 import { WSocketsProvider } from './components/wsapi/WSockets';
 import { PlayerProvider }  from './components/Player/PlayerContext';
 import { GraphicsProvider } from './components/Graphics/GraphicsProvider';
@@ -34,9 +34,9 @@ const App = () => {
     <WSocketsProvider>
       <PlayerProvider>
         <GraphicsProvider>
-          <Route path="/rules" component={HomeButton} />
-          <Route path="/controls" component={HomeButton} />
-          <Route path="/game/menu" component={HomeButton} />
+          <Route path="/rules" component={NavBarContainer} />
+          <Route path="/controls" component={NavBarContainer} />
+          <Route path="/game/menu" component={NavBarContainer} />
           <Switch>
             <Route path="/rules" component={Rules} />
             <Route path="/game/menu/create" component={GameMenuCreate} />

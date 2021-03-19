@@ -1,0 +1,45 @@
+@font-face {
+	src: url(../../assets/fonts/Textmenu.ttf);
+	font-family: horror;
+}
+
+.NavContainer{
+	z-index: 9999;
+	position: absolute;
+	font-family: horror;
+	color: #5c110e;
+	text-shadow: 5px 5px black;
+	a {
+		font-size: 2em;
+		padding:0;
+		color: rgba(92, 17, 17, 0.90)!important;
+	};
+	.navbar-toggler{
+		position: absolute;
+		margin-left: 5em;
+		top: 0.5em;
+	};
+	.ReturnButton{
+		margin:0 !important;
+	}
+	a:hover {
+
+		color: rgb(112, 20, 20)!important;
+	};
+
+	.btn{
+		background-color: transparent  !important;
+		border-color: transparent  !important;
+	};
+	.btn:hover{
+		border-color: transparent  !important;
+	};
+	.btn:focus{
+		border-color: transparent  !important;
+	};
+	
+	.btn:not(:disabled):not(.disabled):active {
+		border-color: transparent  !important;
+	};
+	
+};

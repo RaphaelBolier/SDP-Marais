@@ -4,7 +4,7 @@ import './HomeButton.scss';
 
 import { CustomButton } from '../Button/Button'
 
-const HomeButton = () => {
+export const HomeButton = () => {
 
 	return (
 		<>
@@ -12,5 +12,3 @@ const HomeButton = () => {
 		</>
 	);
 };
-
-export default HomeButton;
