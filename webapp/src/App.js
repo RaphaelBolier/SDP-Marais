@@ -14,8 +14,9 @@ import NavBarContainer from './components/Nav/NavBarContainer'
 import { WSocketsProvider } from './components/wsapi/WSockets';
 import { PlayerProvider }  from './components/Player/PlayerContext';
 import { GraphicsProvider } from './components/Graphics/GraphicsProvider';
-import './App.css';
+import { AudiosProvider } from './components/Audio/AudioProvider';
 
+import './App.css';
 /*Il faut bien faire attention qu'une route ne prenne pas la priorité sur une autre par exemple si je fais une route 
 
 <Route path="/rules" component={Rules} />
@@ -34,18 +35,20 @@ const App = () => {
     <WSocketsProvider>
       <PlayerProvider>
         <GraphicsProvider>
-          <Route path="/rules" component={NavBarContainer} />
-          <Route path="/controls" component={NavBarContainer} />
-          <Route path="/game/menu" component={NavBarContainer} />
-          <Switch>
-            <Route path="/rules" component={Rules} />
-            <Route path="/game/menu/create" component={GameMenuCreate} />
-            <Route path="/game/menu/join" component={GameMenuJoin} />
-            <Route path="/game/menu" component={GameMenu} />
-            <Route path="/game/:id" component={Game} />
-            <Route path="/controls" component={Controls} />
-            <Route path="/" component={PageHome} />
-          </Switch>
+          <AudiosProvider>
+            <Route path="/rules" component={NavBarContainer} />
+            <Route path="/controls" component={NavBarContainer} />
+            <Route path="/game/menu" component={NavBarContainer} />
+            <Switch>
+              <Route path="/rules" component={Rules} />
+              <Route path="/game/menu/create" component={GameMenuCreate} />
+              <Route path="/game/menu/join" component={GameMenuJoin} />
+              <Route path="/game/menu" component={GameMenu} />
+              <Route path="/game/:id" component={Game} />
+              <Route path="/controls" component={Controls} />
+              <Route path="/" component={PageHome} />
+            </Switch>
+          </AudiosProvider>
         </GraphicsProvider>
       </PlayerProvider>
     </WSocketsProvider>

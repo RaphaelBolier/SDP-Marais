@@ -6,6 +6,7 @@ import { Player } from '../../lib/Entity/Player';
 import { useGraphics } from '../../components/Graphics/GraphicsProvider';
 import { usePlayer } from '../../components/Player/PlayerContext';
 import { useSockets } from '../../components/wsapi/WSockets';
+import { useAudios } from '../../components/Audio/AudioProvider';
 import mapLobby from '../../assets/map/lobby/lobby.json';
 
 import './GameCreate.scss';
@@ -16,12 +17,13 @@ const GameMenu = () => {
     const { init, drawMap } = useGraphics();
     const { player } = usePlayer();
     const { socket } = useSockets();
+    const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
 
     useEffect(() => {
         if (!canvasRef.current) return;
         initInputsEvent();
-
+        
         const context = canvasRef.current.getContext('2d');
         const localPlayer = new Player(player.name, 70, 70, socket.id, context);
 
@@ -33,6 +35,7 @@ const GameMenu = () => {
         const initSocketEvents = () => {
             socket.on('newplayer', ({ name, id }) => {
                 players.push(new Player(name, 70, 70, id, context));
+                playAudio(audioIds.JOIN);
             });
         }
         
@@ -45,12 +48,12 @@ const GameMenu = () => {
         const render = () => {
             draw(context);
             moveEntity(localPlayer);
-            localPlayer.move();
             window.requestAnimationFrame(render);
         }
 
         initSocketEvents();
         initMap();
+        playAudio(audioIds.JOIN);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

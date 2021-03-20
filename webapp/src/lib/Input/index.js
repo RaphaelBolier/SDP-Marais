@@ -61,7 +61,7 @@ export const moveEntity = entity => {
 
     if (noY) entity.dy = 0;
     if (noX) entity.dx = 0;
-
+    entity.move();
 
     return keyState;
 }
