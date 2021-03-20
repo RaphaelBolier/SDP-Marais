@@ -1,4 +1,4 @@
-import { useEffect, useRef, } from 'react';
+import { useEffect, useRef, useState, } from 'react';
 import { useParams } from "react-router-dom";
 
 import { initInputsEvent, moveEntity } from '../../lib/Input';
@@ -10,6 +10,7 @@ import mapLobby from '../../assets/map/lobby/lobby.json';
 
 import './GameCreate.scss';
 
+const players = [];
 const GameMenu = () => {
     const { id } = useParams();
     const { init, drawMap } = useGraphics();
@@ -28,10 +29,17 @@ const GameMenu = () => {
             await init(mapLobby);
             render();
         }
+
+        const initSocketEvents = () => {
+            socket.on('newplayer', ({ name, id }) => {
+                players.push(new Player(name, 70, 70, id, context));
+            });
+        }
         
         const draw = (context) => {
             drawMap(context, mapLobby.tiles, 576, 64);
             localPlayer.draw();
+            players.forEach((player) => player.draw());
         }
 
         const render = () => {
@@ -40,8 +48,10 @@ const GameMenu = () => {
             localPlayer.move();
             window.requestAnimationFrame(render);
         }
-    
+
+        initSocketEvents();
         initMap();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

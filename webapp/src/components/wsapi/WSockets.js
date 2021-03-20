@@ -4,6 +4,7 @@ import React, {
 	useMemo,
 	useState,	
 	useEffect,
+	useCallback,
 } from 'react';
 import openSocket from 'socket.io-client';
 
@@ -26,12 +27,18 @@ export const WSocketsProvider = ({ children }) => {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
+	const sendName = useCallback((name) => {
+		socket.emit('playername', name);
+	}, [socket]);
+
 	const value = useMemo(() => ({
 		id,	
 		socket,
+		sendName,
 	}), [
 		id,		
 		socket,
+		sendName,
 	]);
 
 	return (

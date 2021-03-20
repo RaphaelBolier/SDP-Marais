@@ -1,5 +1,4 @@
 import { useState, useContext } from 'react';
-
 import { useHistory } from 'react-router-dom';
 import {
 	Alert,
@@ -8,21 +7,21 @@ import {
 	Col,
 } from 'reactstrap';
 import PlayerContext from '../../components/Player/PlayerContext';
-
-import { PlayerName } from '../../components/Player/PlayerName'
-
-import { CustomButton } from '../../components/Button/Button'
+import { PlayerName } from '../../components/Player/PlayerName';
+import { CustomButton } from '../../components/Button/Button';
+import { useSockets } from '../../components/wsapi/WSockets';
 
 import './GameMenu.scss';
 
 const GameMenu = () => {
 	const history = useHistory();
 	const { player } = useContext(PlayerContext)
-
+	const { sendName } = useSockets();
 
 	const handleClickCreateGame = () => {
 		if (player.name) {
 			setShowAlert(false);
+			sendName(player.name);
 			history.push('/game/menu/create');
 		} else {
 			setShowAlert(true);
@@ -32,6 +31,7 @@ const GameMenu = () => {
 	const handleClickJoinGame = () => {
 		if (player.name) {
 			setShowAlert(false);
+			sendName(player.name);
 			history.push('/game/menu/join');
 		} else {
 			setShowAlert(true);
