@@ -31,14 +31,26 @@ export const WSocketsProvider = ({ children }) => {
 		socket.emit('playername', name);
 	}, [socket]);
 
+	const sendPosition = useCallback((id, x, y) => {
+		socket.emit('playerposition', { id, x, y });
+	}, [socket]);
+
+	const getPlayerList = useCallback((roomId) => {
+		socket.emit('playerlist', { roomId });
+	}, [socket]);
+
 	const value = useMemo(() => ({
 		id,	
 		socket,
 		sendName,
+		sendPosition,
+		getPlayerList,
 	}), [
 		id,		
 		socket,
 		sendName,
+		sendPosition,
+		getPlayerList
 	]);
 
 	return (

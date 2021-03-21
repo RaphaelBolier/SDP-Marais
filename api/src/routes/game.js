@@ -8,7 +8,7 @@ router.get('/', (req, res) => res.send(JSON.stringify(getGames())));
 
 router.post('/:id', (req, res) => {
     const { id } = req.params;
-    const { clientId } = req.body;
+    const { clientId, clientName } = req.body;
 
     const game = getGames().find((game) => game.id === id);
     const isAlreadyInGame =  getGames().find((game) => game.players.find((player) => player === clientId));
@@ -24,7 +24,7 @@ router.post('/:id', (req, res) => {
 
     if (game) {
         joinRoom(clientId, id);
-        joinGame(clientId, id);
+        joinGame(clientId, id, clientName);
         res.send({ gameId: id });
         console.log(`Client ${clientId} joined game ${id}`);
     } else {
@@ -38,7 +38,7 @@ router.post('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { gameName, id, isPublic } = req.body;
+    const { gameName, id, isPublic, playerName } = req.body;
     
     const game = getGames().find((game) => game.id === id);
     const isAlreadyInGame =  getGames().find((game) => game.players.find((player) => player === id));
@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
         });
     } else {
         joinRoom(id, id);
-        createGame(gameName, id, isPublic);        
+        createGame(gameName, id, isPublic, playerName);        
 
         res.send({ gameId: id });
     }

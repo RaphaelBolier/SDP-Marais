@@ -16,7 +16,7 @@ const GameMenu = () => {
     const { id } = useParams();
     const { init, drawMap } = useGraphics();
     const { player } = usePlayer();
-    const { socket } = useSockets();
+    const { socket, sendPosition, getPlayerList } = useSockets();
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
 
@@ -33,10 +33,22 @@ const GameMenu = () => {
         }
 
         const initSocketEvents = () => {
+            socket.on('playerlist', ({ playerList }) => {
+                playerList.forEach((player) => {
+                    players.push(new Player(player.name, 70, 70, player.id, context));
+                });
+            });
             socket.on('newplayer', ({ name, id }) => {
                 players.push(new Player(name, 70, 70, id, context));
                 playAudio(audioIds.JOIN);
             });
+            socket.on('playerposition', ({ id, x, y }) => {
+                const target = players.find((player) => player.id === id);
+                if (target) { 
+                    target.x = x;
+                    target.y = y;
+                }
+            });       
         }
         
         const draw = (context) => {
@@ -48,11 +60,13 @@ const GameMenu = () => {
         const render = () => {
             draw(context);
             moveEntity(localPlayer);
+            sendPosition(localPlayer.id, localPlayer.x, localPlayer.y);
             window.requestAnimationFrame(render);
         }
 
         initSocketEvents();
         initMap();
+        getPlayerList(id);
         playAudio(audioIds.JOIN);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

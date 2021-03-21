@@ -1,19 +1,35 @@
+const { getGames } = require('../services/game');
+
 let io = undefined;
 const clients = [];
 
 exports.initSocketProvider = (socketIO) => {
     io = socketIO;
     io.on("connection", (socket) => {
-        console.log("NEW CLIENT: ", socket.id)
-
+        console.log("NEW CLIENT: ", socket.id);
         clients.push({
             socket,
             connected: true,
         });
-
+        
         socket.on("playername", (name) => {
             const player = clients.find((client) => client.socket.id === socket.id);
             if (player) player.name = name;
+        });
+
+        socket.on("playerposition", ({ id, x, y }) => {
+            const game = getGames().find((game) => game.players.find((player) => player.id === id));
+            if (game) {
+                io.sockets.in(game.id).emit('playerposition', { id, x, y });
+            }
+        });
+
+        socket.on("playerlist", ({ roomId }) => {
+            const game = getGames().find((game) => game.id === roomId);
+            if (game) {
+                const playerList = game.players.filter((p) => p.id !== socket.id);
+                socket.emit('playerlist', { playerList });  
+            }
         });
     });
 }

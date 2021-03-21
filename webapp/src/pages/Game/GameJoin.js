@@ -40,6 +40,7 @@ const GameJoin = () => {
             mode: 'cors',
             body: JSON.stringify({
                 clientId: id,
+				clientName: player.name,
             }),
         }).then((resp) => resp.json())
         .then((resp) => {            

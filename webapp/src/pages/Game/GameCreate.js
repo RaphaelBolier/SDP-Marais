@@ -14,13 +14,14 @@ import {
 } from 'reactstrap';
 
 import { CustomButton } from '../../components/Button/Button';
- 
 import { useSockets } from '../../components/wsapi/WSockets';
+import { usePlayer } from '../../components/Player/PlayerContext';
 
 import './GameCreate.scss';
 
 const GameMenu = () => {
     const { id } = useSockets();
+    const { player } = usePlayer();
     const history = useHistory();
 
     const [game, setGame] = useState({
@@ -55,6 +56,7 @@ const GameMenu = () => {
                 id,
                 gameName: game.name,
                 isPublic: game.isPublic,
+                playerName: player.name,
             }),
         }).then((resp) => resp.json())
             .then((resp) => {
