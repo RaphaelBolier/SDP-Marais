@@ -3,6 +3,7 @@ import {
 	Container, Card, CardHeader, CardBody, Input, Form, FormGroup, Label
 } from 'reactstrap';
 import { usePlayer } from '../../components/Player/PlayerContext';
+import controlsVideo from '../../assets/background/controls.webm';
 import './Controls.scss';
 
 const Controls = () => {
@@ -85,6 +86,9 @@ const Controls = () => {
 				</CardBody>
 			</Card>
 		</Container >
+		<video className="ControlsVideo" autoPlay loop muted>
+				<source src={controlsVideo} type="video/mp4" />
+			</video>
 		</div>
 	);
 };

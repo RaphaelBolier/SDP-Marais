@@ -4,6 +4,7 @@ import {
 } from 'reactstrap';
 
 import { CustomButton } from '../../components/Button/Button'
+import homeVideo from '../../assets/background/home.webm';
 
 import './Home.scss';
 
@@ -33,6 +34,9 @@ const Index = () => {
 					</Row>
 				</Container>
 			</Container>
+			<video className="HomeVideo" autoPlay loop muted>
+				<source src={homeVideo} type="video/mp4" />
+			</video>
 		</div>
 	);
 };
