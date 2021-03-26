@@ -32,3 +32,46 @@
 .listParties-card{
     background: rgba(82, 82, 82, 0.418);
 }
+
+
+
+.join-btn {
+    font-size: 110%;
+    text-transform: uppercase;
+    border: none;
+    background-color: transparent;
+    color: #ffff;
+    font-family: test;
+    text-shadow: 2px 2px black;
+    border-color: transparent;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
+    letter-spacing: 0.5px;
+}
+
+.join-btn:hover{
+    color: #640e0b;
+}
+
+.join-btn:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+
+.join-btn:focus {
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+.join-btn:hover::before{
+    width: 100%
+  }
+
+
+  .join-btn  span{
+    position: relative;
+    z-index: 1;
+  }

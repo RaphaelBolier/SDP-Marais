@@ -98,7 +98,7 @@ const GameJoin = () => {
 												<td>{game.players.length}</td>
 												<td></td>
 												<td>
-													<CustomButton color="secondary" onClick={() => handleJoinGame(game)}>
+													<CustomButton className="join-btn" color="secondary" onClick={() => handleJoinGame(game)}>
 														Rejoindre
 													</CustomButton>
 												</td>																							

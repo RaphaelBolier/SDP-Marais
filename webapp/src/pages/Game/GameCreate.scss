@@ -1,10 +1,10 @@
-.createParty{
+.createParty {
     position: fixed;
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
-    
+
     background-image: url(../../assets/background/Paint.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -17,24 +17,25 @@
         letter-spacing: 3px;
     }
 
-    p,label{
-        color:#ffff;
+    p,
+    label {
+        color: #ffff;
     }
 
 
 }
 
-.gameCreate-title{
+.gameCreate-title {
     font-family: crimes;
     text-transform: uppercase;
     background: -webkit-linear-gradient(rgb(221, 11, 11), rgb(70, 0, 0));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;   
+    -webkit-text-fill-color: transparent;
     font-size: 4em;
 }
 
 
-.gameCreate-card{
+.gameCreate-card {
     background: rgba(82, 82, 82, 0.418);
 }
 
@@ -53,22 +54,29 @@
     transition: 0.5s;
 }
 
-.valid-btn:hover{
+.valid-btn:hover {
     color: #640e0b;
 }
 
 .valid-btn:not(:disabled):not(.disabled):active:focus {
     box-shadow: none;
+    background-color: transparent;
 }
 
-.valid-btn:hover::before{
+.valid-btn:hover::before {
     width: 100%
-  }
+}
 
-  .valid-btn  span{
+.valid-btn:focus {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.valid-btn span {
     position: relative;
     z-index: 1;
-  }
-  .btn-secondary:hover {
-      background-color: transparent;
-  }
+}
+
+.btn-secondary:hover {
+    background-color: transparent;
+}

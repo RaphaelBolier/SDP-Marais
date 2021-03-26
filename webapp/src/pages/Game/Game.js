@@ -11,6 +11,8 @@ import mapLobby from '../../assets/map/lobby/lobby.json';
 
 import './GameCreate.scss';
 
+import  PopOverContainer  from '../../components/Popover/PopOverContainer';
+
 const players = [];
 const GameMenu = () => {
     const { id } = useParams();
@@ -75,6 +77,7 @@ const GameMenu = () => {
         <div>
             <canvas ref={canvasRef} id="canvas" width="576" height="576" />
             <p> partie: {id} </p>
+            <PopOverContainer/>
         </div>
     );
 };
