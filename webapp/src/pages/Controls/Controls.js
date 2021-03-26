@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
 	Container, Card, CardHeader, CardBody, Input, Form, FormGroup, Label
 } from 'reactstrap';
@@ -10,6 +10,9 @@ const Controls = () => {
 	const playerConfig = usePlayer();
 
 	const [globalVolume, setGlobalVolume] = useState(playerConfig.player.sound);
+	
+	const [fullScreen, setFullScreen] = useState(false);
+
 	const control = {
 		up: {
 			name: 'Avancer',
@@ -38,12 +41,24 @@ const Controls = () => {
 	}
 
 	const toggleFullScreen = (input) => {
-		input.target.checked ?  document.documentElement.requestFullscreen() : document.exitFullscreen();
+		input.target.checked ?  document.documentElement.requestFullscreen() : document.fullscreenElement ? document.exitFullscreen(): console.log("je sais pas si je dois vraiment faire une ternaire ou un if else pour 2 choix avec 2 ifs ducoup je fais comme ça désolé");
+		setFullScreen(input.target.checked);
 	}
 
 	const handleGlobalVolume = (input) => {
 		setGlobalVolume(playerConfig.setPlayer((prevState) => ({...prevState, sound: input.target.value })));
 	}
+
+	
+	useEffect(() => {
+		//si c'est fullScreen
+		if (document.fullscreenElement || 
+			document.webkitFullscreenElement || 
+			document.mozFullScreenElement) {
+			setFullScreen(true);
+			console.log("fullScreen activated " + fullScreen);
+		}
+  });
 
 	return (
 		<div className="Controls">
@@ -58,7 +73,7 @@ const Controls = () => {
 						<FormGroup check>
 						<h2>Video </h2>
         			<Label check>
-        			  <Input type="checkbox" onChange={toggleFullScreen}/>
+        			  <Input type="checkbox" checked={fullScreen} onChange={toggleFullScreen}/>
         			  <b>plein écran </b>
         			</Label>
       			</FormGroup>
