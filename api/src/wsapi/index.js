@@ -31,6 +31,24 @@ exports.initSocketProvider = (socketIO) => {
                 socket.emit('playerlist', { playerList });  
             }
         });
+
+        socket.on("startgame", ({ roomId }) => {
+            const game = getGames().find((game) => game.id === roomId);
+            if (game) {
+                const roleList = game.players.map((player, index) => ({
+                    id: player.id,
+                    role: index === 0 ? 'impostor' : 'crewmate',
+                }));
+                io.sockets.in(game.id).emit('rolelist', { roleList });  
+            }
+        });
+
+        socket.on("kill", ({ roomId, targetId }) => {
+            const game = getGames().find((game) => game.id === roomId);
+            if (game) {
+                io.sockets.in(game.id).emit('playerkilled', { targetId });  
+            }
+        });
     });
 }
 
