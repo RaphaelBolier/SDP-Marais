@@ -78,7 +78,7 @@ const GameJoin = () => {
 					</CardHeader>
 					<CardBody>
 					<br/>
-						<Table hover dark>
+						<Table hover dark responsive>
 							<thead>
 								<tr>
 								<th>#</th>
