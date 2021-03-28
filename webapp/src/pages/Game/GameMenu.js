@@ -11,6 +11,7 @@ import { PlayerName } from '../../components/Player/PlayerName';
 import { CustomButton } from '../../components/Button/Button';
 import { useSockets } from '../../components/wsapi/WSockets';
 
+import gameMenuVideo from '../../assets/background/GameMenu.webm';
 import './GameMenu.scss';
 
 const GameMenu = () => {
@@ -63,6 +64,9 @@ const GameMenu = () => {
 					)}
 				</Container>
 			</Container>
+			<video className="GameMenuVideo" autoPlay loop muted>
+				<source src={gameMenuVideo} type="video/mp4" />
+			</video>
 		</div>
 	);
 };
