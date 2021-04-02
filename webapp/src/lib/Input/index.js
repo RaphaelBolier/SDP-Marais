@@ -40,9 +40,56 @@ export const initInputsEvent = () => {
     });
 }
 
-export const moveEntity = entity => {
-    let keyState = false;    
-    pressedKeys.forEach(key => {  
+export const moveEntity = (entity, collisionTiles) => {
+    let keyState = false;
+   
+    for(const tile of collisionTiles) {
+        //collision arete gauche
+        if (entity.x + entity.width === tile.x
+            && entity.y + entity.height > tile.y
+            && entity.y < tile.y + tile.height) {
+                entity.canMoveRight = false;
+                break;
+        } else {
+            entity.canMoveRight = true;
+        }
+    };
+    for(const tile of collisionTiles) {
+        //collision arete droite
+        if (entity.x === tile.x + tile.width
+            && entity.y + entity.height > tile.y
+            && entity.y < tile.y + tile.height) {
+                entity.canMoveLeft = false;
+                break;
+        } else {
+            entity.canMoveLeft = true;
+        }
+    };
+    for(const tile of collisionTiles) {
+        //collision arete bas
+        if (entity.x + entity.width > tile.x && entity.x < tile.x + tile.width
+            && entity.y === tile.y + tile.height) {
+                entity.canMoveUp = false;
+                break;
+        } else {
+            entity.canMoveUp = true;
+        }
+    };
+    for(const tile of collisionTiles) {
+        //collision arete haut
+        if (entity.x + entity.width > tile.x && entity.x < tile.x + tile.width
+            && entity.y + entity.height === tile.y) {
+                entity.canMoveDown = false;
+                break;
+        } else {
+            entity.canMoveDown = true;
+        }
+    };
+
+    if (!entity.canMoveUp || !entity.canMoveDown) entity.dy = 0;
+    if (!entity.canMoveLeft || !entity.canMoveRight) entity.dx = 0;
+
+    pressedKeys.forEach(key => {
         if(key.value === 'z' && key.state && entity.canMoveUp) {
             entity.dy = -1;
         }      

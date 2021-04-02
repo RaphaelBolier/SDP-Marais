@@ -4,6 +4,7 @@ import React, {
 	useMemo,
     useCallback,
 } from 'react';
+import { CollisionBody } from '../../lib/Entity/CollisionBody';
 
 const assetTexturesPath = '/textures/';
 const textures = [];
@@ -12,6 +13,24 @@ const Graphics = createContext({});
 export const useGraphics = () => useContext(Graphics);
 
 export const GraphicsProvider = ({ children }) => {
+
+    const createCollisionTiles = useCallback((map, width, tileSize) => {
+        const collisionTiles = [];
+        let row = 0;
+        let col = 0;
+        const maxCol = Math.floor(width / tileSize);
+        map.tiles.forEach((tile) => {
+            if (tile.collide) {
+                collisionTiles.push(new CollisionBody(col * tileSize, row * tileSize));
+            }
+            col++;
+            if(col === maxCol) {
+                col = 0;
+                row++;
+            }
+        });
+        return collisionTiles;
+    });
 
     const createImage = useCallback(async (id, url) => {
         await new Promise((resolve, reject) => {
@@ -43,7 +62,7 @@ export const GraphicsProvider = ({ children }) => {
         });
     }, [drawImage])
 
-    const init = useCallback(async (map) => {
+    const init = useCallback(async (map, width, height) => {
         const uniqueTexturesId = [];
         map.tiles.forEach((tile) => {
             if (!uniqueTexturesId.find((e) => e.id === tile.id)) {
@@ -58,9 +77,11 @@ export const GraphicsProvider = ({ children }) => {
 	const value = useMemo(() => ({
 		init,
         drawMap,
+        createCollisionTiles,
 	}), [
 		init,
         drawMap,
+        createCollisionTiles,
 	]);
 
 	return (

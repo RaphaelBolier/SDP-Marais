@@ -2,52 +2,52 @@
     "name": "lobby",
     "tiles": [
         {
-            "collide": false,
+            "collide": true,
             "id": 6,
             "path": "hardened_clay_stained_blue.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 5,
             "path": "hardened_clay_stained_green.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 13,
             "path": "flag2.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 14,
             "path": "bloodwall.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 0,
             "path": "door.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 5,
             "path": "hardened_clay_stained_green.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 13,
             "path": "flag2.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 5,
             "path": "hardened_clay_stained_green.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 6,
             "path": "hardened_clay_stained_blue.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 4,
             "path": "hardened_clay_stained_green_3.png"
         },
@@ -72,7 +72,7 @@
             "path": "footprint2.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 25,
             "path": "teststatu.png"
         },
@@ -87,12 +87,12 @@
             "path": "hardened_clay_stained_cyan.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 1,
             "path": "hardened_clay_stained_green_4.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 23,
             "path": "paint3.png"
         },
@@ -132,12 +132,12 @@
             "path": "hardened_clay_stained_cyan.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 15,
             "path": "tab3.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 22,
             "path": "hand1.png"
         },
@@ -177,12 +177,12 @@
             "path": "hardened_clay_stained_cyan.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 1,
             "path": "hardened_clay_stained_green_4.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 3,
             "path": "window2.png"
         },
@@ -222,17 +222,17 @@
             "path": "hardened_clay_stained_cyan.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 2,
             "path": "window1.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 4,
             "path": "hardened_clay_stained_green_3.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 12,
             "path": "papier.png"
         },
@@ -267,12 +267,12 @@
             "path": "hardened_clay_stained_cyan.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 1,
             "path": "hardened_clay_stained_green_4.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 24,
             "path": "paint4.png"
         },
@@ -302,7 +302,7 @@
             "path": "hardened_clay_stained_cyan.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 11,
             "path": "testpiuaono.png"
         },
@@ -312,12 +312,12 @@
             "path": "hardened_clay_stained_cyan.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 16,
             "path": "tab4.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 4,
             "path": "hardened_clay_stained_green_3.png"
         },
@@ -357,52 +357,52 @@
             "path": "hardened_clay_stained_cyan.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 1,
             "path": "hardened_clay_stained_green_4.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 6,
             "path": "hardened_clay_stained_blue.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 7,
             "path": "hardened_clay_stained_green_2.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 20,
             "path": "flag3.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 7,
             "path": "hardened_clay_stained_green_2.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 26,
             "path": "cheminee.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 7,
             "path": "hardened_clay_stained_green_2.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 20,
             "path": "flag3.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 7,
             "path": "hardened_clay_stained_green_2.png"
         },
         {
-            "collide": false,
+            "collide": true,
             "id": 6,
             "path": "hardened_clay_stained_blue.png"
         }

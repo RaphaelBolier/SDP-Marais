@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, } from 'react';
+import { useEffect, useMemo, useRef, useState, } from 'react';
 import { useParams } from "react-router-dom";
 import { Button } from 'reactstrap';
 
@@ -17,12 +17,15 @@ import './GameCreate.scss';
 
 const MAX_KILL_DIST = 100;
 const KILL_COOLDOWN = 10 * 1000;
+const LOBBY_WIDTH = 576;
+const TILE_SIZE = 64;
 const players = [];
+const collisionTiles = [];
 let localPlayer = undefined;
 
 const GameMenu = () => {
     const { id } = useParams();
-    const { init, drawMap } = useGraphics();
+    const { init, drawMap, createCollisionTiles } = useGraphics();
     const { player } = usePlayer();
     const { socket, sendPosition, getPlayerList, startGame, killCrewMate } = useSockets();
     const { playAudio, audioIds } = useAudios();
@@ -68,6 +71,8 @@ const GameMenu = () => {
 
         const initMap = async () => {
             await init(mapLobby);
+            collisionTiles.push(...createCollisionTiles(mapLobby, LOBBY_WIDTH, TILE_SIZE))
+            console.log(collisionTiles)
             render();
         }
 
@@ -108,14 +113,14 @@ const GameMenu = () => {
         }
         
         const draw = (context) => {
-            drawMap(context, mapLobby.tiles, 576, 64);
+            drawMap(context, mapLobby.tiles, LOBBY_WIDTH, TILE_SIZE);
             localPlayer.draw();
             players.filter((player) => !player.isDead).forEach((player) => player.draw());
         }
 
         const render = () => {
             draw(context);
-            moveEntity(localPlayer);
+            moveEntity(localPlayer, collisionTiles);
             sendPosition(localPlayer.id, localPlayer.x, localPlayer.y);
             window.requestAnimationFrame(render);
         }
@@ -126,7 +131,7 @@ const GameMenu = () => {
         playAudio(audioIds.JOIN);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log(localPlayer);
+
     return (
         <div>
             <canvas ref={canvasRef} id="canvas" width="576" height="576" />
