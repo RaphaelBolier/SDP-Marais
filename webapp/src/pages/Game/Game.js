@@ -11,6 +11,7 @@ import { useAudios } from '../../components/Audio/AudioProvider';
 import { getClosestEntity } from '../../lib/Utils';
 import mapLobby from '../../assets/map/lobby/lobby.json';
 import  PopOverContainer  from '../../components/Popover/PopOverContainer';
+import ModalContainer from '../../components/Modal/ModalContainer';
 
 import './GameCreate.scss';
 
@@ -27,6 +28,7 @@ const GameMenu = () => {
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
     const [isImpostor, setIsImpostor] = useState(false);
+    const [isDead, setIsDead] = useState(false);
     const [isKillButtonEnabled, setKillButton] = useState(false);
 
     const handleClickKill = () => {
@@ -100,6 +102,7 @@ const GameMenu = () => {
                     target.isDead = true;
                 } else if (localPlayer.id === targetId) {
                     localPlayer.isDead = true;
+                    setIsDead(true);
                 }
             });    
         }
@@ -123,7 +126,7 @@ const GameMenu = () => {
         playAudio(audioIds.JOIN);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
+    console.log(localPlayer);
     return (
         <div>
             <canvas ref={canvasRef} id="canvas" width="576" height="576" />
@@ -134,6 +137,7 @@ const GameMenu = () => {
                 </Button>
             )}
             <PopOverContainer/>
+            <ModalContainer openBool={isDead} toggleModal={() => setIsDead(!isDead)}/>
         </div>
     );
 };
