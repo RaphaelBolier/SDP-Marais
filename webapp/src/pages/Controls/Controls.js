@@ -6,6 +6,11 @@ import { usePlayer } from '../../components/Player/PlayerContext';
 import controlsVideo from '../../assets/background/controls.webm';
 import './Controls.scss';
 
+import { faVolumeOff } from '@fortawesome/free-solid-svg-icons'
+import { faVolumeUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
 const Controls = () => {
 	const playerConfig = usePlayer();
 
@@ -94,8 +99,10 @@ const Controls = () => {
 
 					<h2>Audio </h2>
 					<FormGroup>
-      		  <Label>Volume global</Label>
-      		  <Input type="range"  min="0" step="0.01" max="1" className="slider" value={globalVolume} onChange={handleGlobalVolume} />
+      		  {/* <Label>Volume global</Label> */}
+				<div className="vol"><FontAwesomeIcon icon={faVolumeOff} /> </div>
+				<Input type="range"  min="0" step="0.01" max="1" className="slider" value={globalVolume} onChange={handleGlobalVolume} />
+				<div className="vol"><FontAwesomeIcon icon={faVolumeUp} /> </div>
       		</FormGroup>
 					</Form>
 				</CardBody>
