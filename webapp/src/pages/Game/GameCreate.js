@@ -44,9 +44,12 @@ const GameMenu = () => {
             isPublic: e.target.value === 'public',
         }));
     }
-
+    console.log(game.name.length);
     const handleSubmit = () => {
-        //TODO: fix console error
+        if(game.name.length <= 0){
+            setError('Veuillez entrer un nom pour la partie');
+        }
+        else {
         fetch('http://localhost:3001/game/', {
             method: 'POST',
             crossDomain: true,
@@ -66,6 +69,7 @@ const GameMenu = () => {
                     history.push(`/game/${resp.gameId}`);
                 }
             })
+        };
     };
 
     return (
