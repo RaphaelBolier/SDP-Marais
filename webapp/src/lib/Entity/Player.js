@@ -8,10 +8,19 @@ export class Player extends Entity {
         this.canMoveDown = true;
         this.canMoveRight = true;
         this.canMoveLeft = true;
+        this.forcedStop = false;
         this.id = id;
 
         this.canKill = false;
         this.hasCooldown = false;
+    }
+
+    setMoveState = (state) => {
+        this.canMoveUp = state;
+        this.canMoveDown = state;
+        this.canMoveRight = state;
+        this.canMoveLeft = state;
+        this.forcedStop = !state;
     }
 
     startKillCoolDown = (time) => {

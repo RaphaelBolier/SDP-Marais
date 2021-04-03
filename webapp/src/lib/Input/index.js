@@ -40,14 +40,14 @@ export const initInputsEvent = () => {
     });
 }
 
-export const moveEntity = (entity, collisionTiles) => {
-    let keyState = false;
-   
+export const checkColision = (entity, collisionTiles) => {
+    const collisionObjects = [];
     for(const tile of collisionTiles) {
         //collision arete gauche
         if (entity.x + entity.width === tile.x
             && entity.y + entity.height > tile.y
             && entity.y < tile.y + tile.height) {
+                collisionObjects.push(tile);
                 entity.canMoveRight = false;
                 break;
         } else {
@@ -59,6 +59,7 @@ export const moveEntity = (entity, collisionTiles) => {
         if (entity.x === tile.x + tile.width
             && entity.y + entity.height > tile.y
             && entity.y < tile.y + tile.height) {
+                collisionObjects.push(tile);
                 entity.canMoveLeft = false;
                 break;
         } else {
@@ -69,6 +70,7 @@ export const moveEntity = (entity, collisionTiles) => {
         //collision arete bas
         if (entity.x + entity.width > tile.x && entity.x < tile.x + tile.width
             && entity.y === tile.y + tile.height) {
+                collisionObjects.push(tile);
                 entity.canMoveUp = false;
                 break;
         } else {
@@ -79,6 +81,7 @@ export const moveEntity = (entity, collisionTiles) => {
         //collision arete haut
         if (entity.x + entity.width > tile.x && entity.x < tile.x + tile.width
             && entity.y + entity.height === tile.y) {
+                collisionObjects.push(tile);
                 entity.canMoveDown = false;
                 break;
         } else {
@@ -88,7 +91,13 @@ export const moveEntity = (entity, collisionTiles) => {
 
     if (!entity.canMoveUp || !entity.canMoveDown) entity.dy = 0;
     if (!entity.canMoveLeft || !entity.canMoveRight) entity.dx = 0;
+    return collisionObjects;
+};
 
+export const moveEntity = (entity, collisionTiles) => {
+    let keyState = false;
+    if (entity.forcedStop) return;
+    checkColision(entity, collisionTiles);
     pressedKeys.forEach(key => {
         if(key.value === 'z' && key.state && entity.canMoveUp) {
             entity.dy = -1;

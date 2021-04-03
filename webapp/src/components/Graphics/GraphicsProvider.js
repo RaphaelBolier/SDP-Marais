@@ -21,7 +21,7 @@ export const GraphicsProvider = ({ children }) => {
         const maxCol = Math.floor(width / tileSize);
         map.tiles.forEach((tile) => {
             if (tile.collide) {
-                collisionTiles.push(new CollisionBody(col * tileSize, row * tileSize));
+                collisionTiles.push(new CollisionBody(col * tileSize, row * tileSize, tile.id));
             }
             col++;
             if(col === maxCol) {
@@ -30,7 +30,18 @@ export const GraphicsProvider = ({ children }) => {
             }
         });
         return collisionTiles;
-    });
+    }, []);
+
+    const createTaskTiles = useCallback((collisionTiles, taskList) => {
+        const taskTiles = [];
+        collisionTiles.forEach((tile) => {
+            const tempTil = taskList.find((t) => t.id === tile.id);
+            if (tempTil) {
+                taskTiles.push({ ...tempTil, ...tile });
+            }
+        })
+        return taskTiles;
+    }, []);
 
     const createImage = useCallback(async (id, url) => {
         await new Promise((resolve, reject) => {
@@ -78,10 +89,12 @@ export const GraphicsProvider = ({ children }) => {
 		init,
         drawMap,
         createCollisionTiles,
+        createTaskTiles,
 	}), [
 		init,
         drawMap,
         createCollisionTiles,
+        createTaskTiles,
 	]);
 
 	return (

@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useRef, useState, } from 'react';
+import React, { useEffect, useMemo, useRef, useState, } from 'react';
 import { useParams } from "react-router-dom";
 import { Button } from 'reactstrap';
 
-import { initInputsEvent, moveEntity } from '../../lib/Input';
+import { initInputsEvent, moveEntity, checkColision } from '../../lib/Input';
 import { Player } from '../../lib/Entity/Player';
 import { useGraphics } from '../../components/Graphics/GraphicsProvider';
 import { usePlayer } from '../../components/Player/PlayerContext';
@@ -10,7 +10,8 @@ import { useSockets } from '../../components/wsapi/WSockets';
 import { useAudios } from '../../components/Audio/AudioProvider';
 import { getClosestEntity } from '../../lib/Utils';
 import mapLobby from '../../assets/map/lobby/lobby.json';
-import  PopOverContainer  from '../../components/Popover/PopOverContainer';
+import { tasks } from '../../components/Task';
+import PopOverContainer  from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
 
 import './GameCreate.scss';
@@ -21,11 +22,13 @@ const LOBBY_WIDTH = 576;
 const TILE_SIZE = 64;
 const players = [];
 const collisionTiles = [];
+const taskTiles = [];
+const finishedTasks = [];
 let localPlayer = undefined;
 
 const GameMenu = () => {
     const { id } = useParams();
-    const { init, drawMap, createCollisionTiles } = useGraphics();
+    const { init, drawMap, createCollisionTiles, createTaskTiles } = useGraphics();
     const { player } = usePlayer();
     const { socket, sendPosition, getPlayerList, startGame, killCrewMate } = useSockets();
     const { playAudio, audioIds } = useAudios();
@@ -33,6 +36,7 @@ const GameMenu = () => {
     const [isImpostor, setIsImpostor] = useState(false);
     const [isDead, setIsDead] = useState(false);
     const [isKillButtonEnabled, setKillButton] = useState(false);
+    const [CurrentTask, setCurrentTask] = useState(undefined);
 
     const handleClickKill = () => {
         localPlayer.startKillCoolDown(KILL_COOLDOWN);
@@ -72,7 +76,7 @@ const GameMenu = () => {
         const initMap = async () => {
             await init(mapLobby);
             collisionTiles.push(...createCollisionTiles(mapLobby, LOBBY_WIDTH, TILE_SIZE))
-            console.log(collisionTiles)
+            taskTiles.push(...createTaskTiles(collisionTiles, tasks));
             render();
         }
 
@@ -122,6 +126,21 @@ const GameMenu = () => {
             draw(context);
             moveEntity(localPlayer, collisionTiles);
             sendPosition(localPlayer.id, localPlayer.x, localPlayer.y);
+            const collisionTasks = checkColision(localPlayer, taskTiles);
+
+            if (collisionTasks.length > 0) {
+                if (!CurrentTask) {
+                    for(const task of collisionTasks) {
+                        const isTaskAlreadyFinished = finishedTasks.find((t) => t.id === task.id);
+                        if (!isTaskAlreadyFinished) {
+                            setCurrentTask(task);   
+                            break;
+                        }
+                    }         
+                }
+            } else {
+                setCurrentTask(undefined);
+            }
             window.requestAnimationFrame(render);
         }
 
@@ -134,6 +153,14 @@ const GameMenu = () => {
 
     return (
         <div>
+            {CurrentTask && (
+                // eslint-disable-next-line react/jsx-pascal-case
+                <CurrentTask.component
+                    localPlayer={localPlayer}
+                    task={CurrentTask}
+                    notifyEnd={() => finishedTasks.push(CurrentTask)}
+                />
+            )}
             <canvas ref={canvasRef} id="canvas" width="576" height="576" />
             <p> partie: {id} </p>
             { isImpostor && (
