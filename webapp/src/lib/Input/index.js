@@ -1,3 +1,5 @@
+import { Direction } from '../Entity/Entity';
+
 const pressedKeys = [
     {
         state: false,
@@ -101,15 +103,19 @@ export const moveEntity = (entity, collisionTiles) => {
     pressedKeys.forEach(key => {
         if(key.value === 'z' && key.state && entity.canMoveUp) {
             entity.dy = -1;
+            entity.direction = Direction.HAUT;
         }      
         if(key.value === 's' && key.state && entity.canMoveDown) {
             entity.dy = 1;
+            entity.direction = Direction.BAS;
         }        
         if(key.value === 'q' && key.state && entity.canMoveLeft) {
             entity.dx = -1;
+            entity.direction = Direction.GAUCHE;
         }  
         if(key.value === 'd' && key.state && entity.canMoveRight) {
             entity.dx = 1;
+            entity.direction = Direction.DROITE;
         }       
     });
     const noY = pressedKeys.filter((key) => (key.value === 'z' || key.value === 's') && !key.state).length === 2;
@@ -117,7 +123,7 @@ export const moveEntity = (entity, collisionTiles) => {
 
     if (noY) entity.dy = 0;
     if (noX) entity.dx = 0;
+    if(noY && noX) entity.direction = Direction.NONE;
     entity.move();
-
     return keyState;
 }

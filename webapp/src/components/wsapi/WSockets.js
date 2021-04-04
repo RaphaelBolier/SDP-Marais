@@ -31,8 +31,8 @@ export const WSocketsProvider = ({ children }) => {
 		socket.emit('playername', name);
 	}, [socket]);
 
-	const sendPosition = useCallback((id, x, y) => {
-		socket.emit('playerposition', { id, x, y });
+	const sendPosition = useCallback((id, x, y, direction) => {
+		socket.emit('playerposition', { id, x, y, direction });
 	}, [socket]);
 
 	const getPlayerList = useCallback((roomId) => {

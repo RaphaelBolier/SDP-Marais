@@ -17,10 +17,10 @@ exports.initSocketProvider = (socketIO) => {
             if (player) player.name = name;
         });
 
-        socket.on("playerposition", ({ id, x, y }) => {
+        socket.on("playerposition", ({ id, x, y, direction }) => {
             const game = getGames().find((game) => game.players.find((player) => player.id === id));
             if (game) {
-                io.sockets.in(game.id).emit('playerposition', { id, x, y });
+                io.sockets.in(game.id).emit('playerposition', { id, x, y, direction });
             }
         });
 

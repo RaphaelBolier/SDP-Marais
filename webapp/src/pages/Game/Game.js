@@ -15,6 +15,7 @@ import PopOverContainer  from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
 
 import './GameCreate.scss';
+import { Direction } from '../../lib/Entity/Entity';
 
 const MAX_KILL_DIST = 100;
 const KILL_COOLDOWN = 10 * 1000;
@@ -98,19 +99,27 @@ const GameMenu = () => {
                 players.push(new Player(name, 70, 70, id, context));
                 playAudio(audioIds.JOIN);
             });
-            socket.on('playerposition', ({ id, x, y }) => {
+            socket.on('playerposition', ({ id, x, y, direction }) => {
                 const target = players.find((player) => player.id === id);
                 if (target) { 
-                    target.x = x;
-                    target.y = y;
+                    if (localPlayer.isDead) {
+                        target.direction = direction;
+                        target.x = x;
+                        target.y = y;
+                    } else if (!target.isDead && !localPlayer.isDead) {
+                        target.direction = direction;
+                        target.x = x;
+                        target.y = y;
+                    }
+                   
                 }
             }); 
             socket.on('playerkilled', ({ targetId }) => {
                 const target = players.find((player) => player.id === targetId);
                 if (target) { 
-                    target.isDead = true;
+                    target.kill();
                 } else if (localPlayer.id === targetId) {
-                    localPlayer.isDead = true;
+                    localPlayer.kill();
                     setIsDead(true);
                 }
             });    
@@ -119,13 +128,13 @@ const GameMenu = () => {
         const draw = (context) => {
             drawMap(context, mapLobby.tiles, LOBBY_WIDTH, TILE_SIZE);
             localPlayer.draw();
-            players.filter((player) => !player.isDead).forEach((player) => player.draw());
+            players.forEach((player) => player.draw());
         }
 
         const render = () => {
             draw(context);
             moveEntity(localPlayer, collisionTiles);
-            sendPosition(localPlayer.id, localPlayer.x, localPlayer.y);
+            sendPosition(localPlayer.id, localPlayer.x, localPlayer.y, localPlayer.direction);
             const collisionTasks = checkColision(localPlayer, taskTiles);
 
             if (collisionTasks.length > 0) {
