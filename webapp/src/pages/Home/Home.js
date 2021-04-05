@@ -4,7 +4,7 @@ import {
 } from 'reactstrap';
 
 import { CustomButton } from '../../components/Button/Button'
-import homeVideo from '../../assets/background/home.webm';
+import homeVideo from '../../assets/background/homeParticle.webm';
 
 import './Home.scss';
 
