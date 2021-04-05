@@ -30,7 +30,7 @@ let localPlayer = undefined;
 const GameMenu = () => {
     const { id } = useParams();
     const { init, drawMap, createCollisionTiles, createTaskTiles } = useGraphics();
-    const { player } = usePlayer();
+    const { player, setPlayer } = usePlayer();
     const { socket, sendPosition, getPlayerList, startGame, killCrewMate } = useSockets();
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
@@ -38,6 +38,7 @@ const GameMenu = () => {
     const [isDead, setIsDead] = useState(false);
     const [isKillButtonEnabled, setKillButton] = useState(false);
     const [CurrentTask, setCurrentTask] = useState(undefined);
+
 
     const handleClickKill = () => {
         localPlayer.startKillCoolDown(KILL_COOLDOWN);
@@ -156,7 +157,9 @@ const GameMenu = () => {
         initSocketEvents();
         initMap();
         getPlayerList(id);
+        setPlayer((prevState) => ({...prevState, homeSound: '0' }));
         playAudio(audioIds.JOIN);
+        playAudio(audioIds.LOBBY);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

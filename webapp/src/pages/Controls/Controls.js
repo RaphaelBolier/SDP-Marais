@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Controls = () => {
 	const playerConfig = usePlayer();
 
-	const [globalVolume, setGlobalVolume] = useState(playerConfig.player.sound);
+	const [homeBGMVolume, setHomeBGMVolume] = useState(playerConfig.player.homeSound);
 	
 	const [fullScreen, setFullScreen] = useState(false);
 
@@ -51,7 +51,7 @@ const Controls = () => {
 	}
 
 	const handleGlobalVolume = (input) => {
-		setGlobalVolume(playerConfig.setPlayer((prevState) => ({...prevState, sound: input.target.value })));
+		setHomeBGMVolume(playerConfig.setPlayer((prevState) => ({...prevState, homeSound: input.target.value })));
 	}
 
 	
@@ -101,7 +101,7 @@ const Controls = () => {
 					<FormGroup>
       		  {/* <Label>Volume global</Label> */}
 				<div className="vol"><FontAwesomeIcon icon={faVolumeOff} /> </div>
-				<Input type="range"  min="0" step="0.01" max="1" className="slider" value={globalVolume} onChange={handleGlobalVolume} />
+				<Input type="range"  min="0" step="0.01" max="1" className="slider" value={homeBGMVolume} onChange={handleGlobalVolume} />
 				<div className="vol"><FontAwesomeIcon icon={faVolumeUp} /> </div>
       		</FormGroup>
 					</Form>
