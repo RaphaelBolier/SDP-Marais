@@ -1,0 +1,17 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "start:api": "lerna run start --stream --scope=api",
+    "start:webapp": "lerna run start --stream --scope=webapp",
+    "start:all": "lerna run start --stream --parallel --scope={webapp,api}",
+    "clean:deps": "lerna run clean --stream"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "cross-env": "^7.0.1",
+    "lerna": "^3.22.1"
+  }
+}
