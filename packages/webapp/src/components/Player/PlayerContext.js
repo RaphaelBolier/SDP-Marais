@@ -8,8 +8,15 @@ const PlayerContext = createContext({});
 export const usePlayer = () => useContext(PlayerContext);
 
 const PlayerProvider = ({ children }) => {
-  const [player, setPlayer] = useState({ name: '', sound: '0.05'});
-	const [playMenu] = useSound(menuSound, { volume: player.sound });
+  const [player, setPlayer] = useState({ name: '', homeSound: '0.05'});
+	const [playMenu, { stop }] = useSound(menuSound, { volume: player.sound });
+
+
+  useEffect(() => {
+    if(player.homeSound === '0'){
+      stop();
+    }
+	}, [player]);
 
 	useEffect(() => {
 	  playMenu();
