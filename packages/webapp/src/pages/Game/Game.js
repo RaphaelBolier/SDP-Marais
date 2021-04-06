@@ -30,7 +30,7 @@ let localPlayer = undefined;
 const GameMenu = () => {
     const { id } = useParams();
     const { init, drawMap, createCollisionTiles, createTaskTiles } = useGraphics();
-    const { player } = usePlayer();
+    const { player, setPlayer } = usePlayer();
     const { socket, sendPosition, getPlayerList, startGame, killCrewMate } = useSockets();
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
@@ -158,9 +158,11 @@ const GameMenu = () => {
         initMap();
         getPlayerList(id);
         playAudio(audioIds.JOIN);
+        setPlayer((prevState) => ({...prevState, homeSound: "0" }));
+        playAudio(audioIds.LOBBY); 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
+    console.log(player);
     useEffect(() => {
         if(isNaN(finishedTasks.length)){
             setTaskProgression(0);

@@ -16,7 +16,7 @@ const PlayerProvider = ({ children }) => {
     if(player.homeSound === '0'){
       stop();
     }
-	}, [player]);
+	}, [player, stop]);
 
 	useEffect(() => {
 	  playMenu();
