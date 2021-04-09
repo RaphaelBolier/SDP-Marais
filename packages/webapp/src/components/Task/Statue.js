@@ -66,16 +66,16 @@ export const Statue = ({ localPlayer, notifyEnd }) => {
     }
 
     return (
-        <Modal isOpen={showModal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Statue</ModalHeader>
+        <Modal className="statueModal" isOpen={showModal} toggle={toggle}>
+            <ModalHeader toggle={toggle}>Met tout au max </ModalHeader>
             <ModalBody>
-                Mettre tout au max !
                 <Input
                     value={slidersValue.slider1}
                     onChange={(e) => handleChange(e.target.id, e.target.value)}
                     min="0"
                     max="255"
                     type="range"
+                    className="TaskSlider"
                     id="slider1"
                 />
                 <Input
@@ -85,6 +85,7 @@ export const Statue = ({ localPlayer, notifyEnd }) => {
                     max="255"
                     type="range"
                     id="slider2"
+                    className="TaskSlider"
                 />
                 <Input
                     value={slidersValue.slider3}
@@ -93,6 +94,7 @@ export const Statue = ({ localPlayer, notifyEnd }) => {
                     max="255"
                     type="range"
                     id="slider3"
+                    className="TaskSlider"
                 />
                 <Input
                     value={slidersValue.slider4}
@@ -100,6 +102,7 @@ export const Statue = ({ localPlayer, notifyEnd }) => {
                     min="0"
                     max="255"
                     type="range"
+                    className="TaskSlider"
                     id="slider4"
                 />
             </ModalBody>
