@@ -121,6 +121,7 @@ const GameMenu = () => {
                 const target = players.find((player) => player.id === targetId);
                 if (target) {
                     target.kill();
+                    playAudio(audioIds.KILL); 
                 } else if (localPlayer.id === targetId) {
                     localPlayer.kill();
                     setIsDead(true);
