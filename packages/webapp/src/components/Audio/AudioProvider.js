@@ -3,8 +3,6 @@ import React, {
   useContext,
   useMemo,
   useCallback,
-  useState,
-  useEffect,
 } from "react";
 import useSound from "use-sound";
 

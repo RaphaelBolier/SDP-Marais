@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
 	Container, Card, CardHeader, CardBody, Input, Form, FormGroup, Label
 } from 'reactstrap';
@@ -52,18 +52,7 @@ const Controls = () => {
 
 	const handleGlobalVolume = (input) => {
 		setHomeBGMVolume(playerConfig.setPlayer((prevState) => ({...prevState, homeSound: input.target.value })));
-	}
-
-	
-	useEffect(() => {
-		//si c'est fullScreen
-		if (document.fullscreenElement || 
-			document.webkitFullscreenElement || 
-			document.mozFullScreenElement) {
-			setFullScreen(true);
-			console.log("fullScreen activated " + fullScreen);
-		}
-  });
+	};
 
 	return (
 		<div className="Controls">

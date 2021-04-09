@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState, } from 'react';
+import React, { useEffect, useRef, useState, } from 'react';
 import { useParams } from "react-router-dom";
 import { Button, Col, Container, Row } from 'reactstrap';
-
 import { initInputsEvent, moveEntity, checkColision } from '../../lib/Input';
 import { Player } from '../../lib/Entity/Player';
 import { useGraphics } from '../../components/Graphics/GraphicsProvider';
@@ -15,7 +14,6 @@ import PopOverContainer from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
 
 import './Game.scss';
-import { Direction } from '../../lib/Entity/Entity';
 
 const MAX_KILL_DIST = 100;
 const KILL_COOLDOWN = 10 * 1000;

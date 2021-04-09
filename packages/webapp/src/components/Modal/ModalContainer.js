@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Modal, ModalHeader } from "reactstrap";
+import React, {  } from "react";
+import {  Modal, ModalHeader } from "reactstrap";
 
 const ModalExample = ({ className, openBool, toggleModal, bool }) => {
   return (
