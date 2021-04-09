@@ -2,3 +2,49 @@
 
 	
 }
+
+
+.kill-btn {
+    font-size: 300%;
+    text-transform: uppercase;
+    border: none;
+    color: #640e0b;
+    background-color: transparent !important;
+    font-family: test;
+    text-shadow: 5px 5px black;
+    border-color: transparent;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.kill-btn:disabled {
+    color: #640e0b;
+}
+.kill-btn:hover {
+    color: #640e0b;
+}
+
+.kill-btn:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.kill-btn:hover::before {
+    width: 100%
+}
+
+.kill-btn:focus {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.kill-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-secondary:hover {
+    background-color: transparent;
+}

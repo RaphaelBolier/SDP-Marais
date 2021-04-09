@@ -204,13 +204,13 @@ const GameMenu = () => {
                             />
                         )}
                         <canvas ref={canvasRef} id="canvas" width="576" height="576" className="mx-auto d-flex" />
-                    </Col>
-                    <Col>
                         {isImpostor && (
-                            <Button onClick={handleClickKill} disabled={!isKillButtonEnabled}>
+                            <Button className="kill-btn d-flex ml-auto mr-0" onClick={handleClickKill} disabled={!isKillButtonEnabled}>
                                 KILL
                             </Button>
                         )}
+                    </Col>
+                    <Col>
                         <PopOverContainer />
                     </Col>
                 </Row>

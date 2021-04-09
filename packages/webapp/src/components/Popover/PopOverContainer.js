@@ -14,6 +14,7 @@ import { usePlayer } from "../../components/Player/PlayerContext";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMouse } from '@fortawesome/free-solid-svg-icons';
+import './PopOver.scss';
 
 const PopOverContainer = () => {
   const [popoverOpen, setPopoverOpen] = useState(false);
@@ -62,8 +63,8 @@ const PopOverContainer = () => {
 
   return (
     <div>
-      <Button id="Popover1" type="button">
-      <FontAwesomeIcon icon={faMouse} size="3x" color="black"/>
+      <Button className ="control-btn" id="Popover1" type="button">
+      <FontAwesomeIcon icon={faMouse} size="3x" color="white"/>
       </Button>
       <Popover
         placement="bottom"
@@ -101,5 +102,6 @@ const PopOverContainer = () => {
     </div>
   );
 };
+
 
 export default PopOverContainer;
