@@ -35,6 +35,7 @@ const GameMenu = () => {
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
     const [isImpostor, setIsImpostor] = useState(false);
+    const [ImpostorModal, setImpostorModal] = useState(false);
     const [isDead, setIsDead] = useState(false);
     const [isKillButtonEnabled, setKillButton] = useState(false);
     const [CurrentTask, setCurrentTask] = useState(undefined);
@@ -72,7 +73,7 @@ const GameMenu = () => {
             setTimeout(() => {
                 console.log("start game");
                 startGame(id);
-            }, 8000);
+            }, 100);
         }
 
         const initMap = async () => {
@@ -93,6 +94,7 @@ const GameMenu = () => {
                     if (r.id === localPlayer.id && r.role === 'impostor') {
                         setIsImpostor(true);
                         localPlayer.isImpostor = true;
+                        setImpostorModal(true);
                     }
                 });
             });
@@ -216,6 +218,7 @@ const GameMenu = () => {
                 </Row>
             </Container>
             <ModalContainer openBool={isDead} toggleModal={() => setIsDead(!isDead)} />
+            <ModalContainer bool={ImpostorModal} toggleModal={() => setImpostorModal(!ImpostorModal)}/>
         </div>
     );
 };

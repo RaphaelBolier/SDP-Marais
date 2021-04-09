@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader } from "reactstrap";
 
-const ModalExample = ({ className, openBool, toggleModal }) => {
+const ModalExample = ({ className, openBool, toggleModal, bool }) => {
   return (
     <div>
       <Modal isOpen={openBool} toggle={toggleModal} className={className}>
-        <ModalHeader toggle={toggleModal}>bouuuh t mor gros nul</ModalHeader>
+        <ModalHeader toggle={toggleModal}>Vous êtes morts</ModalHeader>
+      </Modal>
+      <Modal isOpen={bool} toggle={toggleModal} className={className}>
+        <ModalHeader toggle={toggleModal}>Vous etes imposteur</ModalHeader>
       </Modal>
     </div>
   );
