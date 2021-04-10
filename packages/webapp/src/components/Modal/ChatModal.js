@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
-import {  Modal, ModalHeader, ModalBody, Input, Label, Button, Card, CardBody, CardFooter } from "reactstrap";
+import {  Modal, ModalHeader, ModalBody, Input, Button, Card, CardBody, CardFooter } from "reactstrap";
 
 const ModalChat = ({ className, showChat, chatData, onSendMessage, toggleModal, localPlayer }) => {
     const [msg, setMsg] = useState('');

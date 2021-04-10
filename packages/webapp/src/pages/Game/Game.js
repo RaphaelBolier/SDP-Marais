@@ -55,9 +55,12 @@ const GameMenu = () => {
         initInputsEvent();
 
         setInterval(() => {
+            const target = getClosestEntity(localPlayer, players);
+            console.log("target: ", target)
             if (localPlayer.isImpostor
                 && players.length
-                && getClosestEntity(localPlayer, players).distance <= MAX_KILL_DIST
+                && target.distance <= MAX_KILL_DIST
+                && !target.isDead
                 && !localPlayer.hasCooldown
             ) {
                 localPlayer.canKill = true;

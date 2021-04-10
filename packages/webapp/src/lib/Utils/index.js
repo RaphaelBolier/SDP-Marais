@@ -12,6 +12,7 @@ export const getClosestEntity = (me, entitys) => {
             x: e.x,
             y: e.y,
         },
+        isDead: e.isDead,
     }));
     let minDist = distances[0];
     distances.forEach((dst) => {
