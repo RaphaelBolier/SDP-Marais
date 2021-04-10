@@ -178,7 +178,8 @@ const GameMenu = () => {
         initMap();
         getPlayerList(id);
         playAudio(audioIds.JOIN);
-        setPlayer((prevState) => ({ ...prevState, homeSound: "0" }));
+        //stop homeSound
+        player.stopMenuMusic();
         playAudio(audioIds.LOBBY);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

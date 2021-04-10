@@ -3,14 +3,17 @@ import React, {
   useContext,
   useMemo,
   useCallback,
+  useState
 } from "react";
 import useSound from "use-sound";
 
+import { usePlayer } from '../../components/Player/PlayerContext';
 import joinSound from "../../assets/sound/game/join.mp3";
 import lobbySound from "../../assets/sound/game/lobby/ambient.mp3";
 import killSound from "../../assets/sound/game/kill.mp3";
 
 const Audio = createContext({});
+
 export const useAudios = () => useContext(Audio);
 
 export const AudiosProvider = ({ children }) => {
@@ -23,9 +26,12 @@ export const AudiosProvider = ({ children }) => {
     []
   );
 
-  const [join] = useSound(joinSound, { volume: 1.0, interrupt: true });
-  const [lobby] = useSound(lobbySound, { volume: 0.2, interrupt: true });
-  const [kill] = useSound(killSound, { volume: 0.3, interrupt: true });
+  const playerConfig = usePlayer();
+  const { homeSound } = playerConfig.player;
+
+  const [join] = useSound(joinSound, { volume: homeSound, interrupt: true });
+  const [lobby] = useSound(lobbySound, { volume: homeSound, interrupt: true });
+  const [kill] = useSound(killSound, { volume: homeSound, interrupt: true });
 
   const playAudio = useCallback(
     async (id) => {

@@ -23,13 +23,13 @@ const PopOverContainer = () => {
 
   const toggle = () => setPopoverOpen(!popoverOpen);
 
-  const [globalVolume, setGlobalVolume] = useState(playerConfig.player.sound);
+  const [globalVolume, setGlobalVolume] = useState(playerConfig.player.homeSound);
 
   const handleGlobalVolume = (input) => {
     setGlobalVolume(
       playerConfig.setPlayer((prevState) => ({
         ...prevState,
-        sound: input.target.value,
+        homeSound: input.target.value,
       }))
     );
   };
@@ -63,8 +63,8 @@ const PopOverContainer = () => {
 
   return (
     <div>
-      <Button className ="control-btn" id="Popover1" type="button">
-      <FontAwesomeIcon icon={faMouse} size="3x" color="white"/>
+      <Button className="control-btn" id="Popover1" type="button">
+        <FontAwesomeIcon icon={faMouse} size="3x" color="white" />
       </Button>
       <Popover
         placement="bottom"
