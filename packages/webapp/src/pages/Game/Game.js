@@ -56,7 +56,6 @@ const GameMenu = () => {
 
         setInterval(() => {
             const target = getClosestEntity(localPlayer, players);
-            console.log("target: ", target)
             if (localPlayer.isImpostor
                 && players.length
                 && target.distance <= MAX_KILL_DIST
@@ -103,6 +102,7 @@ const GameMenu = () => {
                 });
             });
             socket.on('newplayer', ({ name, id }) => {
+                sendPosition(localPlayer.id, localPlayer.x, localPlayer.y, localPlayer.direction);
                 players.push(new Player(name, 70, 70, id, context));
                 playAudio(audioIds.JOIN);
             });
