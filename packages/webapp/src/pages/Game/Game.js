@@ -33,7 +33,8 @@ const GameMenu = () => {
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
     const [isImpostor, setIsImpostor] = useState(false);
-    const [ImpostorModal, setImpostorModal] = useState(false);
+    const [impostorModal, setImpostorModal] = useState(false);
+    const [crewmateModal, setCrewmateModal] = useState(false);
     const [isDead, setIsDead] = useState(false);
     const [isKillButtonEnabled, setKillButton] = useState(false);
     const [CurrentTask, setCurrentTask] = useState(undefined);
@@ -94,6 +95,9 @@ const GameMenu = () => {
                         localPlayer.isImpostor = true;
                         setImpostorModal(true);
                     }
+                    else if (r.id === localPlayer.id && r.role === 'crewmate') {
+                        setCrewmateModal(true);
+                    }
                 });
             });
             socket.on('newplayer', ({ name, id }) => {
@@ -119,7 +123,7 @@ const GameMenu = () => {
                 const target = players.find((player) => player.id === targetId);
                 if (target) {
                     target.kill();
-                    playAudio(audioIds.KILL); 
+                    playAudio(audioIds.KILL);
                 } else if (localPlayer.id === targetId) {
                     localPlayer.kill();
                     setIsDead(true);
@@ -159,17 +163,17 @@ const GameMenu = () => {
         initMap();
         getPlayerList(id);
         playAudio(audioIds.JOIN);
-        setPlayer((prevState) => ({...prevState, homeSound: "0" }));
-        playAudio(audioIds.LOBBY); 
+        setPlayer((prevState) => ({ ...prevState, homeSound: "0" }));
+        playAudio(audioIds.LOBBY);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     console.log(player);
     useEffect(() => {
-        if(isNaN(finishedTasks.length)){
+        if (isNaN(finishedTasks.length)) {
             setTaskProgression(0);
         }
-        else{
-        setTaskProgression(finishedTasks.length / taskTiles.length * 100);
+        else {
+            setTaskProgression(finishedTasks.length / taskTiles.length * 100);
         }
     }, [CurrentTask]);
 
@@ -181,7 +185,7 @@ const GameMenu = () => {
                     <Col xs="5">
                         <div className="progress">
                             <div className={`progress-bar bg-success`}
-                                style={{ width: taskProgression + '%'}}
+                                style={{ width: taskProgression + '%' }}
                                 role="progressbar" aria-valuenow={taskProgression}
                                 aria-valuemin="0"
                                 aria-valuemax="100">
@@ -217,7 +221,9 @@ const GameMenu = () => {
                 </Row>
             </Container>
             <ModalContainer openBool={isDead} toggleModal={() => setIsDead(!isDead)} />
-            <ModalContainer bool={ImpostorModal} toggleModal={() => setImpostorModal(!ImpostorModal)}/>
+            <ModalContainer bool={impostorModal} toggleModal={() => setImpostorModal(!impostorModal)} />
+            <ModalContainer boolCrewmate={crewmateModal} toggleModal={() => setCrewmateModal(!crewmateModal)} />
+
         </div>
     );
 };
