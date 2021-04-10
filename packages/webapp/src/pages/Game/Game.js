@@ -12,6 +12,7 @@ import mapLobby from '../../assets/map/lobby/lobby.json';
 import { tasks } from '../../components/Task';
 import PopOverContainer from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
+import ModalChat from '../../components/Modal/ChatModal';
 
 import './Game.scss';
 
@@ -29,7 +30,7 @@ const GameMenu = () => {
     const { id } = useParams();
     const { init, drawMap, createCollisionTiles, createTaskTiles } = useGraphics();
     const { player, setPlayer } = usePlayer();
-    const { socket, sendPosition, getPlayerList, startGame, killCrewMate } = useSockets();
+    const { socket, sendPosition, getPlayerList, startGame, killCrewMate, sendMessage } = useSockets();
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
     const [isImpostor, setIsImpostor] = useState(false);
@@ -38,6 +39,8 @@ const GameMenu = () => {
     const [isKillButtonEnabled, setKillButton] = useState(false);
     const [CurrentTask, setCurrentTask] = useState(undefined);
     const [taskProgression, setTaskProgression] = useState(0);
+    const [chatData, setChatData] = useState([]);
+    const [showChat, setShowChat] = useState(false);
 
     const handleClickKill = () => {
         localPlayer.startKillCoolDown(KILL_COOLDOWN);
@@ -66,7 +69,7 @@ const GameMenu = () => {
 
         const context = canvasRef.current.getContext('2d');
         localPlayer = new Player(player.name, 70, 70, socket.id, context);
-
+        console.log(localPlayer.name)
         if (id === socket.id) {
             setTimeout(() => {
                 console.log("start game");
@@ -125,6 +128,15 @@ const GameMenu = () => {
                     setIsDead(true);
                 }
             });
+            socket.on('newmessage', ({ name, msg }) => {
+                setChatData((prevState) => [
+                    ...prevState,
+                    {
+                        name,
+                        msg,
+                    },
+                ])
+            });
         }
 
         const draw = (context) => {
@@ -163,7 +175,7 @@ const GameMenu = () => {
         playAudio(audioIds.LOBBY); 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log(player);
+
     useEffect(() => {
         if(isNaN(finishedTasks.length)){
             setTaskProgression(0);
@@ -213,6 +225,21 @@ const GameMenu = () => {
                     </Col>
                     <Col>
                         <PopOverContainer />
+                        <Button className="d-flex ml-auto mr-0" onClick={() => setShowChat((prevState) => !prevState)}>
+                            Afficher le chat
+                        </Button>
+                        {showChat && (
+                            <ModalChat
+                                chatData={chatData}
+                                showChat={showChat}
+                                toggleModal={() => {
+                                    setShowChat((prevState) => !prevState);
+                                    localPlayer.setMoveState(true);
+                                }}
+                                onSendMessage={(msg) => sendMessage(id, localPlayer.name, msg)}
+                                localPlayer={localPlayer}
+                            />
+                        )}
                     </Col>
                 </Row>
             </Container>
