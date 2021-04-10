@@ -13,6 +13,8 @@ import { tasks } from '../../components/Task';
 import PopOverContainer from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
 import ModalChat from '../../components/Modal/ChatModal';
+import { pressedKeys  } from '../../lib/Input';
+
 
 import './Game.scss';
 
@@ -38,6 +40,7 @@ const GameMenu = () => {
     const [crewmateModal, setCrewmateModal] = useState(false);
     const [isDead, setIsDead] = useState(false);
     const [isKillButtonEnabled, setKillButton] = useState(false);
+    const [isStartButtonEnabled, setStartButton] = useState(false);
     const [CurrentTask, setCurrentTask] = useState(undefined);
     const [taskProgression, setTaskProgression] = useState(0);
     const [chatData, setChatData] = useState([]);
@@ -51,9 +54,41 @@ const GameMenu = () => {
         localPlayer.y = target.position.y;
     };
 
+
+    const handleClickStart = (isButton) => {
+        const collisionTasks = checkColision(localPlayer, taskTiles);
+
+            if (collisionTasks.length > 0) {
+                if (!CurrentTask) {
+                    for (const task of collisionTasks) {
+                        const isTaskAlreadyFinished = finishedTasks.find((t) => t.id === task.id);
+                        if (!isTaskAlreadyFinished && (pressedKeys.find((k) => k.value === 'e').state || isButton) && !(localPlayer.isImpostor)) {
+                            setCurrentTask(task);
+                            break;
+                        }
+                    }
+                }
+            } else {
+                setCurrentTask(undefined);
+            }
+    };
+
     useEffect(() => {
         if (!canvasRef.current) return;
         initInputsEvent();
+
+        
+        setInterval(() => {
+            
+            const collisionTasks = checkColision(localPlayer, taskTiles);
+            if(collisionTasks.length > 0){
+                setStartButton(true);
+            }
+            else
+            {
+                setStartButton(false);
+            };
+        }, 5);
 
         setInterval(() => {
             const target = getClosestEntity(localPlayer, players);
@@ -156,21 +191,7 @@ const GameMenu = () => {
             draw(context);
             moveEntity(localPlayer, collisionTiles);
             sendPosition(localPlayer.id, localPlayer.x, localPlayer.y, localPlayer.direction);
-            const collisionTasks = checkColision(localPlayer, taskTiles);
-
-            if (collisionTasks.length > 0) {
-                if (!CurrentTask) {
-                    for (const task of collisionTasks) {
-                        const isTaskAlreadyFinished = finishedTasks.find((t) => t.id === task.id);
-                        if (!isTaskAlreadyFinished) {
-                            setCurrentTask(task);
-                            break;
-                        }
-                    }
-                }
-            } else {
-                setCurrentTask(undefined);
-            }
+            handleClickStart();
             window.requestAnimationFrame(render);
         }
 
@@ -230,6 +251,12 @@ const GameMenu = () => {
                                 KILL
                             </Button>
                         )}
+                        {!isImpostor && (
+                            <Button className="kill-btn d-flex ml-auto mr-0" onClick={ () => handleClickStart(true) } disabled={!isStartButtonEnabled}>
+                                MISSION
+                            </Button>
+                        )}
+
                     </Col>
                     <Col>
                         <PopOverContainer />

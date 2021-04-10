@@ -1,6 +1,6 @@
 import { Direction } from '../Entity/Entity';
 
-const pressedKeys = [
+export const pressedKeys = [
     {
         state: false,
         value: 'z',
@@ -20,6 +20,10 @@ const pressedKeys = [
     {
         state: false,
         value: 'a',
+    },
+    {
+        state: false,
+        value: 'e',
     },
 ];
 
