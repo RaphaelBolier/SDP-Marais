@@ -13,9 +13,9 @@ import { tasks } from '../../components/Task';
 import PopOverContainer from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
 import ModalChat from '../../components/Modal/ChatModal';
-import { pressedKeys  } from '../../lib/Input';
+import { pressedKeys } from '../../lib/Input';
 
-
+import '../../lib/Illuminated';
 import './Game.scss';
 
 const MAX_KILL_DIST = 100;
@@ -27,6 +27,22 @@ const collisionTiles = [];
 const taskTiles = [];
 const finishedTasks = [];
 let localPlayer = undefined;
+const DRAW_LIGHT_OFF = 100;
+const DRAW_LIGHT_ON = 270;
+let isGameStarted = false;
+
+const { Lamp, Vec2, DiscObject, Lighting, DarkMask } = window.illuminated;
+var light = new Lamp({
+    position: new Vec2(200, 210),
+    distance: DRAW_LIGHT_ON,
+});
+
+var lighting = new Lighting({
+    light: light,
+    objects: [],
+});
+
+var darkmask = new DarkMask({ lights: [light] });
 
 const GameMenu = () => {
     const { id } = useParams();
@@ -79,7 +95,6 @@ const GameMenu = () => {
 
         
         setInterval(() => {
-            
             const collisionTasks = checkColision(localPlayer, taskTiles);
             if(collisionTasks.length > 0){
                 setStartButton(true);
@@ -88,7 +103,7 @@ const GameMenu = () => {
             {
                 setStartButton(false);
             };
-        }, 5);
+        }, 500);
 
         setInterval(() => {
             const target = getClosestEntity(localPlayer, players);
@@ -107,18 +122,24 @@ const GameMenu = () => {
 
         const context = canvasRef.current.getContext('2d');
         localPlayer = new Player(player.name, 70, 70, socket.id, context);
-        console.log(localPlayer.name)
+
         if (id === socket.id) {
             setTimeout(() => {
                 console.log("start game");
                 startGame(id);
-            }, 100);
+            }, 8000);
         }
 
         const initMap = async () => {
             await init(mapLobby);
             collisionTiles.push(...createCollisionTiles(mapLobby, LOBBY_WIDTH, TILE_SIZE))
             taskTiles.push(...createTaskTiles(collisionTiles, tasks));
+            taskTiles.forEach((tile) => {
+                lighting.objects.push(new DiscObject({ 
+                    center: new Vec2(tile.x + 32, tile.y + 32), 
+                    radius: 32 
+                }));
+            })
             render();
         }
 
@@ -129,6 +150,7 @@ const GameMenu = () => {
                 });
             });
             socket.on('rolelist', ({ roleList }) => {
+                isGameStarted = true;
                 roleList.forEach((r) => {
                     if (r.id === localPlayer.id && r.role === 'impostor') {
                         setIsImpostor(true);
@@ -137,11 +159,14 @@ const GameMenu = () => {
                     }
                     else if (r.id === localPlayer.id && r.role === 'crewmate') {
                         setCrewmateModal(true);
+                        light.distance = DRAW_LIGHT_OFF;
                     }
                 });
             });
             socket.on('newplayer', ({ name, id }) => {
-                sendPosition(localPlayer.id, localPlayer.x, localPlayer.y, localPlayer.direction);
+                setTimeout(() => {
+                    sendPosition(localPlayer.id, localPlayer.x, localPlayer.y, localPlayer.direction);
+                }, 500);
                 players.push(new Player(name, 70, 70, id, context));
                 playAudio(audioIds.JOIN);
             });
@@ -182,11 +207,36 @@ const GameMenu = () => {
         }
 
         const draw = (context) => {
-            drawMap(context, mapLobby.tiles, LOBBY_WIDTH, TILE_SIZE);
-            localPlayer.draw();
-            players.forEach((player) => player.draw());
-        }
+            light.position = new Vec2(localPlayer.x + 32, localPlayer.y + 21);   
 
+            lighting.compute(640, 832);    
+            darkmask.compute(640, 832);
+            
+            drawMap(context, mapLobby.tiles, LOBBY_WIDTH, TILE_SIZE);
+            players.forEach((player) => {
+                if (isGameStarted) {
+                    if (localPlayer.isImpostor) {
+                        if (getClosestEntity(localPlayer, [player]).distance <= 270) {
+                            player.draw();
+                        }
+                    } else {
+                        if (getClosestEntity(localPlayer, [player]).distance <= 125) {
+                            player.draw();
+                        }
+                    }
+                } else {
+                    player.draw();
+                }   
+            });
+
+            context.globalCompositeOperation = "lighter";
+            lighting.render(context);     
+            context.globalCompositeOperation = "source-over";
+            darkmask.render(context);
+
+            localPlayer.draw();  
+        }
+        
         const render = () => {
             draw(context);
             moveEntity(localPlayer, collisionTiles);
@@ -237,7 +287,7 @@ const GameMenu = () => {
                         <p>Nombre de joueurs : {1 + players.length} </p>
                     </Col>
                     <Col>
-                        {CurrentTask && (
+                        {CurrentTask && isGameStarted && (
                             // eslint-disable-next-line react/jsx-pascal-case
                             <CurrentTask.component
                                 localPlayer={localPlayer}
@@ -246,12 +296,12 @@ const GameMenu = () => {
                             />
                         )}
                         <canvas ref={canvasRef} id="canvas" width="576" height="576" className="mx-auto d-flex" />
-                        {isImpostor && (
+                        {isImpostor && isGameStarted && (
                             <Button className="kill-btn d-flex ml-auto mr-0" onClick={handleClickKill} disabled={!isKillButtonEnabled}>
                                 KILL
                             </Button>
                         )}
-                        {!isImpostor && (
+                        {!isImpostor && isGameStarted && (
                             <Button className="kill-btn d-flex ml-auto mr-0" onClick={ () => handleClickStart(true) } disabled={!isStartButtonEnabled}>
                                 MISSION
                             </Button>
