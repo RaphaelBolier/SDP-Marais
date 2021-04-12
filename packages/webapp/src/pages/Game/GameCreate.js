@@ -82,8 +82,12 @@ const GameMenu = () => {
                 <CardBody className='text-left'>
                     <Form>
                         <FormGroup onChange={handleGameNameChanged}>
-                            <h2>Nom de la partie :</h2>
-                            <Input style={{ maxWidth: '250px' }} type="text" name="gameName" id="exampleEmail" placeholder="Partie de Michel" />
+                            {/* <h2>Nom de la partie :</h2>
+                            <Input style={{ maxWidth: '250px' }} type="text" name="gameName" id="exampleEmail" placeholder="Partie de Michel" /> */}
+                            <div class="input_field">
+                            <input type="input" class="form__field" placeholder="Partie de Michel" name="gameName" id='exampleEmail' required />
+                            <label for="name" class="form__label">Nom de la partie</label>
+                            </div>
                         </FormGroup>
                         <FormGroup tag="fieldset">
                             <h2>Mode</h2>

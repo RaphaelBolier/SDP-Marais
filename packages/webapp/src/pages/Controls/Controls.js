@@ -68,7 +68,7 @@ const Controls = () => {
 								<h2>Video </h2>
 								<Label check>
 									<Input type="checkbox" checked={fullScreen} onChange={toggleFullScreen} />
-									<b>plein écran </b>
+									<b>Plein écran </b>
 								</Label>
 							</FormGroup>
 							<h2>Controles </h2>
