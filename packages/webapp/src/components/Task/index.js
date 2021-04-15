@@ -2,7 +2,7 @@ import { Statue } from '../../components/Task/Statue';
 
 export const tasks = [
     {
-        id: 25,
+        id: 11,
         name: 'piano',
         type: 'short',
         component: Statue,
