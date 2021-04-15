@@ -8,7 +8,7 @@ import { usePlayer } from '../../components/Player/PlayerContext';
 import { useSockets } from '../../components/wsapi/WSockets';
 import { useAudios } from '../../components/Audio/AudioProvider';
 import { getClosestEntity } from '../../lib/Utils';
-import mapLobby from '../../assets/map/lobby/lobby.json';
+import mapLobby from '../../assets/map/lobby/lobbyV2.json';
 import { tasks } from '../../components/Task';
 import PopOverContainer from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
@@ -20,7 +20,7 @@ import './Game.scss';
 
 const MAX_KILL_DIST = 100;
 const KILL_COOLDOWN = 10 * 1000;
-const LOBBY_WIDTH = 576;
+const LOBBY_WIDTH = 832;
 const TILE_SIZE = 64;
 const players = [];
 const collisionTiles = [];
@@ -209,8 +209,8 @@ const GameMenu = () => {
         const draw = (context) => {
             light.position = new Vec2(localPlayer.x + 32, localPlayer.y + 21);   
 
-            lighting.compute(640, 832);    
-            darkmask.compute(640, 832);
+            lighting.compute(840, 832);    
+            darkmask.compute(840, 832);
             
             drawMap(context, mapLobby.tiles, LOBBY_WIDTH, TILE_SIZE);
             players.forEach((player) => {
@@ -295,7 +295,7 @@ const GameMenu = () => {
                                 notifyEnd={() => finishedTasks.push(CurrentTask)}
                             />
                         )}
-                        <canvas ref={canvasRef} id="canvas" width="576" height="576" className="mx-auto d-flex" />
+                        <canvas ref={canvasRef} id="canvas" width="832" height="832" className="mx-auto d-flex" />
                         {isImpostor && isGameStarted && (
                             <Button className="kill-btn d-flex ml-auto mr-0" onClick={handleClickKill} disabled={!isKillButtonEnabled}>
                                 KILL

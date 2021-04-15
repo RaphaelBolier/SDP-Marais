@@ -1,0 +1,850 @@
+{
+    "name": "lobbyV2",
+    "tiles": [
+        {
+            "collide": true,
+            "id": 1,
+            "path": "coin-haut-gauche-wall.png"
+        },
+        {
+            "collide": true,
+            "id": 8,
+            "path": "haut-bloodwall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 2,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 6,
+            "path": "haut-wall-tab2.jpg"
+        },
+        {
+            "collide": true,
+            "id": 2,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 4,
+            "path": "haut-flag2.jpg"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "door-wall-haut.jpg"
+        },
+        {
+            "collide": true,
+            "id": 4,
+            "path": "haut-flag2.jpg"
+        },
+        {
+            "collide": true,
+            "id": 2,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 2,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 5,
+            "path": "haut-wall-tab.jpg"
+        },
+        {
+            "collide": true,
+            "id": 2,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 9,
+            "path": "coin-haut-droite-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 24,
+            "path": "footprint2.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 24,
+            "path": "footprint2.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 22,
+            "path": "papier.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 21,
+            "path": "footprint1.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 23,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 21,
+            "path": "footprint1.png"
+        },
+        {
+            "collide": false,
+            "id": 23,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 11,
+            "path": "teststatu.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 23,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 23,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 20,
+            "path": "blood.png"
+        },
+        {
+            "collide": false,
+            "id": 23,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 23,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 23,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 23,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 23,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 1,
+            "path": "coin-haut-gauche-wall.png"
+        },
+        {
+            "collide": true,
+            "id": 6,
+            "path": "haut-wall-tab2.jpg"
+        },
+        {
+            "collide": false,
+            "id": 23,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": true,
+            "id": 8,
+            "path": "haut-bloodwall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 9,
+            "path": "coin-haut-droite-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 22,
+            "path": "papier.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 10,
+            "path": "testpiuaono.png"
+        },
+        {
+            "collide": false,
+            "id": 22,
+            "path": "papier.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 22,
+            "path": "papier.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 15,
+            "path": "coin-bas-gauche-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 14,
+            "path": "coin-bas-droite-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 17,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 2,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 2,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 2,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 2,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 2,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 15,
+            "path": "coin-bas-gauche-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 16,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 14,
+            "path": "coin-bas-droite-sol-orange.jpg"
+        }
+    ]
+}
