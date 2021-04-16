@@ -1,0 +1,2180 @@
+{
+    "name": "map",
+    "tiles": [
+        {
+            "collide": true,
+            "id": 18,
+            "path": "coin-haut-gauche-wall.png"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 18,
+            "path": "coin-haut-gauche-wall.png"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 19,
+            "path": "coin-haut-droite-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": false,
+            "id": 16,
+            "path": "haut-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 19,
+            "path": "coin-haut-droite-wall.jpg"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": true,
+            "id": 20,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 21,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 21,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": true,
+            "id": 20,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 21,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 20,
+            "path": "gauche-sol-orange.png.jpg"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 21,
+            "path": "droite-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 13,
+            "path": "planks_big_oak.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": true,
+            "id": 22,
+            "path": "coin-bas-gauche-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 17,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 17,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 17,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 17,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 23,
+            "path": "coin-bas-droite-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 17,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 17,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 17,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 4,
+            "path": "hardened_clay_stained_cyan.png"
+        },
+        {
+            "collide": false,
+            "id": 17,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 17,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": false,
+            "id": 17,
+            "path": "bas-sol-orange.jpg"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": false,
+            "id": 1,
+            "path": "marble.jpg"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 15,
+            "path": "wood-floor.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 5,
+            "path": "wool_colored_white.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": false,
+            "id": 6,
+            "path": "cauldron_bottom.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": false,
+            "id": 12,
+            "path": "wool_colored_light_blue.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": false,
+            "id": 14,
+            "path": "marble2.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": false,
+            "id": 8,
+            "path": "cobblestone.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        },
+        {
+            "collide": true,
+            "id": 3,
+            "path": "hardened_clay_stained_gray.png"
+        }
+    ]
+}
