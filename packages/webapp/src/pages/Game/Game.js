@@ -14,6 +14,8 @@ import PopOverContainer from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
 import ModalChat from '../../components/Modal/ChatModal';
 import { pressedKeys } from '../../lib/Input';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 
 import '../../lib/Illuminated';
 import './Game.scss';
@@ -266,7 +268,7 @@ const GameMenu = () => {
 
 
     return (
-        <div className="GameCanvas Lobby">
+        <div className="lobby">
             <Container>
                 <Row className="d-flex justify-content-center my-2">
                     <Col xs="5">
@@ -295,7 +297,7 @@ const GameMenu = () => {
                                 notifyEnd={() => finishedTasks.push(CurrentTask)}
                             />
                         )}
-                        <canvas ref={canvasRef} id="canvas" width="832" height="832" className="mx-auto d-flex" />
+                        <canvas ref={canvasRef} id="canvas" width="676" height="684" className="mx-auto d-flex" />
                         {isImpostor && isGameStarted && (
                             <Button className="kill-btn d-flex ml-auto mr-0" onClick={handleClickKill} disabled={!isKillButtonEnabled}>
                                 KILL
@@ -310,8 +312,8 @@ const GameMenu = () => {
                     </Col>
                     <Col>
                         <PopOverContainer />
-                        <Button className="d-flex ml-auto mr-0" onClick={() => setShowChat((prevState) => !prevState)}>
-                            Afficher le chat
+                        <Button className="chat-btn d-flex" onClick={() => setShowChat((prevState) => !prevState)}>
+                        <FontAwesomeIcon icon={faCommentAlt} size="3x" color="white" />
                         </Button>
                         {showChat && (
                             <ModalChat

@@ -1,3 +1,36 @@
+.lobby {
+    //Permet d'avoir la div en fullscreen
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    
+    background-image: url(../../assets/background/lobby.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.chat-btn {
+    width: 70px;
+    height: 70px;
+    padding: 16px;
+    border-radius: 35px;
+    font-size: 12px;
+    text-align: center;
+    background-color: #640e0b;
+    border-color: transparent;
+}
+
+
+ .chat-btn:active,.chat-btn::after,.chat-btn:hover,.chat-btn:focus{
+    background-color: #640e0b !important;
+    border-color: transparent;
+}
+
+
 .kill-btn {
     font-size: 300%;
     text-transform: uppercase;
