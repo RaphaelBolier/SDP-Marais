@@ -51,6 +51,10 @@ export const WSocketsProvider = ({ children }) => {
 		socket.emit('sendmessage', { roomId, name, msg });
 	}, [socket]);
 
+	const sendReport = useCallback((roomId, name) => {
+		socket.emit('report', { roomId, name });
+	}, [socket]);
+
 	const value = useMemo(() => ({
 		id,	
 		socket,
@@ -60,6 +64,7 @@ export const WSocketsProvider = ({ children }) => {
 		startGame,
 		killCrewMate,
 		sendMessage,
+		sendReport,
 	}), [
 		id,		
 		socket,
@@ -69,6 +74,7 @@ export const WSocketsProvider = ({ children }) => {
 		startGame,
 		killCrewMate,
 		sendMessage,
+		sendReport,
 	]);
 
 	return (

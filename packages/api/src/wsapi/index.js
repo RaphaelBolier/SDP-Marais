@@ -59,6 +59,13 @@ exports.initSocketProvider = (socketIO) => {
                 io.sockets.in(game.id).emit('newmessage', { name, msg });  
             }
         });
+
+        socket.on("report", ({roomId, name}) => {
+            const game = getGames().find((game) => game.id === roomId);
+            if (game) {
+                io.sockets.in(game.id).emit('report', { name });  
+            }
+        });
     });
 }
 

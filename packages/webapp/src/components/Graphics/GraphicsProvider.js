@@ -5,6 +5,7 @@ import React, {
     useCallback,
 } from 'react';
 import { CollisionBody } from '../../lib/Entity/CollisionBody';
+const {Vec2, RectangleObject} = window.illuminated;
 
 const assetTexturesPath = '/textures/';
 const textures = [];
@@ -24,18 +25,38 @@ export const GraphicsProvider = ({ children }) => {
             if (tile.collide) {
                 if (tile.path.includes("bas")) {
                     collisionTiles.push(new CollisionBody((col * tileSize), (row * tileSize) + (tileSize) , tile.id, tileSize, 10));
+                    collisionTiles[collisionTiles.length - 1].hitboxLight = new RectangleObject({
+                        topleft: new Vec2(col * tileSize, row * tileSize),
+                        bottomright: new Vec2(col * tileSize + tileSize, row * tileSize + tileSize)
+                    });
                 }
                 else if (tile.path.includes("haut")) {
                     collisionTiles.push(new CollisionBody((col * tileSize), (row * tileSize+10), tile.id, tileSize, 10));
+                    collisionTiles[collisionTiles.length - 1].hitboxLight = new RectangleObject({
+                        topleft: new Vec2(col * tileSize, row * tileSize),
+                        bottomright: new Vec2(col * tileSize + tileSize, row * tileSize + tileSize)
+                    });
                 }
                 else if (tile.path.includes("gauche")) {
                     collisionTiles.push(new CollisionBody((col * tileSize) , (row * tileSize), tile.id, 15, tileSize));
+                    collisionTiles[collisionTiles.length - 1].hitboxLight = new RectangleObject({
+                        topleft: new Vec2(col * tileSize, row * tileSize),
+                        bottomright: new Vec2(col * tileSize + tileSize, row * tileSize + tileSize)
+                    });
                 }
                 else if (tile.path.includes("droite")) {
                     collisionTiles.push(new CollisionBody((col * tileSize) + 49, row * tileSize, tile.id, 15, tileSize));
+                    collisionTiles[collisionTiles.length - 1].hitboxLight = new RectangleObject({
+                        topleft: new Vec2(col * tileSize, row * tileSize),
+                        bottomright: new Vec2(col * tileSize + tileSize, row * tileSize + tileSize)
+                    });
                 }
                 else {
                     collisionTiles.push(new CollisionBody((col * tileSize)+10, (row * tileSize)+10, tile.id, tileSize-30, tileSize-30));
+                    collisionTiles[collisionTiles.length - 1].hitboxLight = new RectangleObject({
+                        topleft: new Vec2(col * tileSize, row * tileSize),
+                        bottomright: new Vec2(col * tileSize + tileSize, row * tileSize + tileSize)
+                    });
                 }
 
             }

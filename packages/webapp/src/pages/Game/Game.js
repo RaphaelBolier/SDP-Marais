@@ -14,6 +14,7 @@ import PopOverContainer from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
 import ModalChat from '../../components/Modal/ChatModal';
 import { pressedKeys } from '../../lib/Input';
+import ReportModal from '../../components/Modal/ReportModal';
 
 import '../../lib/Illuminated';
 import './Game.scss';
@@ -48,7 +49,15 @@ const GameMenu = () => {
     const { id } = useParams();
     const { init, drawMap, createCollisionTiles, createTaskTiles } = useGraphics();
     const { player, setPlayer } = usePlayer();
-    const { socket, sendPosition, getPlayerList, startGame, killCrewMate, sendMessage } = useSockets();
+    const {
+        socket,
+        sendPosition,
+        getPlayerList,
+        startGame,
+        killCrewMate,
+        sendMessage,
+        sendReport,
+    } = useSockets();
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
     const [isImpostor, setIsImpostor] = useState(false);
@@ -57,10 +66,13 @@ const GameMenu = () => {
     const [isDead, setIsDead] = useState(false);
     const [isKillButtonEnabled, setKillButton] = useState(false);
     const [isStartButtonEnabled, setStartButton] = useState(false);
+    const [isReportButtonEnabled, setIsReportButtonEnabled] = useState(false);
     const [CurrentTask, setCurrentTask] = useState(undefined);
     const [taskProgression, setTaskProgression] = useState(0);
     const [chatData, setChatData] = useState([]);
     const [showChat, setShowChat] = useState(false);
+    const [showReportModal, setShowReportModal] = useState(false);
+    const [reporterName, setReporterName] = useState('');
 
     const handleClickKill = () => {
         localPlayer.startKillCoolDown(KILL_COOLDOWN);
@@ -70,6 +82,9 @@ const GameMenu = () => {
         localPlayer.y = target.position.y;
     };
 
+    const handleClickReport = () => {
+        sendReport(id, localPlayer.name);
+    };
 
     const handleClickStart = (isButton) => {
         const collisionTasks = checkColision(localPlayer, taskTiles);
@@ -118,7 +133,17 @@ const GameMenu = () => {
             } else {
                 setKillButton(false);
             }
-        }, 100);
+        }, 500);
+
+        setInterval(() => {
+            const target = getClosestEntity(localPlayer, players);
+            if (!target) return;
+            if (target.isDead && target.distance <= MAX_KILL_DIST && !localPlayer.isDead) {
+                setIsReportButtonEnabled(true);
+            } else {
+                setIsReportButtonEnabled(false);
+            }
+        }, 500);
 
         const context = canvasRef.current.getContext('2d');
         localPlayer = new Player(player.name, 70, 70, socket.id, context);
@@ -139,6 +164,11 @@ const GameMenu = () => {
                     center: new Vec2(tile.x + 32, tile.y + 32), 
                     radius: 32 
                 }));
+            });
+            collisionTiles.forEach((tile) => {
+                if (tile.hitboxLight) {
+                    //lighting.objects.push(tile.hitboxLight);
+                }
             })
             render();
         }
@@ -203,6 +233,11 @@ const GameMenu = () => {
                         msg,
                     },
                 ])
+            });
+
+            socket.on('report', ({ name }) => {
+                setReporterName(name);
+                setShowReportModal(true);
             });
         }
 
@@ -313,6 +348,9 @@ const GameMenu = () => {
                         <Button className="d-flex ml-auto mr-0" onClick={() => setShowChat((prevState) => !prevState)}>
                             Afficher le chat
                         </Button>
+                        <Button className="d-flex ml-auto mr-0" disabled={!isReportButtonEnabled} onClick={handleClickReport}>
+                            Report body
+                        </Button>
                         {showChat && (
                             <ModalChat
                                 chatData={chatData}
@@ -331,6 +369,7 @@ const GameMenu = () => {
             <ModalContainer openBool={isDead} toggleModal={() => setIsDead(!isDead)} />
             <ModalContainer bool={impostorModal} toggleModal={() => setImpostorModal(!impostorModal)} />
             <ModalContainer boolCrewmate={crewmateModal} toggleModal={() => setCrewmateModal(!crewmateModal)} />
+            <ReportModal isOpen={showReportModal} localPlayer={localPlayer} toggleModal={() => console.log("toggle")} playerList={players} reporterName={reporterName} />
 
         </div>
     );
