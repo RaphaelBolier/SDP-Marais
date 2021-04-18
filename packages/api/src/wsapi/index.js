@@ -49,6 +49,10 @@ exports.initSocketProvider = (socketIO) => {
         socket.on("kill", ({ roomId, targetId }) => {
             const game = getGames().find((game) => game.id === roomId);
             if (game) {
+                const killedPlayer = game.players.find((p) => p.id === targetId);
+                if (killedPlayer) {
+                    killedPlayer.isDead = true;
+                }
                 io.sockets.in(game.id).emit('playerkilled', { targetId });  
             }
         });
@@ -73,7 +77,36 @@ exports.initSocketProvider = (socketIO) => {
                 io.sockets.in(game.id).emit('taskprogress', {playerId});  
                 
             }
-        })
+        });
+
+        socket.on("vote", ({roomId, player, target}) => {
+            const game = getGames().find((game) => game.id === roomId);
+            if (game) {
+                if (!game.voteNumber) game.voteNumber = 0;
+                const alivePlayerNumber = game.players.filter((p) => !p.isDead).length;
+                const votedPlayer = game.players.find((p) => p.id === target.id);
+                if (votedPlayer) {
+                    game.voteNumber++;
+                    votedPlayer.voteNumber += 1;
+                }
+                console.log("alive: ", alivePlayerNumber, "nbVote: ", game.voteNumber)
+                if (alivePlayerNumber === game.voteNumber) {
+                    const alivePlayer = game.players.filter((p) => !p.isDead);
+                    let playerToKill = alivePlayer[0];
+
+                    alivePlayer.forEach((p) => {
+                        if (p.voteNumber > playerToKill.voteNumber) {
+                            playerToKill = p;
+                        }
+                    });
+
+                    game.voteNumber = 0;
+                    game.players.forEach((p) => p.voteNumber = 0);
+                    io.sockets.in(game.id).emit('expulse', { player: playerToKill });  
+                }
+               
+            }
+        });
     });
 }
 

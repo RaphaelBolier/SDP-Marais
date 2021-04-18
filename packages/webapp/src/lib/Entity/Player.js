@@ -17,6 +17,9 @@ export class Player extends Entity {
 
         this.width = 48;
         this.height = 74;
+
+        this.hasVoted = false;
+        this.numberVote = 0;
     }
 
     setMoveState = (state) => {

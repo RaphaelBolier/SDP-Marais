@@ -31,6 +31,7 @@ let localPlayer = undefined;
 const DRAW_LIGHT_OFF = 100;
 const DRAW_LIGHT_ON = 270;
 let isGameStarted = false;
+let nbVote = 0;
 
 const { Lamp, Vec2, DiscObject, Lighting, DarkMask } = window.illuminated;
 var light = new Lamp({
@@ -58,6 +59,7 @@ const GameMenu = () => {
         sendMessage,
         sendReport,
         taskProgress,
+        vote,
     } = useSockets();
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
@@ -248,10 +250,22 @@ const GameMenu = () => {
 
             socket.on('taskprogress', ({ playerId }) => {
                 console.log("player", playerId)
-                if(playerId != localPlayer.id){
+                if(playerId !== localPlayer.id){
                     finishedTasks.push({})
                 } 
                 setTaskProgression(finishedTasks.length / taskTiles.length * 100);  
+            });
+
+            socket.on('expulse', ({ player }) => {
+                const target = players.find((p) => p.id === player.id);
+                if (target) {
+                    target.kill();
+                    playAudio(audioIds.KILL);
+                } else if (localPlayer.id === player.id) {
+                    localPlayer.kill();
+                    setIsDead(true);
+                }
+                setShowReportModal(false);
             });
         }
 
@@ -373,7 +387,7 @@ const GameMenu = () => {
             <ModalContainer openBool={isDead} toggleModal={() => setIsDead(!isDead)} />
             <ModalContainer bool={impostorModal} toggleModal={() => setImpostorModal(!impostorModal)} />
             <ModalContainer boolCrewmate={crewmateModal} toggleModal={() => setCrewmateModal(!crewmateModal)} />
-            <ReportModal isOpen={showReportModal} localPlayer={localPlayer} toggleModal={() => console.log("toggle")} playerList={players} reporterName={reporterName} />
+            <ReportModal isOpen={showReportModal} localPlayer={localPlayer} playerList={players.filter((p) => !p.isDead)} reporterName={reporterName} vote={vote} id={id} />
 
         </div>
     );
