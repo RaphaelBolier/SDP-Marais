@@ -21,14 +21,12 @@ export const Statue = ({ localPlayer, notifyEnd }) => {
         slider4: MIN + Math.random() * (MAX - MIN),
     });
 
-    const terminateTask = useCallback(() => {
-        //send finish to server
-        notifyEnd();
-    }, [notifyEnd]);
-
     useEffect(() => {
         //Prevent the player to move
         localPlayer.setMoveState(false);
+        return () => {
+            notifyEnd();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -42,10 +40,9 @@ export const Statue = ({ localPlayer, notifyEnd }) => {
             && slidersValue.slider2 == MAX
             && slidersValue.slider3 == MAX
             && slidersValue.slider4 == MAX) {
-                terminateTask();
                 toggle();
             }
-    }, [notifyEnd, slidersValue, toggle, terminateTask]);
+    }, [notifyEnd, slidersValue, toggle]);
 
     const handleChange = (id, value) => {
         switch(id) {

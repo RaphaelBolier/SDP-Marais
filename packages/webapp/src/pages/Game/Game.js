@@ -57,6 +57,7 @@ const GameMenu = () => {
         killCrewMate,
         sendMessage,
         sendReport,
+        taskProgress,
     } = useSockets();
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
@@ -84,6 +85,11 @@ const GameMenu = () => {
 
     const handleClickReport = () => {
         sendReport(id, localPlayer.name);
+    };
+
+    const onTaskEnd = () => {
+        finishedTasks.push(CurrentTask)
+        taskProgress(id, localPlayer.id)
     };
 
     const handleClickStart = (isButton) => {
@@ -118,7 +124,7 @@ const GameMenu = () => {
             {
                 setStartButton(false);
             };
-        }, 500);
+        }, 5);
 
         setInterval(() => {
             const target = getClosestEntity(localPlayer, players);
@@ -152,7 +158,7 @@ const GameMenu = () => {
             setTimeout(() => {
                 console.log("start game");
                 startGame(id);
-            }, 8000);
+            }, 1000);
         }
 
         const initMap = async () => {
@@ -239,6 +245,14 @@ const GameMenu = () => {
                 setReporterName(name);
                 setShowReportModal(true);
             });
+
+            socket.on('taskprogress', ({ playerId }) => {
+                console.log("player", playerId)
+                if(playerId != localPlayer.id){
+                    finishedTasks.push({})
+                } 
+                setTaskProgression(finishedTasks.length / taskTiles.length * 100);  
+            });
         }
 
         const draw = (context) => {
@@ -290,16 +304,6 @@ const GameMenu = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    useEffect(() => {
-        if (isNaN(finishedTasks.length)) {
-            setTaskProgression(0);
-        }
-        else {
-            setTaskProgression(finishedTasks.length / taskTiles.length * 100);
-        }
-    }, [CurrentTask]);
-
-
     return (
         <div className="GameCanvas Lobby">
             <Container>
@@ -327,7 +331,7 @@ const GameMenu = () => {
                             <CurrentTask.component
                                 localPlayer={localPlayer}
                                 task={CurrentTask}
-                                notifyEnd={() => finishedTasks.push(CurrentTask)}
+                                notifyEnd={onTaskEnd}
                             />
                         )}
                         <canvas ref={canvasRef} id="canvas" width="832" height="832" className="mx-auto d-flex" />

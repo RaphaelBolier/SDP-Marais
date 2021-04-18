@@ -66,6 +66,14 @@ exports.initSocketProvider = (socketIO) => {
                 io.sockets.in(game.id).emit('report', { name });  
             }
         });
+
+        socket.on("taskprogress", ({roomId, playerId}) => {
+            const game = getGames().find((game) => game.id === roomId);
+            if (game) {
+                io.sockets.in(game.id).emit('taskprogress', {playerId});  
+                
+            }
+        })
     });
 }
 
