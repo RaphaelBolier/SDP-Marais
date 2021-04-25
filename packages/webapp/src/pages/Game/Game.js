@@ -8,7 +8,7 @@ import { usePlayer } from '../../components/Player/PlayerContext';
 import { useSockets } from '../../components/wsapi/WSockets';
 import { useAudios } from '../../components/Audio/AudioProvider';
 import { getClosestEntity } from '../../lib/Utils';
-import mapLobby from '../../assets/map/lobby/lobbyV2.json';
+import mapLobby from '../../assets/map/lobby/lobby-v3.json';
 import { tasks } from '../../components/Task';
 import PopOverContainer from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
@@ -22,7 +22,7 @@ import './Game.scss';
 
 const MAX_KILL_DIST = 100;
 const KILL_COOLDOWN = 10 * 1000;
-const LOBBY_WIDTH = 832;
+const LOBBY_WIDTH = 732;
 const TILE_SIZE = 64;
 const players = [];
 const collisionTiles = [];
@@ -60,7 +60,6 @@ const GameMenu = () => {
     const [isKillButtonEnabled, setKillButton] = useState(false);
     const [isStartButtonEnabled, setStartButton] = useState(false);
     const [CurrentTask, setCurrentTask] = useState(undefined);
-    const [taskProgression, setTaskProgression] = useState(0);
     const [chatData, setChatData] = useState([]);
     const [showChat, setShowChat] = useState(false);
 
@@ -76,33 +75,32 @@ const GameMenu = () => {
     const handleClickStart = (isButton) => {
         const collisionTasks = checkColision(localPlayer, taskTiles);
 
-            if (collisionTasks.length > 0) {
-                if (!CurrentTask) {
-                    for (const task of collisionTasks) {
-                        const isTaskAlreadyFinished = finishedTasks.find((t) => t.id === task.id);
-                        if (!isTaskAlreadyFinished && (pressedKeys.find((k) => k.value === 'e').state || isButton) && !(localPlayer.isImpostor)) {
-                            setCurrentTask(task);
-                            break;
-                        }
+        if (collisionTasks.length > 0) {
+            if (!CurrentTask) {
+                for (const task of collisionTasks) {
+                    const isTaskAlreadyFinished = finishedTasks.find((t) => t.id === task.id);
+                    if (!isTaskAlreadyFinished && (pressedKeys.find((k) => k.value === 'e').state || isButton) && !(localPlayer.isImpostor)) {
+                        setCurrentTask(task);
+                        break;
                     }
                 }
-            } else {
-                setCurrentTask(undefined);
             }
+        } else {
+            setCurrentTask(undefined);
+        }
     };
 
     useEffect(() => {
         if (!canvasRef.current) return;
         initInputsEvent();
 
-        
+
         setInterval(() => {
             const collisionTasks = checkColision(localPlayer, taskTiles);
-            if(collisionTasks.length > 0){
+            if (collisionTasks.length > 0) {
                 setStartButton(true);
             }
-            else
-            {
+            else {
                 setStartButton(false);
             };
         }, 500);
@@ -137,9 +135,9 @@ const GameMenu = () => {
             collisionTiles.push(...createCollisionTiles(mapLobby, LOBBY_WIDTH, TILE_SIZE))
             taskTiles.push(...createTaskTiles(collisionTiles, tasks));
             taskTiles.forEach((tile) => {
-                lighting.objects.push(new DiscObject({ 
-                    center: new Vec2(tile.x + 32, tile.y + 32), 
-                    radius: 32 
+                lighting.objects.push(new DiscObject({
+                    center: new Vec2(tile.x + 32, tile.y + 32),
+                    radius: 32
                 }));
             })
             render();
@@ -209,11 +207,11 @@ const GameMenu = () => {
         }
 
         const draw = (context) => {
-            light.position = new Vec2(localPlayer.x + 32, localPlayer.y + 21);   
+            light.position = new Vec2(localPlayer.x + 32, localPlayer.y + 21);
 
-            lighting.compute(840, 832);    
+            lighting.compute(840, 832);
             darkmask.compute(840, 832);
-            
+
             drawMap(context, mapLobby.tiles, LOBBY_WIDTH, TILE_SIZE);
             players.forEach((player) => {
                 if (isGameStarted) {
@@ -228,17 +226,17 @@ const GameMenu = () => {
                     }
                 } else {
                     player.draw();
-                }   
+                }
             });
 
             context.globalCompositeOperation = "lighter";
-            lighting.render(context);     
+            lighting.render(context);
             context.globalCompositeOperation = "source-over";
             darkmask.render(context);
 
-            localPlayer.draw();  
+            localPlayer.draw();
         }
-        
+
         const render = () => {
             draw(context);
             moveEntity(localPlayer, collisionTiles);
@@ -257,83 +255,63 @@ const GameMenu = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    useEffect(() => {
-        if (isNaN(finishedTasks.length)) {
-            setTaskProgression(0);
-        }
-        else {
-            setTaskProgression(finishedTasks.length / taskTiles.length * 100);
-        }
-    }, [CurrentTask]);
-
-
     return (
         <div className="lobby">
-            <Container>
-                <Row className="d-flex justify-content-center my-2">
-                    <Col xs="5">
-                        <div className="progress">
-                            <div className={`progress-bar bg-success`}
-                                style={{ width: taskProgression + '%' }}
-                                role="progressbar" aria-valuenow={taskProgression}
-                                aria-valuemin="0"
-                                aria-valuemax="100">
-                                {taskProgression}%
-                                </div>
-                        </div>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
+            <Container className="h-100">
+                <Row className="align-items-center h-100">
+                    <Col xs="5" className="LeftCol">
                         <p>Partie: {id} </p>
                         <p>Nombre de joueurs : {1 + players.length} </p>
-                    </Col>
-                    <Col>
-                        {CurrentTask && isGameStarted && (
-                            // eslint-disable-next-line react/jsx-pascal-case
-                            <CurrentTask.component
-                                localPlayer={localPlayer}
-                                task={CurrentTask}
-                                notifyEnd={() => finishedTasks.push(CurrentTask)}
-                            />
-                        )}
-                        <canvas ref={canvasRef} id="canvas" width="676" height="684" className="mx-auto d-flex" />
-                        {isImpostor && isGameStarted && (
-                            <Button className="kill-btn d-flex ml-auto mr-0" onClick={handleClickKill} disabled={!isKillButtonEnabled}>
-                                KILL
-                            </Button>
-                        )}
-                        {!isImpostor && isGameStarted && (
-                            <Button className="kill-btn d-flex ml-auto mr-0" onClick={ () => handleClickStart(true) } disabled={!isStartButtonEnabled}>
-                                MISSION
-                            </Button>
-                        )}
+                        <div className="timer">
 
+                        </div>
                     </Col>
-                    <Col>
-                        <PopOverContainer />
-                        <Button className="chat-btn d-flex" onClick={() => setShowChat((prevState) => !prevState)}>
-                        <FontAwesomeIcon icon={faCommentAlt} size="3x" color="white" />
-                        </Button>
-                        {showChat && (
-                            <ModalChat
-                                chatData={chatData}
-                                showChat={showChat}
-                                toggleModal={() => {
-                                    setShowChat((prevState) => !prevState);
-                                    localPlayer.setMoveState(true);
-                                }}
-                                onSendMessage={(msg) => sendMessage(id, localPlayer.name, msg)}
-                                localPlayer={localPlayer}
-                            />
-                        )}
+                    <Col className="mx-auto CenterCol">
+                        <canvas ref={canvasRef} id="canvas" width="704" height="704" className="my-auto mx-auto d-flex" />
+                    </Col>
+                    <Col className="RightCol">
+                        <div className="float-right text-center">
+                            <PopOverContainer />
+                            <Button className="chat-btn" onClick={() => setShowChat((prevState) => !prevState)}>
+                                <FontAwesomeIcon icon={faCommentAlt} size="3x" color="white" />
+                            </Button>
+                            {showChat && (
+                                <ModalChat
+                                    chatData={chatData}
+                                    showChat={showChat}
+                                    toggleModal={() => {
+                                        setShowChat((prevState) => !prevState);
+                                        localPlayer.setMoveState(true);
+                                    }}
+                                    onSendMessage={(msg) => sendMessage(id, localPlayer.name, msg)}
+                                    localPlayer={localPlayer}
+                                />
+                            )}
+                            {CurrentTask && isGameStarted && (
+                                // eslint-disable-next-line react/jsx-pascal-case
+                                <CurrentTask.component
+                                    localPlayer={localPlayer}
+                                    task={CurrentTask}
+                                    notifyEnd={() => finishedTasks.push(CurrentTask)}
+                                />
+                            )}
+                            {isImpostor && isGameStarted && (
+                                <Button className="kill-btn d-block ml-auto mr-0" onClick={handleClickKill} disabled={!isKillButtonEnabled}>
+                                    KILL
+                                </Button>
+                            )}
+                            {!isImpostor && isGameStarted && (
+                                <Button className="kill-btn d-block ml-auto mr-0" onClick={() => handleClickStart(true)} disabled={!isStartButtonEnabled}>
+                                    MISSION
+                                </Button>
+                            )}
+                        </div>
                     </Col>
                 </Row>
             </Container>
             <ModalContainer openBool={isDead} toggleModal={() => setIsDead(!isDead)} />
             <ModalContainer bool={impostorModal} toggleModal={() => setImpostorModal(!impostorModal)} />
             <ModalContainer boolCrewmate={crewmateModal} toggleModal={() => setCrewmateModal(!crewmateModal)} />
-
         </div>
     );
 };

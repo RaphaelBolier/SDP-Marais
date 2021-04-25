@@ -3,33 +3,43 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    left: 0;
-    top: 0;
-    
-    background-image: url(../../assets/background/lobby.png);
-    background-size: cover;
-    background-repeat: no-repeat;
     background-position: center;
+    background-image: url(../../assets/background/lobby2.png);
+    background-size: inherit;
+    background-repeat: no-repeat;
+}
+.LeftCol{
+    position: absolute;
+    left: 0;
+
+    p {
+        color: white;
+    }
 }
 
+.RightCol {
+    position: absolute;
+    right: 0;
 
-.chat-btn {
-    width: 70px;
-    height: 70px;
-    padding: 16px;
-    border-radius: 35px;
-    font-size: 12px;
-    text-align: center;
-    background-color: #640e0b;
-    border-color: transparent;
+    .chat-btn {
+        width: 70px;
+        height: 70px;
+        padding: 16px;
+        border-radius: 35px;
+        font-size: 12px;
+        text-align: center;
+        background-color: #640e0b;
+        border-color: transparent;
+    }
+
+    .chat-btn:active,
+    .chat-btn::after,
+    .chat-btn:hover,
+    .chat-btn:focus {
+        background-color: #640e0b !important;
+        border-color: transparent;
+    }
 }
-
-
- .chat-btn:active,.chat-btn::after,.chat-btn:hover,.chat-btn:focus{
-    background-color: #640e0b !important;
-    border-color: transparent;
-}
-
 
 .kill-btn {
     font-size: 300%;
@@ -59,7 +69,7 @@
 }
 
 .kill-btn:hover::before {
-    width: 100%
+    width: 100%;
 }
 
 .kill-btn:focus {
