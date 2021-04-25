@@ -1,0 +1,47 @@
+.modal-backdrop {
+    opacity: 1 !important;
+    background-image: url('../../assets/background/impostor.jpg');
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+.Vote-title{
+    font-family: Blood;
+    color: #8a0505;
+    letter-spacing: 3px;
+}
+
+
+.Vote-btn {
+    margin-left: 30px;
+    width: 40px;
+    height: 40px;
+    padding: 0px 10px;
+    border-radius: 35px;
+    font-size: 6px;
+    text-align: center;
+    background-color: #640e0b;
+    border-color: transparent;
+}
+
+
+ .Vote-btn:active,.Vote-btn::after,.Vote-btn:hover,.Vote-btn:focus,.Vote-btn:disabled{
+    background-color: #640e0b !important;
+    border-color: transparent;
+}
+
+
+li{
+    font-size: 1.5em;
+    font-family: test;
+    letter-spacing: 2px;
+    list-style-type: none;
+
+}

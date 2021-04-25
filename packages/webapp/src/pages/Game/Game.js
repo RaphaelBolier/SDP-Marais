@@ -87,6 +87,7 @@ const GameMenu = () => {
 
     const handleClickReport = () => {
         sendReport(id, localPlayer.name);
+        playAudio(audioIds.REPORT);
     };
 
     const onTaskEnd = () => {
