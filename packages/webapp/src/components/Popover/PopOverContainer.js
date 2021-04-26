@@ -62,7 +62,7 @@ const PopOverContainer = () => {
   };
 
   return (
-    <div>
+    <div className="PopOverContainer">
       <Button className="control-btn" id="Popover1" type="button">
         <FontAwesomeIcon icon={faMouse} size="3x" color="white" />
       </Button>

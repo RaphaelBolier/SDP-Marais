@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSkull } from '@fortawesome/free-solid-svg-icons';
+
+import './Vote.scss';
+
 const ReportModal = ({ isOpen, toggleModal, playerList, reporterName, localPlayer, vote, id }) => {
   const [selectedPlayer, setSelectedPlayer] = useState(undefined);
   const handleClickVote = (player) => {
@@ -10,17 +15,17 @@ const ReportModal = ({ isOpen, toggleModal, playerList, reporterName, localPlaye
   }
 
   return (
-    <div>
-      <Modal isOpen={isOpen} toggle={toggleModal}>
-        <ModalHeader toggle={toggleModal}>Test</ModalHeader>
+    <div className="ReportModalContainer">
+      <Modal className="report-modal" isOpen={isOpen} toggle={toggleModal}>
+        <ModalHeader className="Vote-title justify-content-center" toggle={toggleModal}>Qui est l'imposteur ?</ModalHeader>
         <ModalBody>
             <ul>
             {playerList.map((player) => {
                 return (
                     <li key={player.id} style={{ color: player.name === reporterName ? 'red' : 'black'}}>
                         {player.name}
-                        <Button disabled={selectedPlayer !== undefined || localPlayer.isDead} onClick={() => handleClickVote(player)}>
-                          Voter
+                        <Button className="Vote-btn" disabled={selectedPlayer !== undefined || localPlayer.isDead} onClick={() => handleClickVote(player)}>
+                        <FontAwesomeIcon icon={faSkull} size="3x" color="white" />
                         </Button>
                     </li>
                 )
