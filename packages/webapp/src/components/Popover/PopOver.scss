@@ -1,18 +1,20 @@
-.control-btn {
-    width: 70px;
-    height: 70px;
-    padding: 10px 16px;
-    border-radius: 35px;
-    font-size: 12px;
-    text-align: center;
-    background-color: #640e0b;
-    border-color: transparent;
+.PopOverContainer {
+    .control-btn {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        border-radius: 35px;
+        font-size: 12px;
+        text-align: center;
+        background-color: #640e0b;
+        border-color: transparent;
+    }
+
+    .control-btn:active,
+    .control-btn::after,
+    .control-btn:hover,
+    .control-btn:focus {
+        background-color: #640e0b !important;
+        border-color: transparent;
+    }
 }
-
-
- .control-btn:active,.control-btn::after,.control-btn:hover,.control-btn:focus{
-    background-color: #640e0b !important;
-    border-color: transparent;
-}
-
-

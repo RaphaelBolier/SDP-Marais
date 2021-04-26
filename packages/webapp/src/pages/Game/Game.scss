@@ -7,81 +7,82 @@
     background-image: url(../../assets/background/lobby2.png);
     background-size: inherit;
     background-repeat: no-repeat;
-}
-.LeftCol{
-    position: absolute;
-    left: 0;
 
-    p {
-        color: white;
+    .LeftCol {
+        position: absolute;
+        left: 0;
+
+        p {
+            color: white;
+        }
     }
-}
 
-.RightCol {
-    position: absolute;
-    right: 0;
+    .RightCol {
+        position: absolute;
+        right: 0;
 
-    .chat-btn {
-        width: 70px;
-        height: 70px;
-        padding: 16px;
-        border-radius: 35px;
-        font-size: 12px;
-        text-align: center;
-        background-color: #640e0b;
+        .chat-btn {
+            width: 70px;
+            height: 70px;
+            padding: 16px;
+            border-radius: 35px;
+            font-size: 12px;
+            text-align: center;
+            background-color: #640e0b;
+            border-color: transparent;
+        }
+
+        .chat-btn:active,
+        .chat-btn::after,
+        .chat-btn:hover,
+        .chat-btn:focus {
+            background-color: #640e0b !important;
+            border-color: transparent;
+        }
+    }
+
+    .kill-btn {
+        font-size: 300%;
+        text-transform: uppercase;
+        border: none;
+        color: #640e0b;
+        background-color: transparent !important;
+        font-family: test;
+        text-shadow: 5px 5px black;
         border-color: transparent;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        transition: 0.5s;
     }
 
-    .chat-btn:active,
-    .chat-btn::after,
-    .chat-btn:hover,
-    .chat-btn:focus {
-        background-color: #640e0b !important;
-        border-color: transparent;
+    .kill-btn:disabled {
+        color: #640e0b;
     }
-}
+    .kill-btn:hover {
+        color: #640e0b;
+    }
 
-.kill-btn {
-    font-size: 300%;
-    text-transform: uppercase;
-    border: none;
-    color: #640e0b;
-    background-color: transparent !important;
-    font-family: test;
-    text-shadow: 5px 5px black;
-    border-color: transparent;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: 0.5s;
-}
+    .kill-btn:not(:disabled):not(.disabled):active:focus {
+        box-shadow: none;
+        background-color: transparent;
+    }
 
-.kill-btn:disabled {
-    color: #640e0b;
-}
-.kill-btn:hover {
-    color: #640e0b;
-}
+    .kill-btn:hover::before {
+        width: 100%;
+    }
 
-.kill-btn:not(:disabled):not(.disabled):active:focus {
-    box-shadow: none;
-    background-color: transparent;
-}
+    .kill-btn:focus {
+        box-shadow: none;
+        background-color: transparent;
+    }
 
-.kill-btn:hover::before {
-    width: 100%;
-}
+    .kill-btn span {
+        position: relative;
+        z-index: 1;
+    }
 
-.kill-btn:focus {
-    box-shadow: none;
-    background-color: transparent;
-}
-
-.kill-btn span {
-    position: relative;
-    z-index: 1;
-}
-
-.btn-secondary:hover {
-    background-color: transparent;
+    .btn-secondary:hover {
+        background-color: transparent;
+    }
 }
