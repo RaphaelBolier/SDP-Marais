@@ -190,7 +190,7 @@ const GameMenu = () => {
         }, 500);
 
         const context = canvasRef.current.getContext('2d');
-        localPlayer = new Player(player.name, 70, 70, socket.id, context);
+        localPlayer = new Player(player.name, canvasSize.width / 2 - 32, canvasSize.height / 2 - 32, socket.id, context);
 
         const initMap = async () => {
             await init(currentMap);
@@ -306,12 +306,14 @@ const GameMenu = () => {
 
         const draw = (context) => {
             light.position = new Vec2(localPlayer.x + 32, localPlayer.y + 21);
-
             lighting.compute(840, 832);
             darkmask.compute(840, 832);
 
-            drawMap(context, currentMap.tiles, LOBBY_WIDTH, TILE_SIZE);
+            drawMap(context, currentMap.tiles, LOBBY_WIDTH, TILE_SIZE, localPlayer);
             players.forEach((player) => {
+                player.x += localPlayer.mapX;
+                player.y += localPlayer.mapY;
+
                 if (isGameStarted) {
                     if (localPlayer.isImpostor) {
                         if (getClosestEntity(localPlayer, [player]).distance <= 270) {
@@ -338,7 +340,7 @@ const GameMenu = () => {
         const render = () => {
             draw(context);
             moveEntity(localPlayer, collisionTiles);
-            sendPosition(localPlayer.id, localPlayer.x, localPlayer.y, localPlayer.direction);
+            sendPosition(localPlayer.id, localPlayer.startPosition.x - localPlayer.mapX, localPlayer.startPosition.y - localPlayer.mapY, localPlayer.direction);
             handleClickStart();
             window.requestAnimationFrame(render);
         }

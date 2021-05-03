@@ -12,6 +12,13 @@ export class Player extends Entity {
         this.forcedStop = false;
         this.id = id;
 
+        this.startPosition = {
+            x,
+            y
+        };
+        this.mapX = 0;
+        this.mapY = 0;
+
         this.canKill = false;
         this.hasCooldown = false;
 
@@ -45,5 +52,10 @@ export class Player extends Entity {
         this.context.fillText(this.name, this.x + (this.width / 2) - this.context.measureText(this.name).width / 2, this.y);
         this.context.restore();
         super.draw();
+    }
+
+    move() {
+        this.mapX += (this.dx * this.speed);
+        this.mapY += (this.dy * this.speed);
     }
 };

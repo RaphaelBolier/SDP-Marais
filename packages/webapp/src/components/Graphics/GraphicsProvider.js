@@ -101,13 +101,15 @@ export const GraphicsProvider = ({ children }) => {
         }
     }, []);
 
-    const drawMap = useCallback((ctx, tiles, mapWidth, tileSize) => {
+    const drawMap = useCallback((ctx, tiles, mapWidth, tileSize, localPlayer) => {
         let row = 0;
         let col = 0;
         const maxCol = Math.floor(mapWidth / tileSize);
+        let offsetX = localPlayer.mapX ;
+        let offsetY = localPlayer.mapY ;
 
         tiles.forEach((tile) => {
-            drawImage(ctx, tile.id, col * tileSize, row * tileSize, tileSize);
+            drawImage(ctx, tile.id, col * tileSize + offsetX, row * tileSize + offsetY, tileSize);
             col++;
             if (col === maxCol) {
                 col = 0;

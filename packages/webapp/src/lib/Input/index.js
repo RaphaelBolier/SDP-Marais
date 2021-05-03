@@ -48,13 +48,14 @@ export const initInputsEvent = () => {
 
 export const checkColision = (entity, collisionTiles) => {
     const collisionObjects = [];
+
     for(const tile of collisionTiles) {
         //collision arete gauche
-        if (entity.x + entity.width === tile.x
-            && entity.y + entity.height > tile.y
-            && entity.y < tile.y + tile.height) {
+        if (entity.startPosition.x - entity.mapX + entity.width === tile.x
+            &&entity.startPosition.y - entity.mapY + entity.height > tile.y
+            &&entity.startPosition.y - entity.mapY < tile.y + tile.height) {
                 collisionObjects.push(tile);
-                entity.canMoveRight = false;
+                entity.canMoveRight = true;
                 break;
         } else {
             entity.canMoveRight = true;
@@ -62,11 +63,11 @@ export const checkColision = (entity, collisionTiles) => {
     };
     for(const tile of collisionTiles) {
         //collision arete droite
-        if (entity.x === tile.x + tile.width
-            && entity.y + entity.height > tile.y
-            && entity.y < tile.y + tile.height) {
+        if (entity.startPosition.x - entity.mapX === tile.x + tile.width
+            &&entity.startPosition.y - entity.mapY + entity.height > tile.y
+            &&entity.startPosition.y - entity.mapY < tile.y + tile.height) {
                 collisionObjects.push(tile);
-                entity.canMoveLeft = false;
+                entity.canMoveLeft = true;
                 break;
         } else {
             entity.canMoveLeft = true;
@@ -74,10 +75,10 @@ export const checkColision = (entity, collisionTiles) => {
     };
     for(const tile of collisionTiles) {
         //collision arete bas
-        if (entity.x + entity.width > tile.x && entity.x < tile.x + tile.width
-            && entity.y === tile.y + tile.height) {
+        if (entity.startPosition.x - entity.mapX + entity.width > tile.x && entity.startPosition.x - entity.mapX < tile.x + tile.width
+            &&entity.startPosition.y - entity.mapY === tile.y + tile.height) {
                 collisionObjects.push(tile);
-                entity.canMoveUp = false;
+                entity.canMoveUp = true;
                 break;
         } else {
             entity.canMoveUp = true;
@@ -85,10 +86,10 @@ export const checkColision = (entity, collisionTiles) => {
     };
     for(const tile of collisionTiles) {
         //collision arete haut
-        if (entity.x + entity.width > tile.x && entity.x < tile.x + tile.width
-            && entity.y + entity.height === tile.y) {
+        if (entity.startPosition.x - entity.mapX + entity.width > tile.x && entity.startPosition.x - entity.mapX < tile.x + tile.width
+            &&entity.startPosition.y - entity.mapY + entity.height === tile.y) {
                 collisionObjects.push(tile);
-                entity.canMoveDown = false;
+                entity.canMoveDown = true;
                 break;
         } else {
             entity.canMoveDown = true;
@@ -100,25 +101,26 @@ export const checkColision = (entity, collisionTiles) => {
     return collisionObjects;
 };
 
+
 export const moveEntity = (entity, collisionTiles) => {
     let keyState = false;
-    if (entity.forcedStop) return;
     checkColision(entity, collisionTiles);
+    if (entity.forcedStop) return;
     pressedKeys.forEach(key => {
         if(key.value === 'z' && key.state && entity.canMoveUp) {
-            entity.dy = -1;
+            entity.dy = 1;
             entity.direction = Direction.HAUT;
         }      
         if(key.value === 's' && key.state && entity.canMoveDown) {
-            entity.dy = 1;
+            entity.dy = -1;
             entity.direction = Direction.BAS;
         }        
         if(key.value === 'q' && key.state && entity.canMoveLeft) {
-            entity.dx = -1;
+            entity.dx = 1;
             entity.direction = Direction.GAUCHE;
         }  
         if(key.value === 'd' && key.state && entity.canMoveRight) {
-            entity.dx = 1;
+            entity.dx = -1;
             entity.direction = Direction.DROITE;
         }       
     });
@@ -128,6 +130,8 @@ export const moveEntity = (entity, collisionTiles) => {
     if (noY) entity.dy = 0;
     if (noX) entity.dx = 0;
     if(noY && noX) entity.direction = Direction.NONE;
+    checkColision(entity, collisionTiles);
     entity.move();
+
     return keyState;
 }
