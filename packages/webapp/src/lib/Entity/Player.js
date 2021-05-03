@@ -21,6 +21,7 @@ export class Player extends Entity {
 
         this.canKill = false;
         this.hasCooldown = false;
+        this.hasCooldownLight = false;
 
         this.width = 48;
         this.height = 74;
@@ -42,6 +43,13 @@ export class Player extends Entity {
         this.hasCooldown = true;
         setTimeout(() => {
             this.hasCooldown = false;
+        }, time);
+    }
+
+    startLightCoolDown = (time) => {
+        this.hasCooldownLight = true;
+        setTimeout(() => {
+            this.hasCooldownLight = false;
         }, time);
     }
 

@@ -42,7 +42,7 @@ export const Statue = ({ localPlayer, notifyEnd }) => {
             && slidersValue.slider4 == MAX) {
                 toggle();
             }
-    }, [notifyEnd, slidersValue, toggle]);
+    }, [slidersValue, toggle]);
 
     const handleChange = (id, value) => {
         switch(id) {

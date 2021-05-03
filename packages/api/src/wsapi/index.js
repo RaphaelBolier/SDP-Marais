@@ -108,6 +108,15 @@ exports.initSocketProvider = (socketIO) => {
                
             }
         });
+
+        socket.on("toggleLight", ({ roomId }) => {
+            const game = getGames().find((game) => game.id === roomId);
+            if (game) {
+                console.log("toggle light")
+                io.sockets.in(game.id).emit('toggleLight', {});  
+            }
+        });
+        
     });
 }
 

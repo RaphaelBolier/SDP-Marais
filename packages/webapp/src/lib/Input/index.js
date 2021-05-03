@@ -25,7 +25,16 @@ export const pressedKeys = [
         state: false,
         value: 'e',
     },
+    {
+        state: false,
+        value: 'p',
+    },
+    {
+        state: false,
+        value: 'm',
+    },
 ];
+let a = false;
 
 export const initInputsEvent = () => {   
 
@@ -48,7 +57,9 @@ export const initInputsEvent = () => {
 
 export const checkColision = (entity, collisionTiles) => {
     const collisionObjects = [];
-
+    
+    if (a)  return collisionObjects;
+    
     for(const tile of collisionTiles) {
         //collision arete gauche
         if (entity.startPosition.x - entity.mapX + entity.width === tile.x
@@ -122,7 +133,13 @@ export const moveEntity = (entity, collisionTiles) => {
         if(key.value === 'd' && key.state && entity.canMoveRight) {
             entity.dx = -1;
             entity.direction = Direction.DROITE;
-        }       
+        }     
+        if(key.value === 'p' && key.state) {
+            a = true;
+        }  
+        if(key.value === 'm' && key.state) {
+            a = false;
+        }  
     });
     const noY = pressedKeys.filter((key) => (key.value === 'z' || key.value === 's') && !key.state).length === 2;
     const noX = pressedKeys.filter((key) => (key.value === 'q' || key.value === 'd') && !key.state).length === 2;
@@ -130,8 +147,6 @@ export const moveEntity = (entity, collisionTiles) => {
     if (noY) entity.dy = 0;
     if (noX) entity.dx = 0;
     if(noY && noX) entity.direction = Direction.NONE;
-    checkColision(entity, collisionTiles);
     entity.move();
-
     return keyState;
 }

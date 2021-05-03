@@ -64,6 +64,10 @@ export const WSocketsProvider = ({ children }) => {
 		socket.emit('vote', { roomId, player, target });
 	}, [socket]);
 
+	const toggleLight = useCallback((roomId) => {
+		socket.emit('toggleLight', { roomId });
+	}, [socket]);
+
 	const value = useMemo(() => ({
 		id,	
 		socket,
@@ -76,6 +80,7 @@ export const WSocketsProvider = ({ children }) => {
 		sendReport,
 		taskProgress,
 		vote,
+		toggleLight,
 	}), [
 		id,		
 		socket,
@@ -88,6 +93,7 @@ export const WSocketsProvider = ({ children }) => {
 		sendReport,
 		taskProgress,
 		vote,
+		toggleLight,
 	]);
 
 	return (

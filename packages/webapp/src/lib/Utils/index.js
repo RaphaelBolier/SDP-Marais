@@ -1,7 +1,11 @@
-export const get2DDistance = (a, b) => {
-    return Math.sqrt(
-        Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2)
+export const get2DDistance = (localPlayer, b) => {
+    const ret = Math.sqrt(
+        Math.pow(
+            (localPlayer.startPosition.x - localPlayer.mapX) - b.x, 2)
+        + Math.pow(
+            (localPlayer.startPosition.y - localPlayer.mapY) - b.y, 2)
     );
+    return ret;
 }
 
 export const getClosestEntity = (me, entitys) => {
