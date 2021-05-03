@@ -18,6 +18,7 @@ import { pressedKeys } from '../../lib/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentAlt, faBullhorn } from '@fortawesome/free-solid-svg-icons';
 import ReportModal from '../../components/Modal/ReportModal';
+import controls from '../../assets/background/controls.jpg';
 
 
 import '../../lib/Illuminated';
@@ -36,6 +37,15 @@ const DRAW_LIGHT_OFF = 100;
 const DRAW_LIGHT_ON = 270;
 let isGameStarted = false;
 let nbVote = 0;
+let backgroundCanvas = undefined;
+new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = function (data) {
+        backgroundCanvas = img;
+        resolve();
+    };
+    img.src = controls;
+});
 
 const { Lamp, Vec2, DiscObject, Lighting, DarkMask } = window.illuminated;
 var light = new Lamp({
@@ -54,7 +64,7 @@ let currentMap = mapLobby;
 
 const GameMenu = () => {
     const { id } = useParams();
-    const { init, drawMap, createCollisionTiles, createTaskTiles } = useGraphics();
+    const { init, drawMap, createCollisionTiles, createTaskTiles, drawBackgroundImage } = useGraphics();
     const { player, setPlayer } = usePlayer();
     const {
         socket,
@@ -334,10 +344,13 @@ const GameMenu = () => {
             context.globalCompositeOperation = "source-over";
             darkmask.render(context);
 
-            localPlayer.draw();
+            localPlayer.draw();        
         }
 
         const render = () => {
+            if (backgroundCanvas) {
+                drawBackgroundImage(context, backgroundCanvas, localPlayer.mapX - localPlayer.startPosition.x, localPlayer.mapY - localPlayer.startPosition.y, 2500) //ctx, image, x, y, size
+            }
             draw(context);
             moveEntity(localPlayer, collisionTiles);
             sendPosition(localPlayer.id, localPlayer.startPosition.x - localPlayer.mapX, localPlayer.startPosition.y - localPlayer.mapY, localPlayer.direction);

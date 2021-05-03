@@ -55,7 +55,7 @@ export const checkColision = (entity, collisionTiles) => {
             &&entity.startPosition.y - entity.mapY + entity.height > tile.y
             &&entity.startPosition.y - entity.mapY < tile.y + tile.height) {
                 collisionObjects.push(tile);
-                entity.canMoveRight = true;
+                entity.canMoveRight = false;
                 break;
         } else {
             entity.canMoveRight = true;
@@ -67,7 +67,7 @@ export const checkColision = (entity, collisionTiles) => {
             &&entity.startPosition.y - entity.mapY + entity.height > tile.y
             &&entity.startPosition.y - entity.mapY < tile.y + tile.height) {
                 collisionObjects.push(tile);
-                entity.canMoveLeft = true;
+                entity.canMoveLeft = false;
                 break;
         } else {
             entity.canMoveLeft = true;
@@ -78,7 +78,7 @@ export const checkColision = (entity, collisionTiles) => {
         if (entity.startPosition.x - entity.mapX + entity.width > tile.x && entity.startPosition.x - entity.mapX < tile.x + tile.width
             &&entity.startPosition.y - entity.mapY === tile.y + tile.height) {
                 collisionObjects.push(tile);
-                entity.canMoveUp = true;
+                entity.canMoveUp = false;
                 break;
         } else {
             entity.canMoveUp = true;
@@ -89,7 +89,7 @@ export const checkColision = (entity, collisionTiles) => {
         if (entity.startPosition.x - entity.mapX + entity.width > tile.x && entity.startPosition.x - entity.mapX < tile.x + tile.width
             &&entity.startPosition.y - entity.mapY + entity.height === tile.y) {
                 collisionObjects.push(tile);
-                entity.canMoveDown = true;
+                entity.canMoveDown = false;
                 break;
         } else {
             entity.canMoveDown = true;
