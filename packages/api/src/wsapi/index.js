@@ -42,6 +42,7 @@ exports.initSocketProvider = (socketIO) => {
                     id: player.id,
                     role: index === 0 ? 'impostor' : 'crewmate',
                 }));
+                io.sockets.in(game.id).emit('startgame', {});  
                 io.sockets.in(game.id).emit('rolelist', { roleList });  
             }
         });

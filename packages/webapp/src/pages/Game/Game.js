@@ -9,6 +9,7 @@ import { useSockets } from '../../components/wsapi/WSockets';
 import { useAudios } from '../../components/Audio/AudioProvider';
 import { getClosestEntity } from '../../lib/Utils';
 import mapLobby from '../../assets/map/lobby/lobby-v3.json';
+import mapv2 from '../../assets/map/map/mapv2.json';
 import { tasks } from '../../components/Task';
 import PopOverContainer from '../../components/Popover/PopOverContainer';
 import ModalContainer from '../../components/Modal/ModalContainer';
@@ -24,11 +25,11 @@ import './Game.scss';
 
 const MAX_KILL_DIST = 100;
 const KILL_COOLDOWN = 10 * 1000;
-const LOBBY_WIDTH = 732;
+let LOBBY_WIDTH = 732;
 const TILE_SIZE = 64;
 const players = [];
-const collisionTiles = [];
-const taskTiles = [];
+let collisionTiles = [];
+let taskTiles = [];
 const finishedTasks = [];
 let localPlayer = undefined;
 const DRAW_LIGHT_OFF = 100;
@@ -48,6 +49,8 @@ var lighting = new Lighting({
 });
 
 var darkmask = new DarkMask({ lights: [light] });
+
+let currentMap = mapLobby;
 
 const GameMenu = () => {
     const { id } = useParams();
@@ -79,6 +82,8 @@ const GameMenu = () => {
     const [showChat, setShowChat] = useState(false);
     const [showReportModal, setShowReportModal] = useState(false);
     const [reporterName, setReporterName] = useState('');
+    const [canvasSize, setCanvasSize] = useState({ width: 704, height: 704 });
+    const [gameStarted, setGameStarted] = useState(false);
 
     const handleClickKill = () => {
         localPlayer.startKillCoolDown(KILL_COOLDOWN);
@@ -115,6 +120,34 @@ const GameMenu = () => {
             setCurrentTask(undefined);
         }
     };
+
+
+    const loadMap = async () => {
+        currentMap = mapv2;
+        LOBBY_WIDTH = 1884;
+        await init(currentMap);
+        taskTiles = [];
+        collisionTiles = [];
+        collisionTiles.push(...createCollisionTiles(currentMap, LOBBY_WIDTH, TILE_SIZE))
+        taskTiles.push(...createTaskTiles(collisionTiles, tasks));
+        taskTiles.forEach((tile) => {
+            lighting.objects.push(new DiscObject({
+                center: new Vec2(tile.x + 32, tile.y + 32),
+                radius: 32
+            }));
+        });
+        collisionTiles.forEach((tile) => {
+            if (tile.hitboxLight) {
+                //lighting.objects.push(tile.hitboxLight);
+            }
+        })
+    }
+
+    const handleStartGame = async () => {
+        setGameStarted(true);
+        startGame(id);
+        loadMap();
+    }
 
     useEffect(() => {
         if (!canvasRef.current) return;
@@ -159,16 +192,11 @@ const GameMenu = () => {
         const context = canvasRef.current.getContext('2d');
         localPlayer = new Player(player.name, 70, 70, socket.id, context);
 
-        if (id === socket.id) {
-            setTimeout(() => {
-                console.log("start game");
-                startGame(id);
-            }, 1000);
-        }
-
         const initMap = async () => {
-            await init(mapLobby);
-            collisionTiles.push(...createCollisionTiles(mapLobby, LOBBY_WIDTH, TILE_SIZE))
+            await init(currentMap);
+            taskTiles = [];
+            collisionTiles = [];
+            collisionTiles.push(...createCollisionTiles(currentMap, LOBBY_WIDTH, TILE_SIZE))
             taskTiles.push(...createTaskTiles(collisionTiles, tasks));
             taskTiles.forEach((tile) => {
                 lighting.objects.push(new DiscObject({
@@ -270,6 +298,10 @@ const GameMenu = () => {
                 }
                 setShowReportModal(false);
             });
+
+            socket.on('startgame', () => {
+                loadMap();
+            });
         }
 
         const draw = (context) => {
@@ -278,7 +310,7 @@ const GameMenu = () => {
             lighting.compute(840, 832);
             darkmask.compute(840, 832);
 
-            drawMap(context, mapLobby.tiles, LOBBY_WIDTH, TILE_SIZE);
+            drawMap(context, currentMap.tiles, LOBBY_WIDTH, TILE_SIZE);
             players.forEach((player) => {
                 if (isGameStarted) {
                     if (localPlayer.isImpostor) {
@@ -333,7 +365,7 @@ const GameMenu = () => {
                         </div>
                     </Col>
                     <Col className="mx-auto CenterCol">
-                        <canvas ref={canvasRef} id="canvas" width="704" height="704" className="my-auto mx-auto d-flex" />
+                        <canvas ref={canvasRef} id="canvas" width={canvasSize.width} height={canvasSize.height} className="my-auto mx-auto d-flex" />
                     </Col>
                     <Col className="RightCol">
                         <div className="float-right text-center">
@@ -372,6 +404,11 @@ const GameMenu = () => {
                             {!isImpostor && isGameStarted && (
                                 <Button className="kill-btn d-block ml-auto mr-0" onClick={() => handleClickStart(true)} disabled={!isStartButtonEnabled}>
                                     MISSION
+                                </Button>
+                            )}
+                            {id === socket.id && !gameStarted && (
+                                <Button className="kill-btn d-block ml-auto mr-0" onClick={handleStartGame}>
+                                    Start Game
                                 </Button>
                             )}
                         </div>

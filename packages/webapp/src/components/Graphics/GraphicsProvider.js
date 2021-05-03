@@ -8,7 +8,7 @@ import { CollisionBody } from '../../lib/Entity/CollisionBody';
 const {Vec2, RectangleObject} = window.illuminated;
 
 const assetTexturesPath = '/textures/';
-const textures = [];
+let textures = [];
 
 const Graphics = createContext({});
 export const useGraphics = () => useContext(Graphics);
@@ -92,10 +92,13 @@ export const GraphicsProvider = ({ children }) => {
     }, []);
 
     const drawImage = useCallback((ctx, id, x, y, size) => {
-        var myGif;
-        const gifURL = "https://upload.wikimedia.org/wikipedia/commons/a/a2/Wax_fire.gif";
-
-        ctx.drawImage(textures.find((texture) => texture.id === id).texture, x, y, size, size);
+        try {
+            //console.log("textures: ")
+            ctx.drawImage(textures.find((texture) => texture.id === id).texture, x, y, size, size);
+        } catch(err) {
+  
+            //console.log('ID:', id);
+        }
     }, []);
 
     const drawMap = useCallback((ctx, tiles, mapWidth, tileSize) => {
@@ -115,6 +118,7 @@ export const GraphicsProvider = ({ children }) => {
 
     const init = useCallback(async (map, width, height) => {
         const uniqueTexturesId = [];
+        textures = [];
         map.tiles.forEach((tile) => {
             if (!uniqueTexturesId.find((e) => e.id === tile.id)) {
                 uniqueTexturesId.push(tile);
