@@ -23,8 +23,8 @@ export class Player extends Entity {
         this.hasCooldown = false;
         this.hasCooldownLight = false;
 
-        this.width = 48;
-        this.height = 74;
+        this.width = 41;
+        this.height = 62;
 
         this.hasVoted = false;
         this.numberVote = 0;
