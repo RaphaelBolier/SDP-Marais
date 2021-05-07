@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import {  Modal, ModalHeader, ModalBody, Input, Button, Card, CardBody, CardFooter } from "reactstrap";
 
+import './ChatModal.scss';
+
 const ModalChat = ({ className, showChat, chatData, onSendMessage, toggleModal, localPlayer }) => {
     const [msg, setMsg] = useState('');
 
@@ -11,7 +13,7 @@ const ModalChat = ({ className, showChat, chatData, onSendMessage, toggleModal, 
 
     return (
         <div>
-        <Modal isOpen={showChat} toggle={toggleModal} className={className}>
+        <Modal modalClassName="modalChat" isOpen={showChat} toggle={toggleModal} className={className}>
             <ModalHeader toggle={toggleModal}>Chat</ModalHeader>
             <ModalBody>
                 <Card className="mt-2">
