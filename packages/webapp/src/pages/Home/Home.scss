@@ -8,6 +8,12 @@
 	font-family: horror;
 }
 
+
+@font-face {
+	src: url(../../assets/fonts/Fear.ttf);
+	font-family: fear;
+}
+
 .Home {
 	//Permet d'avoir la div en fullscreen
 	position: fixed;
@@ -48,7 +54,7 @@
 	.btn-play,
 	.btn-rules,
 	.btn-controls {
-		font-size: 300%;
+		font-size: 3em;
 		text-transform: uppercase;
 		border: none;
 		background-color: transparent;
@@ -104,9 +110,9 @@
 	}
 
 	.game-title {
-		font-family: blood;
+		font-family: Fear;
 		color: #5c110e;
-		font-size: 700%;
+		font-size: 7em;
 		text-shadow: 5px 5px black;
 	}
 }

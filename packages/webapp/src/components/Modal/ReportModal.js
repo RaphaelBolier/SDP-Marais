@@ -16,7 +16,7 @@ const ReportModal = ({ isOpen, toggleModal, playerList, reporterName, localPlaye
 
   return (
     <div className="ReportModalContainer">
-      <Modal modalClassName="reportModal" className="report-modal" isOpen={isOpen} toggle={toggleModal}>
+      <Modal modalClassName="reportModal"  isOpen={isOpen} toggle={toggleModal}>
         <ModalHeader className="Vote-title justify-content-center" toggle={toggleModal}>Qui est l'imposteur ?</ModalHeader>
         <ModalBody>
             <ul>
