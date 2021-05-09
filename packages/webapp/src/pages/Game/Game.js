@@ -98,6 +98,9 @@ const GameMenu = () => {
     const [reporterName, setReporterName] = useState('');
     const [canvasSize, setCanvasSize] = useState({ width: 704, height: 704 });
     const [gameStarted, setGameStarted] = useState(false);
+    const [isVictory, setIsVictory] = useState(false);
+    const [isDefeat, setIsDefeat] = useState(false);
+
 
     const handleClickKill = () => {
         localPlayer.startKillCoolDown(KILL_COOLDOWN);
@@ -460,6 +463,9 @@ const GameMenu = () => {
             <ModalContainer openBool={isDead} toggleModal={() => setIsDead(!isDead)} />
             <ModalContainer bool={impostorModal} toggleModal={() => setImpostorModal(!impostorModal)} />
             <ModalContainer boolCrewmate={crewmateModal} toggleModal={() => setCrewmateModal(!crewmateModal)} />
+            <ModalContainer boolVictory={isVictory} toggleModal={() => setIsVictory(!isVictory)} />
+            <ModalContainer boolDefeat={isDefeat} toggleModal={() => setIsDefeat(!isDefeat)} />
+
             <ReportModal isOpen={showReportModal} localPlayer={localPlayer} playerList={players.filter((p) => !p.isDead)} reporterName={reporterName} vote={vote} id={id} />
         </div>
     );

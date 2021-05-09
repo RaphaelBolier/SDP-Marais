@@ -16,6 +16,12 @@ const ModalExample = ({ openBool, toggleModal, bool, boolCrewmate }) => {
       <Modal modalClassName="innocentModal" isOpen={boolCrewmate} toggle={toggleModal}>
         <ModalHeader className="innocent-title justify-content-center"  toggle={toggleModal}>Vous etes innocent</ModalHeader>
       </Modal>
+      <Modal modalClassName="innocentModal" isOpen={boolVictory} toggle={toggleModal}>
+        <ModalHeader className="innocent-title justify-content-center"  toggle={toggleModal}>Victoire</ModalHeader>
+      </Modal>
+      <Modal modalClassName="innocentModal" isOpen={boolDefeat} toggle={toggleModal}>
+        <ModalHeader className="innocent-title justify-content-center"  toggle={toggleModal}>Defaite</ModalHeader>
+      </Modal>
     </div>
   );
 };
