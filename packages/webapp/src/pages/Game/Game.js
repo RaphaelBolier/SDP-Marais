@@ -18,7 +18,6 @@ import { pressedKeys } from '../../lib/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentAlt, faBullhorn } from '@fortawesome/free-solid-svg-icons';
 import ReportModal from '../../components/Modal/ReportModal';
-import controls from '../../assets/background/controls.jpg';
 
 
 import '../../lib/Illuminated';
@@ -26,7 +25,6 @@ import './Game.scss';
 
 const MAX_KILL_DIST = 100;
 const KILL_COOLDOWN = 10 * 1000;
-const LIGHT_COOLDOWN = 10 * 1000;
 let LOBBY_WIDTH = 732;
 const TILE_SIZE = 64;
 const players = [];
@@ -35,19 +33,9 @@ let taskTiles = [];
 const finishedTasks = [];
 let localPlayer = undefined;
 const DRAW_LIGHT_OFF = 100;
-const DRAW_LIGHT_ON = 300;
-let DRAW_MAX = DRAW_LIGHT_ON;
+const DRAW_LIGHT_ON = 270;
 let isGameStarted = false;
 let nbVote = 0;
-let backgroundCanvas = undefined;
-new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = function (data) {
-        backgroundCanvas = img;
-        resolve();
-    };
-    img.src = controls;
-});
 
 const { Lamp, Vec2, DiscObject, Lighting, DarkMask } = window.illuminated;
 var light = new Lamp({
@@ -66,7 +54,7 @@ let currentMap = mapLobby;
 
 const GameMenu = () => {
     const { id } = useParams();
-    const { init, drawMap, createCollisionTiles, createTaskTiles, drawBackgroundImage } = useGraphics();
+    const { init, drawMap, createCollisionTiles, createTaskTiles } = useGraphics();
     const { player, setPlayer } = usePlayer();
     const {
         socket,
@@ -78,7 +66,6 @@ const GameMenu = () => {
         sendReport,
         taskProgress,
         vote,
-        toggleLight,
     } = useSockets();
     const { playAudio, audioIds } = useAudios();
     const canvasRef = useRef();
@@ -87,7 +74,6 @@ const GameMenu = () => {
     const [crewmateModal, setCrewmateModal] = useState(false);
     const [isDead, setIsDead] = useState(false);
     const [isKillButtonEnabled, setKillButton] = useState(false);
-    const [isLightButtonEnabled, setLightButton] = useState(false);
     const [isStartButtonEnabled, setStartButton] = useState(false);
     const [isReportButtonEnabled, setIsReportButtonEnabled] = useState(false);
     const [CurrentTask, setCurrentTask] = useState(undefined);
@@ -113,7 +99,8 @@ const GameMenu = () => {
     };
 
     const onTaskEnd = () => {
-        toggleLight(id);
+        finishedTasks.push(CurrentTask)
+        taskProgress(id, localPlayer.id)
     };
 
     const handleClickStart = (isButton) => {
@@ -122,7 +109,8 @@ const GameMenu = () => {
         if (collisionTasks.length > 0) {
             if (!CurrentTask) {
                 for (const task of collisionTasks) {
-                    if ((pressedKeys.find((k) => k.value === 'e').state || isButton) && !(localPlayer.isImpostor)) {
+                    const isTaskAlreadyFinished = finishedTasks.find((t) => t.id === task.id);
+                    if (!isTaskAlreadyFinished && (pressedKeys.find((k) => k.value === 'e').state || isButton) && !(localPlayer.isImpostor)) {
                         setCurrentTask(task);
                         break;
                     }
@@ -133,10 +121,6 @@ const GameMenu = () => {
         }
     };
 
-    const handleClickLightOff = () => {
-        localPlayer.startLightCoolDown(LIGHT_COOLDOWN);
-        toggleLight(id);
-    };
 
     const loadMap = async () => {
         currentMap = mapv2;
@@ -178,12 +162,10 @@ const GameMenu = () => {
             else {
                 setStartButton(false);
             };
-        }, 500);
+        }, 5);
 
         setInterval(() => {
             const target = getClosestEntity(localPlayer, players);
-            if (!target) return;
-
             if (localPlayer.isImpostor
                 && players.length
                 && target.distance <= MAX_KILL_DIST
@@ -195,13 +177,11 @@ const GameMenu = () => {
             } else {
                 setKillButton(false);
             }
+        }, 500);
 
-            if (localPlayer.isImpostor && !localPlayer.hasCooldownLight) {
-                setLightButton(true);
-            } else {
-                setLightButton(false);
-            }
-
+        setInterval(() => {
+            const target = getClosestEntity(localPlayer, players);
+            if (!target) return;
             if (target.isDead && target.distance <= MAX_KILL_DIST && !localPlayer.isDead) {
                 setIsReportButtonEnabled(true);
             } else {
@@ -248,6 +228,7 @@ const GameMenu = () => {
                     }
                     else if (r.id === localPlayer.id && r.role === 'crewmate') {
                         setCrewmateModal(true);
+                        light.distance = DRAW_LIGHT_OFF;
                     }
                 });
             });
@@ -321,19 +302,6 @@ const GameMenu = () => {
             socket.on('startgame', () => {
                 loadMap();
             });
-
-            socket.on('toggleLight', () => {
-                if (!localPlayer.isImpostor) {
-                    if (DRAW_MAX === DRAW_LIGHT_ON) {
-                        DRAW_MAX = DRAW_LIGHT_OFF;
-                        light.distance = DRAW_LIGHT_OFF;
-                    } else {
-                        DRAW_MAX = DRAW_LIGHT_ON;
-                        light.distance = DRAW_LIGHT_ON;
-                    }
-                    
-                }
-            });
         }
 
         const draw = (context) => {
@@ -348,11 +316,11 @@ const GameMenu = () => {
 
                 if (isGameStarted) {
                     if (localPlayer.isImpostor) {
-                        if (getClosestEntity(localPlayer, [player]).distance <= DRAW_LIGHT_ON) {
+                        if (getClosestEntity(localPlayer, [player]).distance <= 270) {
                             player.draw();
                         }
                     } else {
-                        if (getClosestEntity(localPlayer, [player]).distance <= DRAW_MAX) {
+                        if (getClosestEntity(localPlayer, [player]).distance <= 125) {
                             player.draw();
                         }
                     }
@@ -366,13 +334,10 @@ const GameMenu = () => {
             context.globalCompositeOperation = "source-over";
             darkmask.render(context);
 
-            localPlayer.draw();        
+            localPlayer.draw();
         }
 
         const render = () => {
-            if (backgroundCanvas) {
-                drawBackgroundImage(context, backgroundCanvas, localPlayer.mapX - localPlayer.startPosition.x, localPlayer.mapY - localPlayer.startPosition.y, 2500) //ctx, image, x, y, size
-            }
             draw(context);
             moveEntity(localPlayer, collisionTiles);
             sendPosition(localPlayer.id, localPlayer.startPosition.x - localPlayer.mapX, localPlayer.startPosition.y - localPlayer.mapY, localPlayer.direction);
@@ -436,11 +401,6 @@ const GameMenu = () => {
                             {isImpostor && isGameStarted && (
                                 <Button className="kill-btn d-block ml-auto mr-0" onClick={handleClickKill} disabled={!isKillButtonEnabled}>
                                     KILL
-                                </Button>
-                            )}
-                             {isImpostor && isGameStarted && (
-                                <Button className="kill-btn d-block ml-auto mr-0" onClick={handleClickLightOff} disabled={!isLightButtonEnabled}>
-                                    LIGHTS
                                 </Button>
                             )}
                             {!isImpostor && isGameStarted && (

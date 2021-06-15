@@ -93,16 +93,11 @@ export const GraphicsProvider = ({ children }) => {
 
     const drawImage = useCallback((ctx, id, x, y, size) => {
         try {
+            //console.log("textures: ")
             ctx.drawImage(textures.find((texture) => texture.id === id).texture, x, y, size, size);
         } catch(err) {
-        }
-    }, []);
-
-    const drawBackgroundImage = useCallback((ctx, image, x, y, size) => {
-        try {
-            ctx.drawImage(image, x, y, size, size);
-        } catch(err) {
-            console.log("err:", err)
+  
+            //console.log('ID:', id);
         }
     }, []);
 
@@ -141,13 +136,11 @@ export const GraphicsProvider = ({ children }) => {
         drawMap,
         createCollisionTiles,
         createTaskTiles,
-        drawBackgroundImage,
     }), [
         init,
         drawMap,
         createCollisionTiles,
         createTaskTiles,
-        drawBackgroundImage,
     ]);
 
     return (
